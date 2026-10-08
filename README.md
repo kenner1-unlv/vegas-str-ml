@@ -1,8 +1,8 @@
 # Las Vegas STR Explorer
 
-A public Las Vegas Valley map for exploring advertised Airbnb nightly prices and comparing source neighborhoods. Working title; intended domain: str.housev.dev.
+A public Las Vegas Valley map for exploring advertised Airbnb nightly prices and comparing source neighborhoods. Working title; live at [str.housev.dev](https://str.housev.dev) on Cloudflare Pages.
 
-Initial milestone implemented locally: SvelteKit/TypeScript/MapLibre explorer, reproducible Python ingestion, source manifest, quality report, tests, CI configuration, and static deployment preparation. No deployed site, housing-cost integration, trained model, occupancy estimate, or investment ranking.
+Initial descriptive milestone implemented and publicly served: SvelteKit/TypeScript/MapLibre explorer, reproducible Python ingestion, source manifest, quality report, tests, CI configuration, and static deployment preparation. No housing-cost integration, trained model, occupancy estimate, or investment ranking. Main-to-Pages automation is configured in GitHub Actions; the Git-connected Worker is a separate legacy deployment. See [deployment ownership and activation](docs/deployment.md).
 
 ## Quickstart
 

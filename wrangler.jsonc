@@ -1,3 +1,5 @@
+// Legacy Git-connected Worker only; production uses Pages via .github/workflows/ci.yml.
+// Keep this config until Worker build settings can be updated; Pages CLI ignores it.
 {
   "$schema": "https://unpkg.com/wrangler@4.148.0/config-schema.json",
   "name": "vegas-str-ml",
