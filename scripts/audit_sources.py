@@ -9,6 +9,15 @@ from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+EXPECTED_FILES = {
+    "listings.csv.gz",
+    "calendar.csv.gz",
+    "reviews.csv.gz",
+    "listings-summary.csv",
+    "reviews-summary.csv",
+    "neighbourhoods.csv",
+    "neighbourhoods.geojson",
+}
 FEATURES = (
     "id",
     "latitude",
@@ -49,6 +58,12 @@ def build_research(raw, output):
     """Keep source values as strings; missing stays empty. Normalize only in training later."""
     report = {}
     manifest = json.loads((raw / "manifest.json").read_text())
+    missing = EXPECTED_FILES - set(manifest["files"])
+    if missing:
+        raise ValueError(
+            "Incomplete source manifest; run ingestion with --all. Missing: "
+            + ", ".join(sorted(missing))
+        )
     for name, entry in manifest["files"].items():
         path = raw / name
         with path.open("rb") as handle:

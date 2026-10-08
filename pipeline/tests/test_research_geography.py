@@ -4,8 +4,26 @@ import hashlib
 import json
 
 import pytest
-from audit_sources import FEATURES, audit_file, build_research
+from audit_sources import EXPECTED_FILES, FEATURES, audit_file, build_research
 from build_geography import assign
+
+
+def source_manifest(raw):
+    for name in EXPECTED_FILES - {"listings.csv.gz"}:
+        path = raw / name
+        if name.endswith(".gz"):
+            with gzip.open(path, "wt") as handle:
+                handle.write("listing_id,date\n")
+        else:
+            path.write_text("neighbourhood\n" if name.endswith(".csv") else "{}")
+    manifest = {
+        "files": {
+            name: {"sha256": hashlib.sha256((raw / name).read_bytes()).hexdigest()}
+            for name in EXPECTED_FILES
+        }
+    }
+    (raw / "manifest.json").write_text(json.dumps(manifest))
+    return manifest
 
 
 def polygon(code="89146", left=-115.3, right=-115.2):
@@ -93,15 +111,7 @@ def test_private_research_excludes_personal_fields_and_preserves_missing(tmp_pat
         writer = csv.DictWriter(handle, fieldnames=list(row))
         writer.writeheader()
         writer.writerow(row)
-    (raw / "manifest.json").write_text(
-        json.dumps(
-            {
-                "files": {
-                    "listings.csv.gz": {"sha256": hashlib.sha256(source.read_bytes()).hexdigest()},
-                }
-            }
-        )
-    )
+    source_manifest(raw)
     output = tmp_path / "research"
     report = build_research(raw, output)
     with (output / "listing-features.csv").open(newline="") as handle:
@@ -128,12 +138,24 @@ def test_bad_research_checksum_preserves_previous_table(tmp_path):
     raw = tmp_path / "raw"
     raw.mkdir()
     (raw / "listings.csv.gz").write_bytes(b"tampered")
-    (raw / "manifest.json").write_text(
-        json.dumps({"files": {"listings.csv.gz": {"sha256": "wrong"}}})
-    )
+    manifest = source_manifest(raw)
+    manifest["files"]["listings.csv.gz"]["sha256"] = "wrong"
+    (raw / "manifest.json").write_text(json.dumps(manifest))
     output = tmp_path / "research"
     output.mkdir()
     (output / "listing-features.csv").write_text("previous validated research")
     with pytest.raises(ValueError, match="Checksum mismatch"):
         build_research(raw, output)
     assert (output / "listing-features.csv").read_text() == "previous validated research"
+
+
+def test_incomplete_manifest_fails_before_replacing_research(tmp_path):
+    raw = tmp_path / "raw"
+    raw.mkdir()
+    (raw / "manifest.json").write_text(json.dumps({"files": {"listings.csv.gz": {}}}))
+    output = tmp_path / "research"
+    output.mkdir()
+    (output / "listing-features.csv").write_text("previous")
+    with pytest.raises(ValueError, match="Incomplete source manifest; run ingestion with --all"):
+        build_research(raw, output)
+    assert (output / "listing-features.csv").read_text() == "previous"

@@ -57,7 +57,7 @@ uv run --project pipeline python pipeline/ingest.py --snapshot 2026-09-20 --offl
 uv run --project pipeline python scripts/audit_sources.py --snapshot 2026-09-20
 ~~~
 
-Default ingestion downloads only detailed listings and source polygons. --calendar / --reviews remain optional; --all adds the supporting tables too. Raw and research directories are ignored. The audit deliberately streams full CSVs locally; CI never downloads them. Reprocessing resets the index to the base release: rebuild ZCTA enrichment below before building/deploying an enriched release. Do not run processing inside a live serving directory.
+Default ingestion downloads only detailed listings and source polygons. --calendar / --reviews remain optional; --all adds the supporting tables too. Raw and research directories are ignored. The audit requires all seven filenames in the manifest before writing anything; incomplete default/optional downloads fail with an instruction to rerun --all. It then verifies every checksum. The audit deliberately streams full CSVs locally; CI never downloads them. Reprocessing resets the index to the base release: rebuild ZCTA enrichment below before building/deploying an enriched release. Do not run processing inside a live serving directory.
 
 ## Census ZIP-area research layer
 
