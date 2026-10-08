@@ -36,7 +36,7 @@ Desktop/mobile screenshots in evidence/ are actual local browser output. The mob
 
 ## Warnings and unverified work
 
-Vite warns about the dynamically imported MapLibre chunk (~1.04 MB / ~280 KB gzip); its worker is ~508 KB. OpenFreeMap Liberty emits nonfatal null road-shield filter warnings. Tile service offers no SLA. Automated refresh, optional large downloads and ML/housing integration remain unimplemented. Historical local browser checks do not prove current hosted cluster/marker behavior; fresh hosted checks follow.
+Vite warns about the dynamically imported MapLibre chunk (~1.04 MB / ~280 KB gzip); its worker is ~508 KB. OpenFreeMap Liberty emits nonfatal null road-shield filter warnings. Tile service offers no SLA. Automated refresh and ML/housing integration remain unimplemented. The optional source-file archive/audit was added on October 8; see the separate record below. Historical local browser checks do not prove current hosted cluster/marker behavior; fresh hosted checks follow.
 
 ## Fresh production checks — October 7, 2026 Pacific
 
@@ -76,4 +76,20 @@ Retrospective issues #1 and #2 record shipped work; they are not evidence of pri
 
 ## Portfolio follow-up — October 7, 2026 Pacific
 
-README/demo navigation and contributor templates address issue #3. Local Markdown link checks resolved 18 relative file targets with zero missing files. Frontend ESLint, svelte-check (zero diagnostics) and static build passed after adding the repository footer link; the existing MapLibre bundle warning remains. The generated HTML includes the repository link. Hosted PR checks are separate and must pass before merge; production still serves the prior release until the PR is merged.
+README/demo navigation and contributor templates address issue #3. Local Markdown link checks resolved 18 relative file targets with zero missing files. Frontend ESLint, svelte-check (zero diagnostics) and static build passed after adding the repository footer link; the existing MapLibre bundle warning remains. The generated HTML includes the repository link. [PR #7](https://github.com/kenner1-unlv/vegas-str-ml/pull/7) subsequently merged after hosted validation. [Main run 37739667370](https://github.com/kenner1-unlv/vegas-str-ml/actions/runs/37739667370) passed and deployed; the production repository footer link was freshly checked.
+
+## ZCTA research layer and complete source audit — October 8, 2026
+
+Fresh local evidence for issues [#8](https://github.com/kenner1-unlv/vegas-str-ml/issues/8) and [#9](https://github.com/kenner1-unlv/vegas-str-ml/issues/9), separate from earlier deployed checks:
+
+- All seven source files downloaded privately; byte sizes, source URLs and SHA-256 recorded. Streaming CSV audits counted 20,651 detailed/summary listings, 7,537,733 calendar rows and 744,753 detailed/summary reviews. Actual calendar header has no price column; numeric bathroom fields are empty throughout.
+- Census 2020 query returned 66 valid polygons, matching independent count-only query. Assignment used the unchanged 17,212-listing release: 17,211 assigned, one unmatched, zero ambiguous, 61 represented codes and 3,614 near-edge flags. Full geometry assigns points; simplified geometry is display-only.
+- Locked Python environment synchronization passed offline with uv's cache redirected to ignored data/raw/.uv-cache because the default local cache path could not initialize. Fixture suite: **25 passed**, including rejection of incomplete seven-file manifests before replacing private research output. Ruff check/format, frontend Prettier, ESLint, Svelte diagnostics and production build passed. Geographic client contract check verifies IDs, exact listing hash, codes/counts and rejection cases; CI runs it without downloading datasets.
+- Local production preview browser: combined ZCTA 89146 / Entire home/apt / four-bedroom filter yielded **58** records and **$350** median asking price; edge exclusion yielded **46**, still $350. A selected listing exposed approximate ZIP membership and sensitivity wording. Filtering to unmatched records retained one listing and withheld its ZIP-table median; out-of-filter selection cleared. Fresh rebuilt-preview summary showed 61 ZIP areas, retaining the unmatched listing separately. ID 497110058117895483 remained exact in selection and the outbound source URL; Census outlines and selected-area highlighting were visually inspected.
+- Existing large MapLibre bundle warning remains. Local favicon returned 404; road-shield basemap warnings were nonfatal. Do not interpret them as failed listing/geography data requests.
+
+The local shell helper is unavailable and local CLI internet sockets are restricted. Downloads used the browser's public download capability, then checksums and audits ran locally. Commands for ordinary network-enabled environments are in data-sources.md. Fresh hosted CI, merge and production evidence belongs in [PR #10](https://github.com/kenner1-unlv/vegas-str-ml/pull/10); local browser checks alone do not establish deployment.
+
+Hosted feature verification: [PR run 37831787070](https://github.com/kenner1-unlv/vegas-str-ml/actions/runs/37831787070) and [branch run 37831775980](https://github.com/kenner1-unlv/vegas-str-ml/actions/runs/37831775980) passed for feature commit 976c79a. Main/production promotion is recorded in PR #10 independently of these branch checks.
+
+PR #10 automated review identified a partial-manifest success path in the complete-source audit. The follow-up requires all seven expected files before output/checksumming, tests preservation of previous output and documents the --all prerequisite. Authenticated Wrangler whoami and Pages project list subsequently succeeded through the authorized shell: existing vegas-str-ml Pages project includes str.housev.dev and reports Git Provider No. Credential files were not read or printed. Local Git fetch also succeeded; earlier environment restrictions above describe the original attempts, not an ongoing account failure.

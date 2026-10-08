@@ -19,6 +19,7 @@ npx.cmd --yes pnpm@12.10.1 --dir web lint
 npx.cmd --yes pnpm@12.10.1 --dir web check
 npx.cmd --yes pnpm@12.10.1 --dir web build
 python scripts/check_assets.py
+node scripts/check_geography.mjs
 uv sync --project pipeline --locked
 uv run --project pipeline ruff check pipeline scripts
 uv run --project pipeline ruff format --check pipeline scripts

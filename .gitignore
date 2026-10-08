@@ -12,3 +12,6 @@ data/raw/
 .env.*
 !.env.example
 .wrangler/
+data/research/
+.playwright-mcp/
+/%SystemDrive%/

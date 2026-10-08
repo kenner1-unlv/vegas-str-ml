@@ -19,6 +19,7 @@ jobs:
       - run: pnpm --dir web format:check
       - run: pnpm --dir web lint
       - run: pnpm --dir web check
+      - run: node scripts/check_geography.mjs
       - run: pnpm --dir web build
       - run: python scripts/check_assets.py
       - uses: actions/upload-artifact@v4
