@@ -74,3 +74,5 @@ git push -u origin main
 ```
 
 These publication commands are instructions and were not executed. If Git requests authentication, use your normal GitHub sign-in or Git Bash `gh auth login` followed by `gh auth setup-git`; do not paste credentials into project files.
+
+Preview configuration includes the required empty previews block. The deploy/preview commands above are Cloudflare dashboard build settings; running wrangler preview in a terminal creates a hosted preview and requires Cloudflare authentication. For a local production preview, use pnpm --dir web build followed by pnpm --dir web preview. A Wrangler deploy dry-run validates packaging but does not verify authenticated preview creation.
