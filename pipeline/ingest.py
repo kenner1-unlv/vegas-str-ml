@@ -156,9 +156,14 @@ def discover(snapshot=None):
         raise ValueError("Requested Clark County snapshot is not listed on the source page")
     chosen = snapshot or dates[0]
     return chosen, {
-        url.rsplit("/", 1)[1]: url
+        (
+            url.rsplit("/", 1)[1].replace(".csv", "-summary.csv")
+            if "/visualisations/" in url
+            and url.rsplit("/", 1)[1] in ("listings.csv", "reviews.csv")
+            else url.rsplit("/", 1)[1]
+        ): url
         for url in urls
-        if f"/{chosen}/" in url and ("/data/" in url or url.endswith("neighbourhoods.geojson"))
+        if f"/{chosen}/" in url
     }
 
 
@@ -234,6 +239,11 @@ def process(raw, output, snapshot, manifest):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--snapshot")
+    parser.add_argument(
+        "--all",
+        action="store_true",
+        help="Download all seven supplied source files for private research",
+    )
     parser.add_argument("--calendar", action="store_true")
     parser.add_argument("--reviews", action="store_true")
     parser.add_argument(
@@ -266,6 +276,16 @@ def main():
             for flag, name in [(args.calendar, "calendar.csv.gz"), (args.reviews, "reviews.csv.gz")]
             if flag
         ]
+        if args.all:
+            names = [
+                "listings.csv.gz",
+                "calendar.csv.gz",
+                "reviews.csv.gz",
+                "listings-summary.csv",
+                "reviews-summary.csv",
+                "neighbourhoods.csv",
+                "neighbourhoods.geojson",
+            ]
         for name in names:
             manifest["files"][name] = download(urls[name], raw / name)
             write_json(manifest_path, manifest)

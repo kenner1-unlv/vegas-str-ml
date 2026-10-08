@@ -8,10 +8,14 @@
   let {
     listings,
     boundaryUrl,
+    zctaUrl,
+    selectedZcta,
     onselect,
   }: {
     listings: Listing[];
     boundaryUrl: string;
+    zctaUrl?: string;
+    selectedZcta: string;
     onselect: (row: Listing) => void;
   } = $props();
   let container: HTMLDivElement;
@@ -32,6 +36,10 @@
     const data = points();
     if (ready && map)
       (map.getSource("listings") as GeoJSONSource).setData(data);
+  });
+  $effect(() => {
+    if (ready && map && map.getLayer("zcta-selected"))
+      map.setFilter("zcta-selected", ["==", ["get", "zcta"], selectedZcta]);
   });
   onMount(() => {
     let disposed = false;
@@ -55,7 +63,8 @@
             new ml.AttributionControl({
               compact: false,
               customAttribution:
-                'Listings & boundaries: <a href="https://insideairbnb.com/get-the-data/">Inside Airbnb</a> · CC BY 4.0',
+                'Listings & source areas: <a href="https://insideairbnb.com/get-the-data/">Inside Airbnb</a> · CC BY 4.0' +
+                (zctaUrl ? " · ZCTAs: U.S. Census Bureau (2020)" : ""),
             }),
           );
           instance.on("error", () => {
@@ -77,6 +86,26 @@
                 "line-opacity": 0.5,
               },
             });
+            if (zctaUrl) {
+              instance.addSource("zctas", { type: "geojson", data: zctaUrl });
+              instance.addLayer({
+                id: "zctas",
+                source: "zctas",
+                type: "line",
+                paint: {
+                  "line-color": "#9a651d",
+                  "line-width": 1.5,
+                  "line-opacity": 0.65,
+                },
+              });
+              instance.addLayer({
+                id: "zcta-selected",
+                source: "zctas",
+                type: "line",
+                filter: ["==", ["get", "zcta"], selectedZcta],
+                paint: { "line-color": "#9a651d", "line-width": 4 },
+              });
+            }
             instance.addSource("listings", {
               type: "geojson",
               data: points(),
@@ -179,7 +208,10 @@
       Loading map…
     </div>{/if}
   {#if error}<div class="notice" role="status">{error}</div>{/if}
-  <div class="legend">● Clusters / listings · Lines: source neighborhoods</div>
+  <div class="legend">
+    ● Clusters / listings · Grey: source areas{#if zctaUrl}
+      · Gold: Census ZCTAs{/if}
+  </div>
 </div>
 
 <style>

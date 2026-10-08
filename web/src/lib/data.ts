@@ -54,3 +54,45 @@ export function median(rows: Listing[]): number | null {
       : (prices[mid - 1] + prices[mid]) / 2
     : null;
 }
+
+export type Geography = {
+  listing_sha256: string;
+  schema_version: number;
+  snapshot_date: string;
+  assignments: {
+    id: string;
+    zcta: string | null;
+    status: "assigned" | "ambiguous" | "unassigned";
+    near_boundary: boolean;
+  }[];
+};
+export function parseGeography(
+  value: unknown,
+  dataset: Dataset,
+  listingSha: string,
+): Geography {
+  if (!value || typeof value !== "object") throw new Error("Invalid geography");
+  const data = value as Geography;
+  if (
+    data.schema_version !== 1 ||
+    data.listing_sha256 !== listingSha ||
+    data.snapshot_date !== dataset.snapshot_date ||
+    !Array.isArray(data.assignments) ||
+    data.assignments.length !== dataset.listings.length
+  )
+    throw new Error("Geography snapshot mismatch");
+  const ids = new Set(dataset.listings.map((row) => row.id));
+  for (const row of data.assignments) {
+    if (
+      typeof row.id !== "string" ||
+      typeof row.near_boundary !== "boolean" ||
+      !ids.delete(row.id) ||
+      !["assigned", "ambiguous", "unassigned"].includes(row.status) ||
+      (row.status === "assigned"
+        ? typeof row.zcta !== "string" || !/^[0-9]{5}$/.test(row.zcta)
+        : row.zcta !== null)
+    )
+      throw new Error("Invalid geography assignment");
+  }
+  return data;
+}

@@ -4,6 +4,8 @@
   import {
     median,
     parseDataset,
+    parseGeography,
+    type Geography,
     type Dataset,
     type Listing,
   } from "#lib/data.ts";
@@ -14,10 +16,36 @@
   let room = $state("");
   let bedrooms = $state("");
   let neighborhood = $state("");
+  let zcta = $state("");
+  let geography = $state<Geography>();
+  let excludeBoundary = $state("");
+  const boundaryIds = $derived(
+    new Set(
+      geography?.assignments
+        .filter((row) => row.near_boundary)
+        .map((row) => row.id),
+    ),
+  );
+  const zctaById = $derived(
+    new globalThis.Map(
+      geography?.assignments.map((row) => [row.id, row.zcta ?? row.status]),
+    ),
+  );
+  const zctas = $derived(
+    [
+      ...new Set(geography?.assignments.map((row) => row.zcta ?? row.status)),
+    ].sort(),
+  );
   let minPrice = $state<number | undefined>();
   let maxPrice = $state<number | undefined>();
   let selected = $state<Listing>();
   let limit = $state(30);
+  const areaLabel = (value: string) =>
+    value === "unassigned"
+      ? "Unassigned"
+      : value === "ambiguous"
+        ? "Ambiguous"
+        : value;
   const money = (n: number | null) =>
     n === null
       ? "—"
@@ -31,6 +59,8 @@
       (r) =>
         (!room || r.room_type === room) &&
         (!neighborhood || r.neighborhood === neighborhood) &&
+        (!zcta || zctaById.get(r.id) === zcta) &&
+        (!excludeBoundary || !boundaryIds.has(r.id)) &&
         (!bedrooms ||
           (bedrooms === "unknown"
             ? r.bedrooms === null
@@ -55,10 +85,12 @@
     ].sort((a, b) => a - b),
   );
   const summaries = $derived(
-    areas
+    (geography ? zctas : areas)
       .map((name) => ({
         name,
-        rows: filtered.filter((r) => r.neighborhood === name),
+        rows: filtered.filter((r) =>
+          geography ? zctaById.get(r.id) === name : r.neighborhood === name,
+        ),
       }))
       .filter((g) => g.rows.length),
   );
@@ -77,7 +109,27 @@
         throw new Error("Invalid data index");
       const response = await fetch("/data/" + index.path + "/listings.json");
       if (!response.ok) throw new Error("Listing data unavailable");
-      dataset = parseDataset(await response.json());
+      const listingText = await response.text();
+      dataset = parseDataset(JSON.parse(listingText));
+      geography = undefined;
+      if (index.geography === true) {
+        const geoResponse = await fetch(
+          "/data/" + index.path + "/geography.json",
+        );
+        if (!geoResponse.ok) throw new Error("Geography unavailable");
+        const digest = await crypto.subtle.digest(
+          "SHA-256",
+          new TextEncoder().encode(listingText),
+        );
+        const listingSha = [...new Uint8Array(digest)]
+          .map((byte) => byte.toString(16).padStart(2, "0"))
+          .join("");
+        geography = parseGeography(
+          await geoResponse.json(),
+          dataset,
+          listingSha,
+        );
+      }
       path = index.path;
     } catch {
       error =
@@ -93,6 +145,8 @@
     room = "";
     bedrooms = "";
     neighborhood = "";
+    zcta = "";
+    excludeBoundary = "";
     minPrice = undefined;
     maxPrice = undefined;
     limit = 30;
@@ -135,8 +189,9 @@
   </div>
   <p class="caution">
     Asking prices are not realized income or investment value. Coordinates are
-    approximate; listings do not establish legal eligibility. Source
-    neighborhoods are not verified legal jurisdictions.
+    anonymized and approximate (reported displacement up to about 150 m); dots
+    do not identify a particular house. Listings do not establish legal
+    eligibility. Source neighborhoods are not verified legal jurisdictions.
   </p>
   {#if loading}<section class="state" role="status">
       Loading listing data…
@@ -167,6 +222,22 @@
           >{#each areas as value (value)}<option>{value}</option>{/each}</select
         ></label
       >
+      {#if geography}<label
+          >ZIP area (Census ZCTA)<select bind:value={zcta}
+            ><option value="">All ZIP areas</option
+            >{#each zctas as value (value)}<option {value}
+                >{areaLabel(value)}</option
+              >{/each}</select
+          ></label
+        >{/if}
+      {#if geography}<label
+          >Boundary sensitivity<select bind:value={excludeBoundary}
+            ><option value="">Include all locations</option><option
+              value="exclude"
+              >Exclude locations within ~150 m of ZCTA edge</option
+            ></select
+          ></label
+        >{/if}
       <label
         >Minimum asking $ / night<input
           type="number"
@@ -203,7 +274,13 @@
         ><small>USD · before any unobserved fees</small>
       </div>
       <div>
-        <span>Source neighborhoods</span><strong>{summaries.length}</strong
+        <span>{geography ? "ZIP areas (ZCTA)" : "Source neighborhoods"}</span
+        ><strong
+          >{geography
+            ? summaries.filter(
+                (g) => g.name !== "unassigned" && g.name !== "ambiguous",
+              ).length
+            : summaries.length}</strong
         ><small>in the current filtered sample</small>
       </div>
     </section>
@@ -215,6 +292,10 @@
       <Map
         listings={filtered}
         boundaryUrl={"/data/" + path + "/boundaries.geojson"}
+        zctaUrl={geography
+          ? "/data/" + path + "/zcta-boundaries.geojson"
+          : undefined}
+        selectedZcta={zcta}
         onselect={select}
       />
       <aside aria-label="Listing detail">
@@ -230,6 +311,18 @@
             <dd>{selected.bedrooms ?? "Unknown"}</dd>
             <dt>Source neighborhood</dt>
             <dd>{selected.neighborhood}</dd>
+            {#if geography}<dt>ZIP area (Census ZCTA)</dt>
+              <dd>
+                {areaLabel(zctaById.get(selected.id) ?? "unassigned")} · approximate
+                assignment
+              </dd>{/if}
+            {#if geography && boundaryIds.has(selected.id)}<dt>
+                Boundary sensitivity
+              </dt>
+              <dd>
+                Within approximately 150 m of a ZCTA edge; area assignment may
+                change with location anonymization.
+              </dd>{/if}
             <dt>Jurisdiction / eligibility</dt>
             <dd>Not verified</dd>
           </dl>
@@ -255,23 +348,36 @@
     </div>
     <div class="tables">
       <section>
-        <h2>Compare source neighborhoods</h2>
+        <h2>
+          {geography
+            ? "Compare ZIP areas (ZCTA)"
+            : "Compare source neighborhoods"}
+        </h2>
         <p class="muted">
           Filtered sample medians describe listings, not all homes in an area.
+          {#if geography}ZCTAs approximate ZIP areas, not named neighborhoods.
+            Coordinates are anonymized; assignments near boundaries may be
+            wrong. Filter room type and bedrooms for closer comparisons. Medians
+            are withheld below 20 listings; this is a display threshold, not
+            statistical confidence.{/if}
         </p>
         <div class="table-wrap">
           <table>
             <thead
               ><tr
-                ><th>Neighborhood</th><th>Sample n</th><th
-                  >Median asking / night</th
-                ></tr
+                ><th>{geography ? "ZIP area (ZCTA)" : "Neighborhood"}</th><th
+                  >Sample n</th
+                ><th>Median asking / night</th></tr
               ></thead
             ><tbody
               >{#each summaries as group (group.name)}<tr
-                  ><td>{group.name}</td><td
+                  ><td>{areaLabel(group.name)}</td><td
                     >{group.rows.length.toLocaleString()}</td
-                  ><td>{money(median(group.rows))}</td></tr
+                  ><td
+                    >{geography && group.rows.length < 20
+                      ? "Insufficient sample (<20)"
+                      : money(median(group.rows))}</td
+                  ></tr
                 >{/each}</tbody
             >
           </table>
@@ -306,6 +412,10 @@
       href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a
     >. Basemap © OpenStreetMap contributors / OpenFreeMap.
     {#if path}<a href="/data/{path}/quality.json">Data quality report</a>{/if}.
+    {#if geography}ZIP area boundaries: <a
+        href="https://www.census.gov/programs-surveys/geography/guidance/geo-areas/zctas.html"
+        >U.S. Census Bureau, 2020 ZCTAs</a
+      >. <a href="/data/{path}/geography.json">Assignment provenance</a>.{/if}
     Housing costs and ML evaluation are future milestones.
     <a href="https://github.com/kenner1-unlv/vegas-str-ml"
       >Source code &amp; development history</a
@@ -418,7 +528,7 @@
   }
   .filters {
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr 1.2fr 1fr 1fr auto;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 14px;
     align-items: end;
   }

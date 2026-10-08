@@ -12,10 +12,11 @@ A public map for exploring advertised Airbnb nightly prices across the Las Vegas
 
 1. Open the [demo](https://str.housev.dev). The September 20, 2026 snapshot contains 17,212 usable listings from 20,651 source rows.
 2. Choose **City of Henderson** to inspect its 784-listing sample. Reset, then set the maximum asking price to **100** to see 2,853 matching listings.
-3. Zoom into a map cluster or choose a listing from the keyboard-accessible listing browser. Compare its asking price, room type, bedrooms and source neighborhood.
-4. Return through the demo's **Source code & development history** footer link to inspect the implementation and evidence below.
+3. Try **ZIP area (Census ZCTA) 89146**, **Entire home/apt**, **4 bedrooms**: 58 listings; excluding locations near ZCTA edges leaves 46. These are approximate area comps, not verified property locations.
+4. Zoom into a map cluster or choose a listing from the keyboard-accessible listing browser. Compare its asking price, room type, bedrooms and source neighborhood.
+5. Return through the demo's **Source code & development history** footer link to inspect the implementation and evidence below.
 
-Asking prices are not realized revenue. Unavailable calendar nights are not confirmed bookings. Approximate points and source neighborhood labels do not establish parcel matches or legal eligibility. No housing-cost integration, occupancy estimate, trained model or investment ranking is shipped.
+Asking prices are not realized revenue. Unavailable calendar nights are not confirmed bookings. Anonymized points can be displaced by approximately a block; they do not identify a particular house. Approximate points, Census ZIP areas and source neighborhood labels do not establish parcel matches or legal eligibility. No housing-cost integration, occupancy estimate, trained model or investment ranking is shipped.
 
 ## Follow the development trail
 
@@ -24,6 +25,7 @@ Asking prices are not realized revenue. Unavailable calendar nights are not conf
 | Explorer and ingestion | [Foundation record #1](https://github.com/kenner1-unlv/vegas-str-ml/issues/1), [initial implementation](https://github.com/kenner1-unlv/vegas-str-ml/commit/b5e8b80) | Implemented; retrospective issue recorded after delivery |
 | Production delivery | [Deployment record #2](https://github.com/kenner1-unlv/vegas-str-ml/issues/2), [delivery commit](https://github.com/kenner1-unlv/vegas-str-ml/commit/739a55a) | [Successful CI + Pages deployment](https://github.com/kenner1-unlv/vegas-str-ml/actions/runs/37738181925), attempt 2 |
 | Portfolio documentation | [Issue #3](https://github.com/kenner1-unlv/vegas-str-ml/issues/3), [PR #7](https://github.com/kenner1-unlv/vegas-str-ml/pull/7) | Implementation, validation and merge history in PR #7 |
+| Geographic research and source audit | [Issue #8](https://github.com/kenner1-unlv/vegas-str-ml/issues/8), [#9](https://github.com/kenner1-unlv/vegas-str-ml/issues/9) | Implementation and evidence linked from the issues |
 | Hosting follow-up | [Issue #4](https://github.com/kenner1-unlv/vegas-str-ml/issues/4) | Pages dashboard verification and duplicate Worker build-trigger cleanup remain |
 | Housing costs | [Issue #5](https://github.com/kenner1-unlv/vegas-str-ml/issues/5) | Future: licensing, geographic coverage and benchmark validation |
 | Advertised-price ML | [Issue #6](https://github.com/kenner1-unlv/vegas-str-ml/issues/6) | Future: baseline-first, grouped geographic evaluation |
@@ -69,7 +71,7 @@ uv run --project pipeline python pipeline/ingest.py --snapshot 2026-09-20
 uv run --project pipeline python pipeline/ingest.py --snapshot 2026-09-20 --offline
 ```
 
-Review provenance and quality before publishing. Raw files stay ignored. CI never downloads full datasets; calendar/review research downloads are optional and do not feed booking estimates.
+Review provenance and quality before publishing. Raw files stay ignored. CI never downloads full datasets; use --all for the seven supplied files. Private research features and Census enrichment commands are documented in [data sources](docs/data-sources.md). After base reprocessing, rebuild geography before deployment. Calendar/review data do not establish bookings or earnings.
 
 ## Data, license and roadmap
 

@@ -77,3 +77,15 @@ Retrospective issues #1 and #2 record shipped work; they are not evidence of pri
 ## Portfolio follow-up — October 7, 2026 Pacific
 
 README/demo navigation and contributor templates address issue #3. Local Markdown link checks resolved 18 relative file targets with zero missing files. Frontend ESLint, svelte-check (zero diagnostics) and static build passed after adding the repository footer link; the existing MapLibre bundle warning remains. The generated HTML includes the repository link. Hosted PR checks are separate and must pass before merge; production still serves the prior release until the PR is merged.
+
+## ZCTA research layer and complete source audit — October 8, 2026
+
+Fresh local evidence for issues [#8](https://github.com/kenner1-unlv/vegas-str-ml/issues/8) and [#9](https://github.com/kenner1-unlv/vegas-str-ml/issues/9), separate from earlier deployed checks:
+
+- All seven source files downloaded privately; byte sizes, source URLs and SHA-256 recorded. Streaming CSV audits counted 20,651 detailed/summary listings, 7,537,733 calendar rows and 744,753 detailed/summary reviews. Actual calendar header has no price column; numeric bathroom fields are empty throughout.
+- Census 2020 query returned 66 valid polygons, matching independent count-only query. Assignment used the unchanged 17,212-listing release: 17,211 assigned, one unmatched, zero ambiguous, 61 represented codes and 3,614 near-edge flags. Full geometry assigns points; simplified geometry is display-only.
+- Locked Python environment synchronization passed offline with uv's cache redirected to ignored data/raw/.uv-cache because the default local cache path could not initialize. Fixture suite: **24 passed**. Ruff check/format, frontend Prettier, ESLint, Svelte diagnostics and production build passed. Geographic client contract check verifies IDs, exact listing hash, codes/counts and rejection cases; CI runs it without downloading datasets.
+- Local production preview browser: combined ZCTA 89146 / Entire home/apt / four-bedroom filter yielded **58** records and **$350** median asking price; edge exclusion yielded **46**, still $350. A selected listing exposed approximate ZIP membership and sensitivity wording. Filtering to unmatched records retained one listing and withheld its ZIP-table median; out-of-filter selection cleared.
+- Existing large MapLibre bundle warning remains. Local favicon returned 404; road-shield basemap warnings were nonfatal. Do not interpret them as failed listing/geography data requests.
+
+The local shell helper is unavailable and local CLI internet sockets are restricted. Downloads used the browser's public download capability, then checksums and audits ran locally. Commands for ordinary network-enabled environments are in data-sources.md. Fresh hosted CI, merge and production evidence belongs in the linked PR; local browser checks alone do not establish deployment.

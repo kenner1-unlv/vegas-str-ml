@@ -25,3 +25,9 @@ Operational follow-up: [issue #4](https://github.com/kenner1-unlv/vegas-str-ml/i
 - [#3 portfolio navigation](https://github.com/kenner1-unlv/vegas-str-ml/issues/3) links [PR #7](https://github.com/kenner1-unlv/vegas-str-ml/pull/7) and its implementation, validation and merge history.
 - Open: [#4 hosting follow-up](https://github.com/kenner1-unlv/vegas-str-ml/issues/4), [#5 housing-cost evidence](https://github.com/kenner1-unlv/vegas-str-ml/issues/5), [#6 advertised-price baselines](https://github.com/kenner1-unlv/vegas-str-ml/issues/6).
 - Later milestones 4–6 remain roadmap proposals rather than scheduled or completed implementations.
+
+## Research layers before ML
+
+[#8 Census ZCTA comparisons](https://github.com/kenner1-unlv/vegas-str-ml/issues/8) and [#9 complete source audit](https://github.com/kenner1-unlv/vegas-str-ml/issues/9) link implementation and evidence. The geographic layer uses approximate ZIP areas, preserved source neighborhoods, room/bedroom filters and explicit boundary/small-sample treatment. The source audit retains all seven supplied files privately and prepares a candidate feature table; it does not train a model.
+
+Remaining: reviewed hotel/resort/residential and minimum-stay cohort mappings, bathroom/amenity normalization, more granular street/named-area research if ZIP areas prove too broad, and baseline-first training-only categorical encoding with grouped geographic evaluation (#6). Exact lot size, renovation/horse-property characteristics, MLS alerts, user-saved scenario assumptions and property-management workflows are future product proposals without implemented data integrations. STR asking prices provide comps; occupancy/cost/profit scenarios require explicit user assumptions and separate evidence.

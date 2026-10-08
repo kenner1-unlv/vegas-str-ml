@@ -133,3 +133,28 @@ def test_bad_boundaries_preserve_previous_outputs(tmp_path):
     with pytest.raises(ValueError, match="nonempty"):
         process(raw, output, "2026-09-20", {})
     assert previous.read_text() == "previous validated release"
+
+
+def test_discovery_keeps_detailed_and_summary_urls_distinct(monkeypatch):
+    import io
+
+    import ingest
+
+    base = "https://data.insideairbnb.com/united-states/nv/clark-county-nv/2026-09-20/"
+    paths = [
+        "data/listings.csv.gz",
+        "data/calendar.csv.gz",
+        "data/reviews.csv.gz",
+        "visualisations/listings.csv",
+        "visualisations/reviews.csv",
+        "visualisations/neighbourhoods.csv",
+        "visualisations/neighbourhoods.geojson",
+    ]
+    page = " ".join(chr(34) + base + path + chr(34) for path in paths).encode()
+    monkeypatch.setattr(ingest.urllib.request, "urlopen", lambda *args, **kwargs: io.BytesIO(page))
+    snapshot, urls = ingest.discover("2026-09-20")
+    assert snapshot == "2026-09-20"
+    assert len(urls) == 7
+    assert urls["listings.csv.gz"] == base + "data/listings.csv.gz"
+    assert urls["listings-summary.csv"] == base + "visualisations/listings.csv"
+    assert urls["reviews-summary.csv"] == base + "visualisations/reviews.csv"

@@ -12,7 +12,7 @@ From repository root:
 - `uv run --project pipeline ruff format --check pipeline scripts`
 - `python scripts/check_assets.py`
 
-CI must not download full datasets. Public outputs allow only string listing IDs, approximate coordinates, asking price, room type, bedrooms, and source neighborhood. Never publish host/reviewer data, secrets, raw datasets, or model binaries.
+CI must not download full datasets. Public outputs allow only string listing IDs, approximate coordinates, asking price, room type, bedrooms, and source neighborhood. A separately versioned geography sidecar may publish string listing IDs, derived five-digit Census ZCTA codes or null, and assigned/ambiguous/unassigned status, and a boolean boundary-sensitivity flag, with boundary provenance and limitations. Private research features stay in ignored data/research/. Never publish host/reviewer data, secrets, raw datasets, or model binaries.
 
 Advertised price is not realized revenue. Unavailable calendar nights are not confirmed bookings. Acquisition costs are unresolved. No opportunity score or investment ranking without validated cost data and explicit scenario assumptions. No parcel matching or legal eligibility claims from approximate coordinates. Keep regulatory sources dated and distinct by jurisdiction.
 
