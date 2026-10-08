@@ -1,6 +1,6 @@
 # Verification record
 
-Evidence dated October 7, 2026 Pacific time. The original local checks below are historical; fresh production and local checks are recorded separately. No new GitHub-hosted workflow run or deployment is claimed.
+Evidence dated October 7, 2026 Pacific time. The original local checks below are historical; fresh production and local checks are recorded separately. The successful hosted workflow and deployment are recorded below.
 
 ## Data
 
@@ -66,4 +66,14 @@ The standard shell launcher failed during process setup. Checks used the install
 
 Wrangler 4.148.0 whoami and pages project list were attempted using the cached CLI. Both failed with restricted filesystem log writes and network fetch errors; current local OAuth/account capabilities were not verified. Credential files were not read or exported. Browser inventory had no linked account tabs; no Cloudflare connector or GitHub secret-management tool was exposed.
 
-CI now contains a main-only Pages upload job gated on web and pipeline success, using the checked build artifact, serialized uploads, superseded-commit skipping and HTTPS endpoint checks. YAML formatting/syntax and git diff whitespace checks are local validation only; Actions expressions, credentials and actual upload still require a hosted run. Activation dependencies are documented in deployment.md. No Worker build trigger, account token, GitHub secret, AWS resource or DNS record was changed.
+CI now contains a main-only Pages upload job gated on web and pipeline success, using the checked build artifact, serialized uploads, superseded-commit skipping and HTTPS endpoint checks. YAML formatting/syntax and git diff whitespace checks are local validation only; Hosted validation subsequently passed; see the delivery record below. Deployment ownership is documented in deployment.md. No Worker build trigger, account token, GitHub secret, AWS resource or DNS record was changed.
+
+## Hosted delivery — October 7, 2026 Pacific
+
+[Commit 739a55a](https://github.com/kenner1-unlv/vegas-str-ml/commit/739a55a) was published directly to main. [Verify run 37738181925](https://github.com/kenner1-unlv/vegas-str-ml/actions/runs/37738181925), attempt 2, passed web locked installation/format/lint/types/build/asset checks, pipeline locked sync/Ruff/tests, and Pages deployment. The initial attempt failed at the explicit missing-account-ID check; the API token was present. After user configuration, the rerun uploaded successfully to [88bf2920.vegas-str-ml.pages.dev](https://88bf2920.vegas-str-ml.pages.dev). str.housev.dev and data/index.json returned 200 after upload, with snapshot 2026-09-20. No fresh post-upload map-interaction run is implied by those HTTP checks.
+
+Retrospective issues #1 and #2 record shipped work; they are not evidence of prior PR review. New changes follow CONTRIBUTING.md. Local .git synchronization was denied, so local HEAD remains 088dfee despite remote main 739a55a; preserved tracked edits must not be blindly recommitted. Untracked .vscode/, .playwright-mcp/ and %SystemDrive%/ were not published or removed.
+
+## Portfolio follow-up — October 7, 2026 Pacific
+
+README/demo navigation and contributor templates address issue #3. Local Markdown link checks resolved 18 relative file targets with zero missing files. Frontend ESLint, svelte-check (zero diagnostics) and static build passed after adding the repository footer link; the existing MapLibre bundle warning remains. The generated HTML includes the repository link. Hosted PR checks are separate and must pass before merge; production still serves the prior release until the PR is merged.
