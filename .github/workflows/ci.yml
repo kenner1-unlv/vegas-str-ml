@@ -1,0 +1,32 @@
+name: Verify
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 12.10.1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: web/pnpm-lock.yaml
+      - run: pnpm --dir web install --frozen-lockfile
+      - run: pnpm --dir web format:check
+      - run: pnpm --dir web lint
+      - run: pnpm --dir web check
+      - run: pnpm --dir web build
+      - run: python scripts/check_assets.py
+  pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --project pipeline --locked --python 3.14
+      - run: uv run --project pipeline ruff check pipeline scripts
+      - run: uv run --project pipeline ruff format --check pipeline scripts
+      - run: uv run --project pipeline pytest pipeline/tests -q
