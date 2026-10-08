@@ -23,7 +23,7 @@ Asking prices are not realized revenue. Unavailable calendar nights are not conf
 | --- | --- | --- |
 | Explorer and ingestion | [Foundation record #1](https://github.com/kenner1-unlv/vegas-str-ml/issues/1), [initial implementation](https://github.com/kenner1-unlv/vegas-str-ml/commit/b5e8b80) | Implemented; retrospective issue recorded after delivery |
 | Production delivery | [Deployment record #2](https://github.com/kenner1-unlv/vegas-str-ml/issues/2), [delivery commit](https://github.com/kenner1-unlv/vegas-str-ml/commit/739a55a) | [Successful CI + Pages deployment](https://github.com/kenner1-unlv/vegas-str-ml/actions/runs/37738181925), attempt 2 |
-| Portfolio documentation | [Issue #3](https://github.com/kenner1-unlv/vegas-str-ml/issues/3), [PRs](https://github.com/kenner1-unlv/vegas-str-ml/pulls?q=is%3Apr+head%3Adocs%2Fportfolio-development-trail) | Proposed through a PR; review and merge are separate |
+| Portfolio documentation | [Issue #3](https://github.com/kenner1-unlv/vegas-str-ml/issues/3), [PR #7](https://github.com/kenner1-unlv/vegas-str-ml/pull/7) | Implementation, validation and merge history in PR #7 |
 | Hosting follow-up | [Issue #4](https://github.com/kenner1-unlv/vegas-str-ml/issues/4) | Pages dashboard verification and duplicate Worker build-trigger cleanup remain |
 | Housing costs | [Issue #5](https://github.com/kenner1-unlv/vegas-str-ml/issues/5) | Future: licensing, geographic coverage and benchmark validation |
 | Advertised-price ML | [Issue #6](https://github.com/kenner1-unlv/vegas-str-ml/issues/6) | Future: baseline-first, grouped geographic evaluation |

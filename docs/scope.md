@@ -22,6 +22,6 @@ Operational follow-up: [issue #4](https://github.com/kenner1-unlv/vegas-str-ml/i
 ## Issue roadmap
 
 - Completed retrospective records: [#1 explorer foundation](https://github.com/kenner1-unlv/vegas-str-ml/issues/1), [#2 Pages delivery](https://github.com/kenner1-unlv/vegas-str-ml/issues/2).
-- [#3 portfolio navigation](https://github.com/kenner1-unlv/vegas-str-ml/issues/3) is delivered through a PR and remains open until merge.
+- [#3 portfolio navigation](https://github.com/kenner1-unlv/vegas-str-ml/issues/3) links [PR #7](https://github.com/kenner1-unlv/vegas-str-ml/pull/7) and its implementation, validation and merge history.
 - Open: [#4 hosting follow-up](https://github.com/kenner1-unlv/vegas-str-ml/issues/4), [#5 housing-cost evidence](https://github.com/kenner1-unlv/vegas-str-ml/issues/5), [#6 advertised-price baselines](https://github.com/kenner1-unlv/vegas-str-ml/issues/6).
 - Later milestones 4–6 remain roadmap proposals rather than scheduled or completed implementations.
