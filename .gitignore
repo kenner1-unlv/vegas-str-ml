@@ -11,3 +11,4 @@ data/raw/
 .env
 .env.*
 !.env.example
+.wrangler/

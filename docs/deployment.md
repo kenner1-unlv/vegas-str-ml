@@ -1,5 +1,24 @@
 # Deployment preparation
 
+## Current Git-connected Worker setup
+
+The dashboard created a Git-connected Worker named vegas-str-ml. The repository now includes wrangler.jsonc to serve web/build as static assets without an application server. Wrangler 4.148.0 deploy --dry-run passed locally; an authenticated hosted deployment has not been verified.
+
+Open vegas-str-ml > Settings > Build and enter:
+- Root directory/path: / (repository root)
+- Build command: npx --yes pnpm@12.10.1 --dir web install --frozen-lockfile && npx --yes pnpm@12.10.1 --dir web build
+- Deploy command: npx --yes wrangler@4.148.0 deploy
+- Preview command: npx --yes wrangler@4.148.0 preview
+- Production branch: main
+- Build variable: NODE_VERSION=24
+
+Save these settings, then retry the build against the latest main commit. First verify the generated workers.dev URL. No API token belongs in repository files; use the existing dashboard-managed token.
+
+Custom-domain distinction: the Route 53 CNAME instructions below apply to Pages only. Workers Custom Domains require an active Cloudflare zone; a CNAME to workers.dev is not a supported replacement. Keep ops.housev.dev and existing nameservers unchanged. If housev.dev must remain on Route 53, use Pages for the final str.housev.dev address, or deliberately select another hosting/DNS architecture after review. Do not migrate the entire DNS zone merely to resolve this build.
+
+References: https://developers.cloudflare.com/workers/ci-cd/builds/configuration/ and https://developers.cloudflare.com/workers/configuration/routing/custom-domains/.
+
+
 Recommendation checked October 7, 2026: **Cloudflare Pages static hosting** with adapter-static. The actual app consists of a prerendered shell, JS/CSS/MapLibre worker and compact JSON; it needs no Python service, database, Pages Functions or Worker runtime. See [SvelteKit static adapter](https://svelte.dev/docs/kit/adapter-static).
 
 Cloudflare documents [25 MiB per asset and 20,000 files on Free Pages](https://developers.cloudflare.com/pages/platform/limits/). scripts/check_assets.py enforces these before upload. Real listings are 2,809,128 bytes; boundaries 677,108 bytes. Do not upload data/raw. Future oversized artifacts require deliberate partitioning or a separately authorized storage choice. MapLibre loads dynamically but still has a roughly 1.04 MB JS chunk (about 280 KB gzip) plus its roughly 508 KB worker; the build warning is documented rather than hidden.
@@ -38,7 +57,7 @@ Live public DNS inspection on October 7, 2026 found housev.dev uses AWS Route 53
 
 For Pages build variables set NODE_VERSION=24 and PNPM_VERSION=12.10.1; [build-image documentation](https://developers.cloudflare.com/pages/configuration/build-image/) supports both overrides. Choose framework preset None and enter the static build/output values above explicitly.
 
-After deploying and adding str.housev.dev under Pages Custom domains, sign into [AWS Route 53](https://console.aws.amazon.com/route53/) → Hosted zones → existing public housev.dev zone → Create record. Use record name str, type CNAME, alias Off, value the exact assigned Pages hostname without https://, TTL 300 and Simple routing. Verify no existing str record conflicts before creating; preserve all other records. Follow [AWS record instructions](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html). Cloudflare provisions HTTPS after domain verification; confirm the domain becomes Active and test the site.
+After deploying and adding str.housev.dev under Pages Custom domains, sign into [AWS Route 53](https://console.aws.amazon.com/route53/) â†’ Hosted zones â†’ existing public housev.dev zone â†’ Create record. Use record name str, type CNAME, alias Off, value the exact assigned Pages hostname without https://, TTL 300 and Simple routing. Verify no existing str record conflicts before creating; preserve all other records. Follow [AWS record instructions](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html). Cloudflare provisions HTTPS after domain verification; confirm the domain becomes Active and test the site.
 
 ## Existing GitHub repository
 
