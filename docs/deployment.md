@@ -8,12 +8,12 @@ The repository owner maintains GitHub Actions, the allowlisted public artifacts 
 
 .github/workflows/ci.yml verifies web formatting, lint, types, build and asset limits plus Python lint, formatting and tests. On a push to main, it retains the checked build as a seven-day Actions artifact and deploys that exact artifact only after both jobs pass. Pull requests never deploy. Production uploads are serialized; queued commits superseded on main are skipped. The deploy job uses the GitHub production environment (any configured approval rules still apply), pins Wrangler 4.148.0, and checks the HTTPS page and public index after upload. Endpoint checks do not replace a browser acceptance check or verify the deployed commit's contents.
 
-The user reported saving the required GitHub secrets on October 7, 2026. The first hosted run must verify access; values have not been inspected. Required repository or production-environment secrets by name only:
+Automatic delivery is active: [Verify run 37738181925](https://github.com/kenner1-unlv/vegas-str-ml/actions/runs/37738181925), attempt 2, passed web, pipeline and Pages upload on October 7, 2026 Pacific. The first attempt stopped safely for a missing account-ID secret; configuration fixed it. Secret values were not inspected. Required repository or production-environment secrets by name only:
 
 - CLOUDFLARE_API_TOKEN: an account-scoped token with Account / Cloudflare Pages / Edit for the existing account; do not grant unrelated DNS or AWS permissions.
 - CLOUDFLARE_ACCOUNT_ID: the account containing vegas-str-ml.
 
-Local Wrangler OAuth authentication is not a GitHub Actions secret and must not be copied or exported. Create/store credentials through the provider's secure account UI. Then publish the reviewed workflow to main and verify Verify → Deploy production Pages succeeds. No credentials belong in files, logs or browser transcripts.
+Local Wrangler OAuth authentication is not a GitHub Actions secret and must not be copied or exported. Create/store credentials through the provider's secure account UI. For a new setup, configure the secrets before merging deployment changes and verify Verify → Deploy production Pages succeeds. No credentials belong in files, logs or browser transcripts.
 
 Cloudflare documents that [Direct Upload projects cannot switch to native Git integration](https://developers.cloudflare.com/pages/get-started/direct-upload/). [CI-driven Direct Upload](https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/) preserves this existing project and its domain. Do not create a replacement project merely to obtain native Git integration.
 
@@ -21,9 +21,9 @@ Cloudflare documents that [Direct Upload projects cannot switch to native Git in
 
 https://vegas-str-ml.kenner1.workers.dev remains a separate legacy deployment. Its Cloudflare Git connection currently rebuilds the Worker on pushes; it does **not** update Pages. Root wrangler.jsonc is retained solely for that working Worker (assets at ./web/build, workers_dev enabled, previews enabled). Pages CLI ignores it because it has no pages_build_output_dir. That warning is expected; the Pages job supplies its output directory, project and branch explicitly.
 
-The new Actions job is the intended Pages production owner. No Worker deletion or build-setting change occurred in this session. After Pages automation succeeds, pause/disconnect only the legacy Worker's Git build trigger in that Worker's Settings → Build so pushes have one intended production path. Preserve its deployed assets and workers.dev endpoint. Until then, main may update both deployments independently once the Pages job is activated; the Worker is not the custom-domain production target. Do not run bare wrangler deploy to update production Pages.
+The new Actions job is the intended Pages production owner. No Worker deletion or build-setting change occurred in this session. After Pages automation succeeds, pause/disconnect only the legacy Worker's Git build trigger in that Worker's Settings → Build so pushes have one intended production path. Preserve its deployed assets and workers.dev endpoint. Until then, main may update both deployments independently with the active Pages job; the Worker is not the custom-domain production target. Do not run bare wrangler deploy to update production Pages.
 
-## Manual recovery / first activation
+## Manual recovery
 
 From repository root, with Node 24 and Python available:
 

@@ -307,6 +307,9 @@
     >. Basemap © OpenStreetMap contributors / OpenFreeMap.
     {#if path}<a href="/data/{path}/quality.json">Data quality report</a>{/if}.
     Housing costs and ML evaluation are future milestones.
+    <a href="https://github.com/kenner1-unlv/vegas-str-ml"
+      >Source code &amp; development history</a
+    >
   </footer>
 </main>
 
