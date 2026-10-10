@@ -93,3 +93,7 @@ The local shell helper is unavailable and local CLI internet sockets are restric
 Hosted feature verification: [PR run 37831787070](https://github.com/kenner1-unlv/vegas-str-ml/actions/runs/37831787070) and [branch run 37831775980](https://github.com/kenner1-unlv/vegas-str-ml/actions/runs/37831775980) passed for feature commit 976c79a. Main/production promotion is recorded in PR #10 independently of these branch checks.
 
 PR #10 automated review identified a partial-manifest success path in the complete-source audit. The follow-up requires all seven expected files before output/checksumming, tests preservation of previous output and documents the --all prerequisite. Authenticated Wrangler whoami and Pages project list subsequently succeeded through the authorized shell: existing vegas-str-ml Pages project includes str.housev.dev and reports Git Provider No. Credential files were not read or printed. Local Git fetch also succeeded; earlier environment restrictions above describe the original attempts, not an ongoing account failure.
+
+## October 9 private research normalization
+
+Fresh [Phase 1 verification](../specs/001-comparable-price-baseline/verification.md) records Spec Kit setup, 69 fixture tests, all-source/usable reconciliation, deterministic private output and unchanged public artifacts. Comparable selection/model evaluation remain open; this section adds no new browser or model claims.

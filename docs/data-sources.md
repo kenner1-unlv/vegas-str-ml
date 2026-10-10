@@ -104,3 +104,7 @@ These are dated source pointers, checked October 7, 2026; the application does n
 - [North Las Vegas](https://www.cityofnorthlasvegas.com/business/short-term-rentals): conditional-use approval before business licensing, per the city page.
 
 An Airbnb listing is not evidence of a valid license. Legal jurisdiction is not synonymous with postal city, source neighborhood, or approximate map point.
+
+## Private comparable-data normalization
+
+The [Phase 1 contract](../specs/001-comparable-price-baseline/data-model.md) and [reproduction guide](../specs/001-comparable-price-baseline/quickstart.md) define scripts/normalize_research.py. It rechecks all seven archive hashes, verifies the existing usable cohort/geographic join, preserves allowlisted source strings and creates ignored normalized.json with typed characteristics and audit. Only [aggregate evidence](../specs/001-comparable-price-baseline/phase1-audit.json) is published. It adds no public capacity/property/stay fields and trains no model.
