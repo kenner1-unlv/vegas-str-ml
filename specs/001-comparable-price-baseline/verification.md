@@ -26,7 +26,7 @@ Date: 2026-10-09 (America/Los_Angeles). Phase 1 only; the full feature is not co
 
 ## Delivery evidence
 
-Linked Phase 1 PR and hosted checks will be recorded here before issue closure. No fresh browser interaction is required for private normalization; prior map/browser evidence remains in docs/verification.md and is not claimed as repeated here. Main delivery must be confirmed independently of PR checks.
+[PR #14](https://github.com/kenner1-unlv/vegas-str-ml/pull/14) contains implementation, final-head validation and merge/main-delivery history. Hosted [PR Verify run 38022898222](https://github.com/kenner1-unlv/vegas-str-ml/actions/runs/38022898222) passed web and pipeline on implementation head bd79ef2; push run 38022893899 also passed. Final-head/main evidence is recorded in the PR before issue closure. The separate legacy Workers Builds check failed for bd79ef2; its cause was not inspected and remains issue #4. No fresh browser interaction is required for private normalization; prior map/browser evidence remains in docs/verification.md and is not claimed as repeated here. Main delivery must be confirmed independently of PR checks.
 
 ## Remaining work
 

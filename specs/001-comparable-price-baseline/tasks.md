@@ -25,7 +25,7 @@ Independent check: pinned normalization reconciles source/usable cohorts, repeat
 - [x] T009 [US1] Exercise unknowns, numeric bounds, malformed amenities, determinism and stale/duplicate failure preservation in pipeline/tests/test_normalize_research.py.
 - [x] T010 [US1] Reproduce pinned snapshot and record aggregate evidence in specs/001-comparable-price-baseline/phase1-audit.json and research.md.
 - [x] T011 [US1] Document CLI/reproduction and private/public boundaries in specs/001-comparable-price-baseline/quickstart.md and contracts/cli.md; link existing docs.
-- [ ] T012 [US1] Record final local/hosted checks and linked Phase 1 PR evidence in specs/001-comparable-price-baseline/verification.md and issue #12 before closure.
+- [x] T012 [US1] Record final local/hosted checks and linked Phase 1 PR evidence in specs/001-comparable-price-baseline/verification.md and issue #12 before closure.
 
 ## Phase 2 / User Story 2 - Geographic comps (#13)
 
@@ -56,4 +56,4 @@ Independent check: reproducible holdouts, zero ID overlap and no training prepro
 
 Setup -> foundation -> US1 -> US2 -> US3 -> final convergence. Tests and independent checks apply at each stage. Deliver US1 now; do not train while its inputs remain under review. US2 requires normalized contract; US3 can be evaluated independently of a UI but needs the reviewed cohort semantics. Fixture design and documentation may be prepared in parallel after the respective contract is fixed; mutation of shared scripts/task files is sequential. No parallel implementation agents are required.
 
-There are 24 tasks: 3 setup, 2 foundation, 7 US1, 5 US2, 6 US3, 1 cross-cutting. Checked tasks have local implementation evidence; PR/hosted completion is separate T012. Specification-quality checks are not implementation completion.
+There are 24 tasks: 3 setup, 2 foundation, 7 US1, 5 US2, 6 US3, 1 cross-cutting. Checked tasks have local implementation evidence; T012 links hosted implementation checks and PR #14, which records final-head/delivery evidence. Specification-quality checks are not implementation completion.
