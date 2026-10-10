@@ -5,8 +5,8 @@ import json
 
 import pytest
 from audit_sources import FEATURES
-from normalize_research import build, normalize, numeric, validate_geography
-from test_research_geography import source_manifest
+from normalize_research import SOURCE_URL, build, normalize, numeric, validate_geography
+from test_research_geography import polygon, source_manifest
 
 from ingest import clean_rows
 
@@ -30,6 +30,18 @@ def source_row(**overrides):
     )
     row.update(overrides)
     return row
+
+
+def provenance():
+    return {
+        "url": SOURCE_URL,
+        "boundary_vintage": "2020-01-01",
+        "attribution": "U.S. Census Bureau",
+        "sha256": "a" * 64,
+        "bytes": 10,
+        "expected_features": 1,
+        "retrieved_at": "2026-10-08T00:00:00Z",
+    }
 
 
 def fixture_inputs(tmp_path):
@@ -56,7 +68,15 @@ def fixture_inputs(tmp_path):
             }
         )
     )
+    census = public / "census.geojson"
+    census.write_text(json.dumps({"type": "FeatureCollection", "features": [polygon()]}))
+    meta = provenance()
+    meta.update(sha256=hashlib.sha256(census.read_bytes()).hexdigest(), bytes=census.stat().st_size)
+    census.with_suffix(".manifest.json").write_text(json.dumps(meta))
     geo = {
+        "boundary_vintage": "2020-01-01",
+        "source": meta,
+        "limitations": "Approximate anonymized coordinates; no parcel or jurisdiction inference.",
         "schema_version": 1,
         "snapshot_date": "2026-09-20",
         "listing_sha256": hashlib.sha256(listing_path.read_bytes()).hexdigest(),
@@ -146,9 +166,11 @@ def test_amenities_evidence_not_inferred_features(value, status, count):
 
 def test_build_is_deterministic_retains_source_denominator_and_string_ids(tmp_path):
     raw, public, output = fixture_inputs(tmp_path)
-    audit = build(raw, public, "2026-09-20", output)
+    audit = build(raw, public, "2026-09-20", output, census_source=public / "census.geojson")
     first = output.read_bytes()
-    assert build(raw, public, "2026-09-20", output) == audit
+    assert (
+        build(raw, public, "2026-09-20", output, census_source=public / "census.geojson") == audit
+    )
     assert output.read_bytes() == first
     result = json.loads(first)
     assert audit["all_source"]["rows"] == 2
@@ -168,15 +190,46 @@ def test_build_is_deterministic_retains_source_denominator_and_string_ids(tmp_pa
         "cohort",
         "source_duplicate",
         "source_checksum",
+        "vintage",
+        "missing_vintage",
+        "source_url",
+        "source_hash",
+        "missing_limitations",
+        "census_checksum",
+        "missing_retrieval",
+        "missing_source",
+        "incomplete_census",
     ],
 )
 def test_invalid_inputs_preserve_successful_output(tmp_path, damage):
     raw, public, output = fixture_inputs(tmp_path)
-    build(raw, public, "2026-09-20", output)
+    build(raw, public, "2026-09-20", output, census_source=public / "census.geojson")
     previous = output.read_bytes()
     geo_path = public / "geography.json"
     geo = json.loads(geo_path.read_text())
-    if damage == "hash":
+    if damage == "vintage":
+        geo["boundary_vintage"] = "2022-01-01"
+    elif damage == "missing_vintage":
+        del geo["boundary_vintage"]
+    elif damage == "source_url":
+        geo["source"]["url"] = "https://example.invalid/unpinned"
+    elif damage == "source_hash":
+        geo["source"]["sha256"] = "b" * 64
+    elif damage == "missing_limitations":
+        del geo["limitations"]
+    elif damage == "census_checksum":
+        (public / "census.geojson").write_text("{}")
+    elif damage == "missing_retrieval":
+        del geo["source"]["retrieved_at"]
+    elif damage == "missing_source":
+        del geo["source"]
+    elif damage == "incomplete_census":
+        path = public / "census.geojson"
+        path.write_text(json.dumps({"type": "FeatureCollection", "features": []}))
+        geo["source"]["sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+        geo["source"]["bytes"] = path.stat().st_size
+        path.with_suffix(".manifest.json").write_text(json.dumps(geo["source"]))
+    elif damage == "hash":
         geo["listing_sha256"] = "stale"
     elif damage == "snapshot":
         geo["snapshot_date"] = "old"
@@ -200,7 +253,7 @@ def test_invalid_inputs_preserve_successful_output(tmp_path, damage):
         (raw / "manifest.json").write_text(json.dumps(manifest))
     geo_path.write_text(json.dumps(geo))
     with pytest.raises(ValueError):
-        build(raw, public, "2026-09-20", output)
+        build(raw, public, "2026-09-20", output, census_source=public / "census.geojson")
     assert output.read_bytes() == previous
 
 
@@ -208,6 +261,9 @@ def test_geographic_codes_status_and_booleans_are_validated():
     geo = {
         "schema_version": 1,
         "snapshot_date": "d",
+        "boundary_vintage": "2020-01-01",
+        "source": provenance(),
+        "limitations": "Approximate",
         "listing_sha256": "h",
         "assignments": [{"id": "1", "zcta": "89146", "status": "assigned", "near_boundary": 0}],
     }

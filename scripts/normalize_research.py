@@ -8,9 +8,11 @@ import json
 import re
 import sys
 from collections import Counter
+from datetime import datetime
 from pathlib import Path
 
 from audit_sources import EXPECTED_FILES, FEATURES
+from build_geography import SOURCE_URL
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "pipeline"))
@@ -177,6 +179,30 @@ def normalize(row):
 
 
 def validate_geography(geography, snapshot, listing_hash, public):
+    source = geography.get("source", {})
+    if not isinstance(source, dict):
+        raise TypeError("Missing Census geographic provenance")
+    if (
+        geography.get("boundary_vintage") != "2020-01-01"
+        or source.get("boundary_vintage") != "2020-01-01"
+        or source.get("url") != SOURCE_URL
+        or source.get("attribution") != "U.S. Census Bureau"
+        or not isinstance(source.get("sha256"), str)
+        or not re.fullmatch(r"[0-9a-f]{64}", source["sha256"])
+        or type(source.get("bytes")) is not int
+        or source["bytes"] <= 0
+        or type(source.get("expected_features")) is not int
+        or source["expected_features"] <= 0
+        or not isinstance(geography.get("limitations"), str)
+        or not geography["limitations"].strip()
+    ):
+        raise ValueError("Missing or unpinned Census geographic provenance")
+    try:
+        retrieved = datetime.fromisoformat(source["retrieved_at"])
+        if retrieved.tzinfo is None:
+            raise ValueError("Timestamp requires timezone")
+    except (KeyError, TypeError, ValueError) as exc:
+        raise ValueError("Invalid Census retrieval provenance") from exc
     if (
         geography.get("schema_version") != 1
         or geography.get("snapshot_date") != snapshot
@@ -243,7 +269,7 @@ def summarize(rows):
     }
 
 
-def build(raw, public_dir, snapshot, output):
+def build(raw, public_dir, snapshot, output, census_source=None):
     manifest_path = raw / "manifest.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     if manifest.get("snapshot_date") != snapshot:
@@ -282,6 +308,25 @@ def build(raw, public_dir, snapshot, output):
     geography_path = public_dir / "geography.json"
     geography = json.loads(geography_path.read_text(encoding="utf-8"))
     assignments = validate_geography(geography, snapshot, sha256(listing_path), public)
+    census_source = census_source or ROOT / "data/raw/geography/zcta2020.geojson"
+    census_manifest = json.loads(
+        census_source.with_suffix(".manifest.json").read_text(encoding="utf-8")
+    )
+    if (
+        geography["source"] != census_manifest
+        or sha256(census_source) != census_manifest["sha256"]
+        or census_source.stat().st_size != census_manifest["bytes"]
+    ):
+        raise ValueError(
+            "Geographic source differs from pinned local Census provenance"
+        )
+    census_collection = json.loads(census_source.read_text(encoding="utf-8"))
+    if (
+        census_collection.get("type") != "FeatureCollection"
+        or len(census_collection.get("features", []))
+        != census_manifest["expected_features"]
+    ):
+        raise ValueError("Incomplete pinned Census source")
     included = {r["id"]: r for r in public}
     rows = []
     for source_row in sorted(source, key=lambda r: r["id"]):
@@ -312,6 +357,7 @@ def build(raw, public_dir, snapshot, output):
             "normalizer_sha256": sha256(Path(__file__)),
             "base_ingest_sha256": sha256(ROOT / "pipeline/ingest.py"),
             "boundary_vintage": geography.get("boundary_vintage"),
+            "census_source": census_manifest,
         },
         "quality": quality,
         "all_source": summarize(rows),

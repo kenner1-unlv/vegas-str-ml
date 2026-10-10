@@ -4,6 +4,8 @@ Requirements FR-001..006, FR-012. Implemented by scripts/normalize_research.py; 
 
 ## Source and usable inputs
 
+Pinned local Census zcta2020.geojson and its manifest must match the sidecar source metadata, hash, byte count and feature count. Require Census 2020 vintage on both sidecar/source, the exact pinned query URL, attribution, timezone-bearing retrieval time, valid SHA-256 and nonempty limitations. No missing or substituted provenance accepted.
+
 All seven filenames from audit_sources.EXPECTED_FILES must exist in manifest.json and match SHA-256; manifest snapshot_date must equal requested snapshot. Detailed listings must contain all 15 FEATURES fields. Source IDs must be nonempty digit strings and unique; invalid/duplicate IDs fail the normalization run instead of silently dropping evidence.
 
 Public listings.json envelope must be schema_version=1, matching snapshot_date, synthetic=false. Exact ID-to-record equality against ingest.clean_rows plus equal count is required, irrespective of ordering. Geographic sidecar schema/snapshot/listing SHA-256 and exact unique ID coverage must match; statuses assigned/ambiguous/unassigned and boolean near_boundary are validated. Assigned code is a five-digit string; other statuses have null code.

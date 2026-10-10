@@ -16,7 +16,7 @@ uv run --project pipeline ruff format --check pipeline scripts
 uv run --project pipeline pytest pipeline/tests -q
 ```
 
-Geography needs the pinned Census file already available privately; see existing source instructions for first-time --download. If using existing validated artifacts, run normalization directly; it checks all archive hashes without re-downloading or rebuilding web data.
+Geography needs the pinned Census file already available privately; see existing source instructions for first-time --download. If using existing validated artifacts, run normalization directly; it checks all archive hashes and the pinned local Census archive/manifest without re-downloading or rebuilding web data.
 
 Expected Phase 1: source 20,651, usable 17,212; private ignored normalized.json; aggregate audit reconciles denominators. Compare hashes from two unchanged runs for determinism. [Contract](data-model.md) specifies values and failure behavior. Fixtures test stale hashes/snapshots, duplicate IDs, numeric edge cases, unknowns, empty/invalid amenities and preserved prior output. No model command or prediction UI is implemented.
 

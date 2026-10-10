@@ -2,6 +2,49 @@
 
 Date: 2026-10-09. Fresh local analysis of the pinned 2026-09-20 detailed archive and current usable string-ID cohort. Machine-readable aggregate evidence: [phase1-audit.json](phase1-audit.json). Original source provenance/license and coordinate limitations remain in [data sources](../../docs/data-sources.md).
 
+## How the data was treated
+
+This table shows the treatment directly. Examples are illustrative field values, not published listing rows; counts below are freshly measured from the actual snapshot.
+
+| Source evidence | Derived research representation | Reason |
+| --- | --- | --- |
+| property_type=Room in hotel; room_type=Private room | property_group=hotel_resort; room_type=private_room; both original labels retained | Avoid treating private hotel rooms as residential rooms |
+| Entire home, Entire townhouse, Entire villa | house_like; raw subtype still available | Initial broad research group; not a claim that all are detached houses |
+| Entire serviced apartment | serviced_apartment, separate from apartment_condo | Preserve an accommodation distinction rather than collapse it prematurely |
+| Entire place / Private room as property type | unknown group, unspecified status | Source label does not identify the underlying property |
+| Unseen property label | unknown group, unrecognized status | No substring guessing or automatic residential assignment |
+| Bedrooms "0" / "4.0" / empty / "1.5" | 0 / 4 / null missing / null invalid | Integer count, with zero distinct from missing; raw string retained |
+| Advertised accommodates "6" | Integer 6 with valid status | Advertised guest capacity; not verified beds or comfortable sleeping |
+| minimum_nights "27" / "28" / empty | 1_27_nights / 28_plus_nights / unknown | Transparent analytical stay cohort, not a legal STR determination |
+| minimum=30, maximum=2 | unknown stay cohort plus inconsistent flag; original values retained | Do not silently repair a contradictory range |
+| Price "$250.00" on a usable row | asking_price_usd=250, raw price retained | Asking rate only; no income or occupancy label |
+| Valid price outside study area | Raw price preserved; in_usable_cohort=false, study target/geography null | Keep evidence without silently enlarging the initial study cohort |
+| Entirely missing numeric bathrooms | Raw empty value retained; no bathroom-count predictor | No zero fill or unreviewed interpretation of bathroom text |
+| Amenities JSON string array / [] | Original string retained; valid status and list count / zero count | No inferred amenity ontology or learned encoding yet |
+| Anonymized coordinates | Original strings retained; existing usable points/ZCTA join reused and provenance checked | No east/west shift, address correction, parcel matching or legal inference |
+| Listing ID | String throughout, sorted lexicographically only for deterministic file output | No numeric precision loss; storage order is not price/opportunity ranking |
+
+### Row accounting
+
+All **20,651** detailed source rows remain in the private normalized artifact. **17,212** are flagged as the existing usable priced study cohort. The original cleaning excludes 3,195 missing prices and 258 outside-area rows, with 14 overlapping exclusions: **3,439 total excluded**. No extra rows were dropped by Phase 1 normalization. Summary listings are duplicates of detailed observations and were not appended. All seven original archives remain private; only 15 allowlisted source feature strings enter the normalized row evidence.
+
+### What the usable cohort contains
+
+| Research property group | Listings |
+| --- | ---: |
+| House-like | 6,749 |
+| Apartment/condo | 5,538 |
+| Hotel/resort | 3,137 |
+| Serviced apartment | 885 |
+| Guesthouse/suite | 662 |
+| Known other | 213 |
+| Unknown/unspecified | 28 |
+| **Total** | **17,212** |
+
+Minimum stays: **14,069** at 1-27 nights, **3,027** at 28+ nights, **116** unknown. Usable missingness: **9 bedrooms**, **394 beds**, **17,212 numeric bathroom values**, **80 bathroom-text values**. Advertised capacity is valid/populated for all 17,212. Seven amenities arrays are empty; empty does not certify absence of amenities. Price remains uncapped, with no outlier winsorization, scaling, learned imputation, one-hot encoding or model fitting in this phase.
+
+Raw bathroom/amenity evidence is retained for a separately reviewed future transformation. Missing bedrooms/beds are not filled with averages. Full-source and usable counts stay separate in [the aggregate audit](phase1-audit.json), so exclusions cannot disappear from quality reporting.
+
 ## Separate property group from room type
 
 **Decision**: Exact-value, versioned property mapping in scripts/normalize_research.py; house-like, apartment/condo, hotel/resort, serviced apartment, guesthouse/suite, known other, unknown. Preserve original labels. Known unspecified labels differ from unseen/missing labels in status.

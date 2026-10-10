@@ -377,8 +377,17 @@
   "provenance": {
     "base_ingest_sha256": "859d561d6463a409cebe8ffed33b79f0e1bed6b84edb9b8d841440963e50b445",
     "boundary_vintage": "2020-01-01",
+    "census_source": {
+      "attribution": "U.S. Census Bureau",
+      "boundary_vintage": "2020-01-01",
+      "bytes": 2044560,
+      "expected_features": 66,
+      "retrieved_at": "2026-10-08T17:34:02.217Z",
+      "sha256": "d0a9d7bc2949a161f76ab710fd44a1453f6bfd867c10467e85e473aaaac8030b",
+      "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/Census2020/PUMA_TAD_TAZ_UGA_ZCTA/MapServer/2/query?where=1%3D1&geometry=-115.5%2C35.8%2C-114.8%2C36.5&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=ZCTA5&outSR=4326&f=geojson"
+    },
     "geography_sha256": "7e5fede5332f1e483f35513178fe9880a3b1d3b4d8523ab680e927691e2e6841",
-    "normalizer_sha256": "9c08d86173e46924a1840bbc44519b1854b4d0a4a0e78f554422933838d10520",
+    "normalizer_sha256": "5f6f23c3e72bfbadc35d76b4c28fcac685af2177f0a0f31f56fe333d0abd1e18",
     "source_manifest_sha256": "ec18d497b0cf3e64099e66ea923b1e27d9c0498639a1af1685bc5b72703bec3d",
     "source_sha256": {
       "calendar.csv.gz": "43208f9bbf83a42f583c6f7e862a8990a632cd6d435451a6de4f4e92dc0e30f1",

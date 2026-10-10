@@ -96,4 +96,4 @@ PR #10 automated review identified a partial-manifest success path in the comple
 
 ## October 9 private research normalization
 
-Fresh [Phase 1 verification](../specs/001-comparable-price-baseline/verification.md) records Spec Kit setup, 60 fixture tests, all-source/usable reconciliation, deterministic private output and unchanged public artifacts. Comparable selection/model evaluation remain open; this section adds no new browser or model claims.
+Fresh [Phase 1 verification](../specs/001-comparable-price-baseline/verification.md) records Spec Kit setup, 69 fixture tests, all-source/usable reconciliation, deterministic private output and unchanged public artifacts. Comparable selection/model evaluation remain open; this section adds no new browser or model claims.
