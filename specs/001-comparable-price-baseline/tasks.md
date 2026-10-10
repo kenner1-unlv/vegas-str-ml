@@ -35,7 +35,7 @@ Independent check: fixture membership/exclusions match expected rules; price alo
 - [x] T014 [US2] Implement explicit same-ZCTA/group/room/stay matching, exclude subject, bedroom tolerance default 1 and optional capacity tolerance in scripts/select_comps.py.
 - [x] T015 [US2] Report counts/exclusions, boundary sensitivity and n<20 suppression without geographic/price fallback in scripts/select_comps.py.
 - [x] T016 [US2] Test membership invariance to price, unknowns, support threshold and tolerance limits in pipeline/tests/test_comps.py.
-- [ ] T017 [US2] Record actual results and release decision in specs/001-comparable-price-baseline/verification.md; public enrichment requires separate contract review.
+- [x] T017 [US2] Record actual results and release decision in specs/001-comparable-price-baseline/verification.md; public enrichment requires separate contract review.
 
 ## Phase 3 / User Story 3 - Advertised-price evaluation (#6)
 
@@ -56,4 +56,4 @@ Independent check: reproducible holdouts, zero ID overlap and no training prepro
 
 Setup -> foundation -> US1 -> US2 -> US3 -> final convergence. Tests and independent checks apply at each stage. US1 and US2 are implemented; deliver US2 with recorded validation before beginning US3. US2 requires normalized contract; US3 can be evaluated independently of a UI but needs the reviewed cohort semantics. Fixture design and documentation may be prepared in parallel after the respective contract is fixed; mutation of shared scripts/task files is sequential. No parallel implementation agents are required.
 
-There are 24 tasks: 3 setup, 2 foundation, 7 US1, 5 US2, 6 US3, 1 cross-cutting. Checked tasks have local implementation evidence; T012 links hosted implementation checks and PR #14, which records final-head/delivery evidence. Specification-quality checks are not implementation completion.
+There are 24 tasks: 3 setup, 2 foundation, 7 US1, 5 US2, 6 US3, 1 cross-cutting. Checked tasks have local implementation evidence; T017 links Phase 2 PR #15 and hosted checks; T012 links hosted implementation checks and PR #14, which records final-head/delivery evidence. Specification-quality checks are not implementation completion.
