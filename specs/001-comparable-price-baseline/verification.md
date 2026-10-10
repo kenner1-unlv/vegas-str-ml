@@ -1,6 +1,6 @@
 # Phase 1 verification and remaining scope
 
-Date: 2026-10-09 (America/Los_Angeles). Phase 1 only; the full feature is not converged because US2/US3 remain unimplemented.
+Date: 2026-10-09 (America/Los_Angeles). Historical Phase 1 evidence below; Phase 2 evidence follows. The full feature is not converged because US3 evaluation remains unimplemented.
 
 ## Fresh local evidence
 
@@ -21,7 +21,7 @@ Date: 2026-10-09 (America/Los_Angeles). Phase 1 only; the full feature is not co
 | FR-005 | Full seven-file validation, schema/snapshot/hash and exact ID-to-record/sidecar reconciliation |
 | FR-006 | Ignored atomic private artifact; explicit aggregate-only report; unchanged public data |
 | FR-012 (Phase 1) | Offline fixture failure/determinism coverage and pipeline checks |
-| FR-007..008 | Future #13 / tasks T013..017; no comp engine |
+| FR-007..008 | Phase 2 contract/selector/audit below; #13 / T013..017 |
 | FR-009..011, FR-012 evaluation | Future #6 / tasks T018..023; no splits, encoders or fitted model |
 
 ## Delivery evidence
@@ -32,4 +32,15 @@ Automated review found that initial geography acceptance did not require pinned 
 
 ## Remaining work
 
-[#13](https://github.com/kenner1-unlv/vegas-str-ml/issues/13): comparable membership/support rules. [#6](https://github.com/kenner1-unlv/vegas-str-ml/issues/6): freeze splits/features/release criteria, train baselines/candidate and report actual errors. Bathroom/amenity predictors need reviewed semantics. No ML results, temporal generalization, occupancy, acquisition valuation or public capacity fields are delivered. Separate hosting follow-up #4 and housing-cost research #5 remain open.
+[#13](https://github.com/kenner1-unlv/vegas-str-ml/issues/13) records implemented private comparable membership/support rules. [#6](https://github.com/kenner1-unlv/vegas-str-ml/issues/6): freeze splits/features/release criteria, train baselines/candidate and report actual errors. Bathroom/amenity predictors need reviewed semantics. No ML results, temporal generalization, occupancy, acquisition valuation or public capacity fields are delivered. Separate hosting follow-up #4 and housing-cost research #5 remain open.
+
+## Phase 2 fresh verification (2026-10-10)
+
+- Exact root verified, main synchronized at 2c247d2; branch phase2-geographic-comps created. Pre-existing untracked .vscode/ preserved.
+- speckit-implement prerequisite resolver passed; requirements checklist 8/8 checked, no extension hooks. Scope limited to T013..017, not future US3.
+- Contract tests were run before selector existed and failed import as expected; implementation then passed **113 total pytest cases**, including 44 Phase 2 cases. Fixtures cover membership/price invariance, hotel/room separation, unknowns, zero bedrooms, inclusive/exact tolerances, optional capacity, n=19/20, edge policy, counting funnel, stale/edited normalization, output path/privacy and failure preservation. Fast support audit is checked against direct selection for both edge policies.
+- Current ignored normalization rebuilt offline from pinned inputs. Eight actual selector CLI runs across two example profiles and four constraints matched direct function summaries. [Reproducible aggregate audit](phase2-audit.json) records examples and snapshot-wide support; no IDs/private rows included. Existing Phase 1 audit remains historical, not overwritten.
+- Public frontend/data/deployment are unchanged; no fresh map/filter/selection interaction claims for this offline increment. Model fitting/encoding remains #6.
+- Local pipeline gates and hosted PR/main delivery evidence are linked in the focused Phase 2 PR before issue closure.
+
+Release scope: private research selector for the next evaluation milestone. Public comp UI/schema changes need a separate reviewed contract. n=20 is not confidence, ZCTA boundaries remain approximate, other/unknown categories remain unsupported, and no acquisition/occupancy/earnings claims are produced.

@@ -2,7 +2,7 @@
 
 **Input**: spec.md, plan.md, research.md, data-model.md, quickstart.md. Tests required by FR-012.
 
-The user's **Phase 1** means normalization/US1, including the setup and foundational sections below. Spec Kit template phase numbers are organizational; Phase 2/3 product work remains unchecked.
+The user's **Phase 1** means normalization/US1, including the setup and foundational sections below. Spec Kit template phase numbers are organizational; Phase 2 is the current increment; Phase 3 product work remains unchecked.
 
 ## Setup
 
@@ -31,10 +31,10 @@ Independent check: pinned normalization reconciles source/usable cohorts, repeat
 
 Independent check: fixture membership/exclusions match expected rules; price alone does not alter membership.
 
-- [ ] T013 [US2] Freeze comparison request/result and missing-subject behavior in specs/001-comparable-price-baseline/contracts/comps.md.
-- [ ] T014 [US2] Implement explicit same-ZCTA/group/room/stay matching, exclude subject, bedroom tolerance default 1 and optional capacity tolerance in scripts/select_comps.py.
-- [ ] T015 [US2] Report counts/exclusions, boundary sensitivity and n<20 suppression without geographic/price fallback in scripts/select_comps.py.
-- [ ] T016 [US2] Test membership invariance to price, unknowns, support threshold and tolerance limits in pipeline/tests/test_comps.py.
+- [x] T013 [US2] Freeze comparison request/result and missing-subject behavior in specs/001-comparable-price-baseline/contracts/comps.md.
+- [x] T014 [US2] Implement explicit same-ZCTA/group/room/stay matching, exclude subject, bedroom tolerance default 1 and optional capacity tolerance in scripts/select_comps.py.
+- [x] T015 [US2] Report counts/exclusions, boundary sensitivity and n<20 suppression without geographic/price fallback in scripts/select_comps.py.
+- [x] T016 [US2] Test membership invariance to price, unknowns, support threshold and tolerance limits in pipeline/tests/test_comps.py.
 - [ ] T017 [US2] Record actual results and release decision in specs/001-comparable-price-baseline/verification.md; public enrichment requires separate contract review.
 
 ## Phase 3 / User Story 3 - Advertised-price evaluation (#6)
@@ -54,6 +54,6 @@ Independent check: reproducible holdouts, zero ID overlap and no training prepro
 
 ## Dependencies and execution strategy
 
-Setup -> foundation -> US1 -> US2 -> US3 -> final convergence. Tests and independent checks apply at each stage. Deliver US1 now; do not train while its inputs remain under review. US2 requires normalized contract; US3 can be evaluated independently of a UI but needs the reviewed cohort semantics. Fixture design and documentation may be prepared in parallel after the respective contract is fixed; mutation of shared scripts/task files is sequential. No parallel implementation agents are required.
+Setup -> foundation -> US1 -> US2 -> US3 -> final convergence. Tests and independent checks apply at each stage. US1 and US2 are implemented; deliver US2 with recorded validation before beginning US3. US2 requires normalized contract; US3 can be evaluated independently of a UI but needs the reviewed cohort semantics. Fixture design and documentation may be prepared in parallel after the respective contract is fixed; mutation of shared scripts/task files is sequential. No parallel implementation agents are required.
 
 There are 24 tasks: 3 setup, 2 foundation, 7 US1, 5 US2, 6 US3, 1 cross-cutting. Checked tasks have local implementation evidence; T012 links hosted implementation checks and PR #14, which records final-head/delivery evidence. Specification-quality checks are not implementation completion.

@@ -3,7 +3,7 @@
 **Branch**: `001-comparable-price-baseline` | **Date**: 2026-10-09 | **Spec**: [spec.md](spec.md)
 
 ## Summary
-Normalize pinned private source data before choosing comps or training. Deliver Phase 1 now; keep Phase 2 comp research and Phase 3 training separate. [Milestone #11](https://github.com/kenner1-unlv/vegas-str-ml/issues/11), [Phase 1 #12](https://github.com/kenner1-unlv/vegas-str-ml/issues/12), [Phase 2 #13](https://github.com/kenner1-unlv/vegas-str-ml/issues/13), [Phase 3 #6](https://github.com/kenner1-unlv/vegas-str-ml/issues/6).
+Normalize pinned private source data before choosing comps or training. Phases 1 and 2 deliver private normalization and offline comparable research; Phase 3 training remains separate. [Milestone #11](https://github.com/kenner1-unlv/vegas-str-ml/issues/11), [Phase 1 #12](https://github.com/kenner1-unlv/vegas-str-ml/issues/12), [Phase 2 #13](https://github.com/kenner1-unlv/vegas-str-ml/issues/13), [Phase 3 #6](https://github.com/kenner1-unlv/vegas-str-ml/issues/6).
 
 ## Technical Context
 
@@ -39,6 +39,8 @@ specs/001-comparable-price-baseline/
   checklists/requirements.md, phase1-audit.json
 scripts/normalize_research.py
 pipeline/tests/test_normalize_research.py
+scripts/select_comps.py, scripts/audit_comps.py
+pipeline/tests/test_comps.py
 data/research/<snapshot>/normalized.json  # ignored
 ```
 
@@ -53,3 +55,7 @@ data/research/<snapshot>/normalized.json  # ignored
 ## Complexity Tracking
 
 No constitution deviations. No new production infrastructure. One private file keeps row/audit publication consistent. Detailed split geometry and candidate release thresholds must be frozen in Phase 3 before training, and are explicitly open tasks, not completed decisions.
+
+## Phase 2 implementation decision (2026-10-10)
+
+Branch phase2-geographic-comps implements [comps contract](contracts/comps.md). CLI revalidates the private normalized artifact by rebuilding from pinned local inputs in a temporary ignored directory and comparing parsed data, then selects explicit same-area/group/room/stay matches. Pure selection has no price-dependent membership or area expansion. Fixed support floor 20, optional edge exclusion and capacity tolerance remain explicit. Other/unknown property groups are unsupported rather than bundling unusual lodging as comps. No frontend, public schema or training changes.

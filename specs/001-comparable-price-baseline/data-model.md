@@ -45,6 +45,6 @@ Validate inputs and serialize all rows before writing. Atomically replace the si
 
 ## Future interfaces
 
-Phase 2: request has subject characteristics, explicit ZCTA, bedroom tolerance default 1, optional capacity tolerance and edge policy. Result has private member IDs, counts/exclusions/support and descriptive price summaries only for n>=20. No silent geographic fallback. Freeze concrete interface in #13 before implementation.
+Phase 2 implemented: [comps contract](contracts/comps.md) freezes the interface. Request has subject characteristics, explicit ZCTA, bedroom tolerance default 1, optional capacity tolerance and edge policy. Result has private member IDs, counts/exclusions/support and descriptive price summaries only for n>=20. No silent geographic fallback. Concrete interface and validation evidence are linked in #13.
 
 Phase 3: versioned split manifest, training-only fitted transforms, baseline/candidate metrics and model card. Freeze split and release decisions in #6 before fitting; no numeric IDs or price-derived predictors, no public binaries.
