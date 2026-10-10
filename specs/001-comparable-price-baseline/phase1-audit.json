@@ -1,0 +1,768 @@
+{
+  "all_source": {
+    "amenities_status": {
+      "valid": 20651
+    },
+    "bathrooms_missing": 20651,
+    "bathrooms_text_missing": 148,
+    "empty_amenities": 11,
+    "inconsistent_stay_ranges": 0,
+    "numeric_status": {
+      "accommodates": {
+        "valid": 20651
+      },
+      "bedrooms": {
+        "missing": 12,
+        "valid": 20639
+      },
+      "beds": {
+        "missing": 516,
+        "valid": 20135
+      },
+      "maximum_nights": {
+        "missing": 134,
+        "valid": 20517
+      },
+      "minimum_nights": {
+        "missing": 134,
+        "valid": 20517
+      }
+    },
+    "property_groups": {
+      "apartment_condo": 6787,
+      "guesthouse_suite": 751,
+      "hotel_resort": 4107,
+      "house_like": 7703,
+      "other": 236,
+      "serviced_apartment": 1037,
+      "unknown": 30
+    },
+    "property_room_counts": [
+      {
+        "property_type": "Barn",
+        "room_type": "Entire home/apt",
+        "rows": 3
+      },
+      {
+        "property_type": "Camper/RV",
+        "room_type": "Entire home/apt",
+        "rows": 66
+      },
+      {
+        "property_type": "Casa particular",
+        "room_type": "Entire home/apt",
+        "rows": 15
+      },
+      {
+        "property_type": "Dome",
+        "room_type": "Entire home/apt",
+        "rows": 1
+      },
+      {
+        "property_type": "Entire bungalow",
+        "room_type": "Entire home/apt",
+        "rows": 17
+      },
+      {
+        "property_type": "Entire cabin",
+        "room_type": "Entire home/apt",
+        "rows": 3
+      },
+      {
+        "property_type": "Entire condo",
+        "room_type": "Entire home/apt",
+        "rows": 3095
+      },
+      {
+        "property_type": "Entire cottage",
+        "room_type": "Entire home/apt",
+        "rows": 3
+      },
+      {
+        "property_type": "Entire guest suite",
+        "room_type": "Entire home/apt",
+        "rows": 265
+      },
+      {
+        "property_type": "Entire guesthouse",
+        "room_type": "Entire home/apt",
+        "rows": 432
+      },
+      {
+        "property_type": "Entire home",
+        "room_type": "Entire home/apt",
+        "rows": 5174
+      },
+      {
+        "property_type": "Entire loft",
+        "room_type": "Entire home/apt",
+        "rows": 26
+      },
+      {
+        "property_type": "Entire place",
+        "room_type": "Entire home/apt",
+        "rows": 18
+      },
+      {
+        "property_type": "Entire rental unit",
+        "room_type": "Entire home/apt",
+        "rows": 3434
+      },
+      {
+        "property_type": "Entire resort",
+        "room_type": "Entire home/apt",
+        "rows": 87
+      },
+      {
+        "property_type": "Entire serviced apartment",
+        "room_type": "Entire home/apt",
+        "rows": 1029
+      },
+      {
+        "property_type": "Entire timeshare",
+        "room_type": "Entire home/apt",
+        "rows": 1
+      },
+      {
+        "property_type": "Entire townhouse",
+        "room_type": "Entire home/apt",
+        "rows": 180
+      },
+      {
+        "property_type": "Entire vacation home",
+        "room_type": "Entire home/apt",
+        "rows": 39
+      },
+      {
+        "property_type": "Entire villa",
+        "room_type": "Entire home/apt",
+        "rows": 193
+      },
+      {
+        "property_type": "Holiday park",
+        "room_type": "Entire home/apt",
+        "rows": 1
+      },
+      {
+        "property_type": "Private room",
+        "room_type": "Private room",
+        "rows": 12
+      },
+      {
+        "property_type": "Private room in bed and breakfast",
+        "room_type": "Private room",
+        "rows": 43
+      },
+      {
+        "property_type": "Private room in bungalow",
+        "room_type": "Private room",
+        "rows": 19
+      },
+      {
+        "property_type": "Private room in cabin",
+        "room_type": "Private room",
+        "rows": 2
+      },
+      {
+        "property_type": "Private room in camper/rv",
+        "room_type": "Private room",
+        "rows": 2
+      },
+      {
+        "property_type": "Private room in casa particular",
+        "room_type": "Private room",
+        "rows": 4
+      },
+      {
+        "property_type": "Private room in castle",
+        "room_type": "Private room",
+        "rows": 1
+      },
+      {
+        "property_type": "Private room in condo",
+        "room_type": "Private room",
+        "rows": 53
+      },
+      {
+        "property_type": "Private room in cottage",
+        "room_type": "Private room",
+        "rows": 2
+      },
+      {
+        "property_type": "Private room in farm stay",
+        "room_type": "Private room",
+        "rows": 2
+      },
+      {
+        "property_type": "Private room in guest suite",
+        "room_type": "Private room",
+        "rows": 36
+      },
+      {
+        "property_type": "Private room in guesthouse",
+        "room_type": "Private room",
+        "rows": 18
+      },
+      {
+        "property_type": "Private room in home",
+        "room_type": "Private room",
+        "rows": 1943
+      },
+      {
+        "property_type": "Private room in rental unit",
+        "room_type": "Private room",
+        "rows": 175
+      },
+      {
+        "property_type": "Private room in resort",
+        "room_type": "Private room",
+        "rows": 849
+      },
+      {
+        "property_type": "Private room in serviced apartment",
+        "room_type": "Private room",
+        "rows": 5
+      },
+      {
+        "property_type": "Private room in tiny home",
+        "room_type": "Private room",
+        "rows": 2
+      },
+      {
+        "property_type": "Private room in townhouse",
+        "room_type": "Private room",
+        "rows": 50
+      },
+      {
+        "property_type": "Private room in vacation home",
+        "room_type": "Private room",
+        "rows": 2
+      },
+      {
+        "property_type": "Private room in villa",
+        "room_type": "Private room",
+        "rows": 35
+      },
+      {
+        "property_type": "Ranch",
+        "room_type": "Entire home/apt",
+        "rows": 1
+      },
+      {
+        "property_type": "Room in aparthotel",
+        "room_type": "Entire home/apt",
+        "rows": 121
+      },
+      {
+        "property_type": "Room in aparthotel",
+        "room_type": "Hotel room",
+        "rows": 3
+      },
+      {
+        "property_type": "Room in aparthotel",
+        "room_type": "Private room",
+        "rows": 15
+      },
+      {
+        "property_type": "Room in boutique hotel",
+        "room_type": "Entire home/apt",
+        "rows": 5
+      },
+      {
+        "property_type": "Room in boutique hotel",
+        "room_type": "Hotel room",
+        "rows": 27
+      },
+      {
+        "property_type": "Room in boutique hotel",
+        "room_type": "Private room",
+        "rows": 24
+      },
+      {
+        "property_type": "Room in hotel",
+        "room_type": "Entire home/apt",
+        "rows": 5
+      },
+      {
+        "property_type": "Room in hotel",
+        "room_type": "Hotel room",
+        "rows": 293
+      },
+      {
+        "property_type": "Room in hotel",
+        "room_type": "Private room",
+        "rows": 2666
+      },
+      {
+        "property_type": "Room in resort",
+        "room_type": "Hotel room",
+        "rows": 4
+      },
+      {
+        "property_type": "Room in serviced apartment",
+        "room_type": "Hotel room",
+        "rows": 3
+      },
+      {
+        "property_type": "Shared room in bed and breakfast",
+        "room_type": "Shared room",
+        "rows": 3
+      },
+      {
+        "property_type": "Shared room in camper/rv",
+        "room_type": "Shared room",
+        "rows": 1
+      },
+      {
+        "property_type": "Shared room in home",
+        "room_type": "Shared room",
+        "rows": 41
+      },
+      {
+        "property_type": "Shared room in hostel",
+        "room_type": "Shared room",
+        "rows": 1
+      },
+      {
+        "property_type": "Shared room in hotel",
+        "room_type": "Shared room",
+        "rows": 5
+      },
+      {
+        "property_type": "Shared room in rental unit",
+        "room_type": "Shared room",
+        "rows": 4
+      },
+      {
+        "property_type": "Shared room in resort",
+        "room_type": "Shared room",
+        "rows": 2
+      },
+      {
+        "property_type": "Tent",
+        "room_type": "Entire home/apt",
+        "rows": 10
+      },
+      {
+        "property_type": "Tiny home",
+        "room_type": "Entire home/apt",
+        "rows": 58
+      },
+      {
+        "property_type": "Tower",
+        "room_type": "Entire home/apt",
+        "rows": 22
+      }
+    ],
+    "property_status": {
+      "known": 20621,
+      "unspecified": 30
+    },
+    "room_status": {
+      "known": 20651
+    },
+    "rows": 20651,
+    "stay_cohorts": {
+      "1_27_nights": 16720,
+      "28_plus_nights": 3797,
+      "unknown": 134
+    }
+  },
+  "limitations": [
+    "Asking price is not realized revenue; capacity is advertised, not verified beds.",
+    "28-night cutoff is analytical, not legal. ZCTAs/coordinates do not identify parcels.",
+    "Bathroom and amenity evidence is retained; no inferred bathroom/amenity predictors yet.",
+    "No fitted preprocessing, comp selection, model, occupancy or acquisition valuation."
+  ],
+  "provenance": {
+    "base_ingest_sha256": "859d561d6463a409cebe8ffed33b79f0e1bed6b84edb9b8d841440963e50b445",
+    "boundary_vintage": "2020-01-01",
+    "geography_sha256": "7e5fede5332f1e483f35513178fe9880a3b1d3b4d8523ab680e927691e2e6841",
+    "normalizer_sha256": "9c08d86173e46924a1840bbc44519b1854b4d0a4a0e78f554422933838d10520",
+    "source_manifest_sha256": "ec18d497b0cf3e64099e66ea923b1e27d9c0498639a1af1685bc5b72703bec3d",
+    "source_sha256": {
+      "calendar.csv.gz": "43208f9bbf83a42f583c6f7e862a8990a632cd6d435451a6de4f4e92dc0e30f1",
+      "listings-summary.csv": "e3afd6adc11c53b0aed2f819a95027ea647870d1865c162292917373c6505e15",
+      "listings.csv.gz": "98bf79593638dc0f8638cd538ec9293efb65cd9af01b5f34f335e2ea9e371cb1",
+      "neighbourhoods.csv": "c3643e533471cc8ea0b69089a425dada11c79ee427be1de19991249cd9901ace",
+      "neighbourhoods.geojson": "24e69d2db4732ce63b4344ffef367151cb017f5528812b546cf7cd760d77afbc",
+      "reviews-summary.csv": "b4cce1d07d162de3ba4e257220bfeb09c8c02458785cc1788e01cf5891ebc8fd",
+      "reviews.csv.gz": "4949acd31af44aa7039287f9954eaedf0a56504f8738f6aa65613bc09a817224"
+    },
+    "usable_listing_sha256": "d8c98639d707c0f38bfcd115128197588a9e221a89fc99e5f3aa6e366b1fac50"
+  },
+  "quality": {
+    "counts": {
+      "duplicate_ids": 0,
+      "excluded_rows": 3439,
+      "included_rows": 17212,
+      "input_rows": 20651,
+      "invalid_bedrooms": 0,
+      "invalid_coordinates": 0,
+      "invalid_ids": 0,
+      "invalid_prices": 3195,
+      "outside_valley": 258
+    },
+    "missingness": {
+      "bedrooms": 12,
+      "id": 0,
+      "latitude": 0,
+      "longitude": 0,
+      "neighbourhood_cleansed": 0,
+      "price": 3195,
+      "room_type": 0
+    }
+  },
+  "rules_version": "1.0.0",
+  "schema_version": 1,
+  "snapshot_date": "2026-09-20",
+  "usable_cohort": {
+    "amenities_status": {
+      "valid": 17212
+    },
+    "bathrooms_missing": 17212,
+    "bathrooms_text_missing": 80,
+    "empty_amenities": 7,
+    "inconsistent_stay_ranges": 0,
+    "numeric_status": {
+      "accommodates": {
+        "valid": 17212
+      },
+      "bedrooms": {
+        "missing": 9,
+        "valid": 17203
+      },
+      "beds": {
+        "missing": 394,
+        "valid": 16818
+      },
+      "maximum_nights": {
+        "missing": 116,
+        "valid": 17096
+      },
+      "minimum_nights": {
+        "missing": 116,
+        "valid": 17096
+      }
+    },
+    "property_groups": {
+      "apartment_condo": 5538,
+      "guesthouse_suite": 662,
+      "hotel_resort": 3137,
+      "house_like": 6749,
+      "other": 213,
+      "serviced_apartment": 885,
+      "unknown": 28
+    },
+    "property_room_counts": [
+      {
+        "property_type": "Barn",
+        "room_type": "Entire home/apt",
+        "rows": 3
+      },
+      {
+        "property_type": "Camper/RV",
+        "room_type": "Entire home/apt",
+        "rows": 63
+      },
+      {
+        "property_type": "Casa particular",
+        "room_type": "Entire home/apt",
+        "rows": 14
+      },
+      {
+        "property_type": "Entire bungalow",
+        "room_type": "Entire home/apt",
+        "rows": 14
+      },
+      {
+        "property_type": "Entire cabin",
+        "room_type": "Entire home/apt",
+        "rows": 1
+      },
+      {
+        "property_type": "Entire condo",
+        "room_type": "Entire home/apt",
+        "rows": 2534
+      },
+      {
+        "property_type": "Entire cottage",
+        "room_type": "Entire home/apt",
+        "rows": 3
+      },
+      {
+        "property_type": "Entire guest suite",
+        "room_type": "Entire home/apt",
+        "rows": 243
+      },
+      {
+        "property_type": "Entire guesthouse",
+        "room_type": "Entire home/apt",
+        "rows": 375
+      },
+      {
+        "property_type": "Entire home",
+        "room_type": "Entire home/apt",
+        "rows": 4626
+      },
+      {
+        "property_type": "Entire loft",
+        "room_type": "Entire home/apt",
+        "rows": 25
+      },
+      {
+        "property_type": "Entire place",
+        "room_type": "Entire home/apt",
+        "rows": 16
+      },
+      {
+        "property_type": "Entire rental unit",
+        "room_type": "Entire home/apt",
+        "rows": 2781
+      },
+      {
+        "property_type": "Entire resort",
+        "room_type": "Entire home/apt",
+        "rows": 72
+      },
+      {
+        "property_type": "Entire serviced apartment",
+        "room_type": "Entire home/apt",
+        "rows": 880
+      },
+      {
+        "property_type": "Entire townhouse",
+        "room_type": "Entire home/apt",
+        "rows": 151
+      },
+      {
+        "property_type": "Entire vacation home",
+        "room_type": "Entire home/apt",
+        "rows": 33
+      },
+      {
+        "property_type": "Entire villa",
+        "room_type": "Entire home/apt",
+        "rows": 179
+      },
+      {
+        "property_type": "Holiday park",
+        "room_type": "Entire home/apt",
+        "rows": 1
+      },
+      {
+        "property_type": "Private room",
+        "room_type": "Private room",
+        "rows": 12
+      },
+      {
+        "property_type": "Private room in bed and breakfast",
+        "room_type": "Private room",
+        "rows": 39
+      },
+      {
+        "property_type": "Private room in bungalow",
+        "room_type": "Private room",
+        "rows": 15
+      },
+      {
+        "property_type": "Private room in camper/rv",
+        "room_type": "Private room",
+        "rows": 2
+      },
+      {
+        "property_type": "Private room in casa particular",
+        "room_type": "Private room",
+        "rows": 4
+      },
+      {
+        "property_type": "Private room in castle",
+        "room_type": "Private room",
+        "rows": 1
+      },
+      {
+        "property_type": "Private room in condo",
+        "room_type": "Private room",
+        "rows": 42
+      },
+      {
+        "property_type": "Private room in cottage",
+        "room_type": "Private room",
+        "rows": 1
+      },
+      {
+        "property_type": "Private room in farm stay",
+        "room_type": "Private room",
+        "rows": 2
+      },
+      {
+        "property_type": "Private room in guest suite",
+        "room_type": "Private room",
+        "rows": 29
+      },
+      {
+        "property_type": "Private room in guesthouse",
+        "room_type": "Private room",
+        "rows": 15
+      },
+      {
+        "property_type": "Private room in home",
+        "room_type": "Private room",
+        "rows": 1612
+      },
+      {
+        "property_type": "Private room in rental unit",
+        "room_type": "Private room",
+        "rows": 152
+      },
+      {
+        "property_type": "Private room in resort",
+        "room_type": "Private room",
+        "rows": 714
+      },
+      {
+        "property_type": "Private room in serviced apartment",
+        "room_type": "Private room",
+        "rows": 4
+      },
+      {
+        "property_type": "Private room in tiny home",
+        "room_type": "Private room",
+        "rows": 2
+      },
+      {
+        "property_type": "Private room in townhouse",
+        "room_type": "Private room",
+        "rows": 44
+      },
+      {
+        "property_type": "Private room in vacation home",
+        "room_type": "Private room",
+        "rows": 1
+      },
+      {
+        "property_type": "Private room in villa",
+        "room_type": "Private room",
+        "rows": 32
+      },
+      {
+        "property_type": "Room in aparthotel",
+        "room_type": "Entire home/apt",
+        "rows": 110
+      },
+      {
+        "property_type": "Room in aparthotel",
+        "room_type": "Hotel room",
+        "rows": 1
+      },
+      {
+        "property_type": "Room in aparthotel",
+        "room_type": "Private room",
+        "rows": 10
+      },
+      {
+        "property_type": "Room in boutique hotel",
+        "room_type": "Entire home/apt",
+        "rows": 5
+      },
+      {
+        "property_type": "Room in boutique hotel",
+        "room_type": "Hotel room",
+        "rows": 25
+      },
+      {
+        "property_type": "Room in boutique hotel",
+        "room_type": "Private room",
+        "rows": 19
+      },
+      {
+        "property_type": "Room in hotel",
+        "room_type": "Entire home/apt",
+        "rows": 5
+      },
+      {
+        "property_type": "Room in hotel",
+        "room_type": "Hotel room",
+        "rows": 204
+      },
+      {
+        "property_type": "Room in hotel",
+        "room_type": "Private room",
+        "rows": 1965
+      },
+      {
+        "property_type": "Room in resort",
+        "room_type": "Hotel room",
+        "rows": 3
+      },
+      {
+        "property_type": "Room in serviced apartment",
+        "room_type": "Hotel room",
+        "rows": 1
+      },
+      {
+        "property_type": "Shared room in bed and breakfast",
+        "room_type": "Shared room",
+        "rows": 3
+      },
+      {
+        "property_type": "Shared room in camper/rv",
+        "room_type": "Shared room",
+        "rows": 1
+      },
+      {
+        "property_type": "Shared room in home",
+        "room_type": "Shared room",
+        "rows": 37
+      },
+      {
+        "property_type": "Shared room in hostel",
+        "room_type": "Shared room",
+        "rows": 1
+      },
+      {
+        "property_type": "Shared room in hotel",
+        "room_type": "Shared room",
+        "rows": 3
+      },
+      {
+        "property_type": "Shared room in rental unit",
+        "room_type": "Shared room",
+        "rows": 4
+      },
+      {
+        "property_type": "Shared room in resort",
+        "room_type": "Shared room",
+        "rows": 1
+      },
+      {
+        "property_type": "Tent",
+        "room_type": "Entire home/apt",
+        "rows": 1
+      },
+      {
+        "property_type": "Tiny home",
+        "room_type": "Entire home/apt",
+        "rows": 54
+      },
+      {
+        "property_type": "Tower",
+        "room_type": "Entire home/apt",
+        "rows": 22
+      }
+    ],
+    "property_status": {
+      "known": 17184,
+      "unspecified": 28
+    },
+    "room_status": {
+      "known": 17212
+    },
+    "rows": 17212,
+    "stay_cohorts": {
+      "1_27_nights": 14069,
+      "28_plus_nights": 3027,
+      "unknown": 116
+    }
+  }
+}

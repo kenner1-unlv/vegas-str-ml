@@ -29,3 +29,7 @@ uv run --project pipeline pytest pipeline/tests -q
 On Linux/macOS use npx instead of npx.cmd. Documentation-only work needs link/content checks; UI changes also need browser verification appropriate to their behavior. CI still runs the full established gates.
 
 Data refreshes are explicit and separate from CI. Never publish raw datasets, host/reviewer data, secrets or model binaries. Preserve string listing IDs. Keep advertised prices, hypothetical revenue and validated observed outcomes distinct. Follow [methodology](docs/methodology.md) for planned ML evaluation and [deployment](docs/deployment.md) for production/recovery commands.
+
+## Substantial research changes
+
+Use the pinned [Spec Kit workflow](.specify/README.md) for data semantics, evaluation or architecture changes. Follow the [project constitution](.specify/memory/constitution.md) and active [spec/plan/tasks](specs/001-comparable-price-baseline/spec.md); implement only the authorized phase and keep later tasks unchecked. Small established-rule fixes retain focused issue/PR checks. Research outputs stay private; publish aggregate evidence after checking the allowlist.

@@ -23,3 +23,7 @@ Use baseline-first ML, fit preprocessing only on training data, group listing ID
 Production is the existing Direct Upload Cloudflare Pages project vegas-str-ml at https://str.housev.dev. .github/workflows/ci.yml deploys the verified web/build artifact on main pushes after web and pipeline checks, using CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID. Pull requests do not deploy; CI never ingests full datasets. Root wrangler.jsonc belongs to the separate legacy Git-connected Worker and is retained to preserve it; bare wrangler deploy does not update production Pages. Follow docs/deployment.md for activation, manual recovery and ownership. Preserve the working Worker, Route 53 nameservers, ops.housev.dev and unrelated resources; no paid resources.
 
 Use issue checkbox criteria and focused PRs for new changes; link evidence before checking criteria or closing issues. PR publication, merge approval and production success are distinct. See CONTRIBUTING.md.
+
+# Research development
+
+Use the pinned Spec Kit workflow in .specify/README.md and .specify/memory/constitution.md for substantial research semantics/evaluation changes. Active milestone specs/001-comparable-price-baseline/ defines phased requirements and checkbox tasks. Private normalization in scripts/normalize_research.py does not expand public fields, fit encoders or train a model. Keep source values and explicit unknowns; review aggregate audit evidence before advancing phases.
