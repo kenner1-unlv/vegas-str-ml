@@ -79,8 +79,25 @@ Raw bathroom/amenity evidence is retained for a separately reviewed future trans
 
 ## Keep the next stages explicit
 
-**Decision**: Comps use geography and characteristics, with no default price band. Start with medians before a training-only categorical/regularized baseline. Phase 1 contains no fitting.
+**Decision**: Comps use geography and characteristics, with no default price band. Start with medians before a training-only categorical/regularized baseline. Neither normalization nor the Phase 2 comp selector fits a model.
 
 **Rationale**: Filtering +/-15% of target price first hides candidate discrepancies. ZCTA one-hot supports known areas but cannot learn an unseen area's effect; geographic holdouts must reveal that limitation.
 
 **Alternatives considered**: Random split alone risks geographic/repeated-ID leakage. Buying-value/occupancy targets do not exist in this dataset. Full MLS/scenario-management product remains outside scope.
+
+## How comparable membership is treated (Phase 2, October 10)
+
+[Contract](contracts/comps.md), [selector](../../scripts/select_comps.py) and [aggregate audit](phase2-audit.json) provide the implementation trail. Geography/group/room/stay are exact matches; bedrooms use inclusive +/-1 by default, optional capacity tolerance is explicit. Asking price never filters membership. Subject is excluded. Unknown characteristics and the heterogeneous other group are unsupported; no area expansion. Exclusions count the first failed rule per row, so they reconcile but are not independent/overlapping reason counts.
+
+The 89146 four-bedroom house-like example uses Entire home/apt and 1-27 minimum nights, not the entire ZIP market. Changing one constraint at a time produces:
+
+| Constraint | Comps | Median asking USD/night | Near-edge comps |
+| --- | ---: | ---: | ---: |
+| Bedrooms +/-1 (default) | 99 | 384.00 | 23 |
+| Exact bedrooms | 46 | 371.90 | 12 |
+| Default bedrooms, exclude edges | 76 | 416.85 | 0 |
+| Default bedrooms, capacity +/-2 around example subject | 44 | 524.95 | 8 |
+
+These are descriptive medians for one deterministic example, not a prediction of that home's rent, a neighborhood valuation or earnings. The 89005 example has two default comps and its median is withheld. Capacity is advertised and not verified beds; the example's capacity/IDs are not published in the aggregate audit.
+
+Of 17,212 usable subjects, default support: 13,503 with at least 20 comps, 3,351 thin samples, 358 unsupported. With strict edge exclusion: 10,114 supported, 3,174 thin, 3,924 unsupported (including boundary-sensitive subjects). The audit computes grouped counts and fixtures check them against direct selector results. The threshold is a research support floor, not statistical confidence. This coverage shows why a model must report unsupported groups rather than promise prices everywhere.

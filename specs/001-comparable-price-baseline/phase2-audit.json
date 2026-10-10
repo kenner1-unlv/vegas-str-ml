@@ -1,0 +1,204 @@
+{
+  "audit_script_sha256": "2e79a2eba7d08e760113dc89d4373187457bd4dfb0a6973464ac475456944842",
+  "default_coverage": {
+    "exclude": {
+      "supported": 10114,
+      "thin_sample": 3174,
+      "unsupported_subject": 3924
+    },
+    "include": {
+      "supported": 13503,
+      "thin_sample": 3351,
+      "unsupported_subject": 358
+    }
+  },
+  "examples": [
+    {
+      "exclusions": {
+        "bedrooms_outside_tolerance": 65,
+        "different_property_group": 74,
+        "different_room_type": 89,
+        "different_stay_cohort": 25,
+        "different_zcta": 16501,
+        "outside_usable_cohort": 3439,
+        "subject": 1,
+        "unknown_geography": 1,
+        "unknown_stay_cohort": 116,
+        "unsupported_property_group": 241
+      },
+      "matched_count": 99,
+      "median_asking_price_usd": 384.0,
+      "near_boundary_count": 23,
+      "options": {},
+      "profile": "89146_four_bedroom_house",
+      "support": "supported"
+    },
+    {
+      "exclusions": {
+        "bedrooms_outside_tolerance": 118,
+        "different_property_group": 74,
+        "different_room_type": 89,
+        "different_stay_cohort": 25,
+        "different_zcta": 16501,
+        "outside_usable_cohort": 3439,
+        "subject": 1,
+        "unknown_geography": 1,
+        "unknown_stay_cohort": 116,
+        "unsupported_property_group": 241
+      },
+      "matched_count": 46,
+      "median_asking_price_usd": 371.9,
+      "near_boundary_count": 12,
+      "options": {
+        "bedroom_tolerance": 0
+      },
+      "profile": "89146_four_bedroom_house",
+      "support": "supported"
+    },
+    {
+      "exclusions": {
+        "bedrooms_outside_tolerance": 65,
+        "different_property_group": 74,
+        "different_room_type": 89,
+        "different_stay_cohort": 25,
+        "different_zcta": 16501,
+        "near_boundary": 23,
+        "outside_usable_cohort": 3439,
+        "subject": 1,
+        "unknown_geography": 1,
+        "unknown_stay_cohort": 116,
+        "unsupported_property_group": 241
+      },
+      "matched_count": 76,
+      "median_asking_price_usd": 416.85,
+      "near_boundary_count": 0,
+      "options": {
+        "edge_policy": "exclude"
+      },
+      "profile": "89146_four_bedroom_house",
+      "support": "supported"
+    },
+    {
+      "exclusions": {
+        "bedrooms_outside_tolerance": 65,
+        "capacity_outside_tolerance": 55,
+        "different_property_group": 74,
+        "different_room_type": 89,
+        "different_stay_cohort": 25,
+        "different_zcta": 16501,
+        "outside_usable_cohort": 3439,
+        "subject": 1,
+        "unknown_geography": 1,
+        "unknown_stay_cohort": 116,
+        "unsupported_property_group": 241
+      },
+      "matched_count": 44,
+      "median_asking_price_usd": 524.95,
+      "near_boundary_count": 8,
+      "options": {
+        "capacity_tolerance": 2
+      },
+      "profile": "89146_four_bedroom_house",
+      "support": "supported"
+    },
+    {
+      "exclusions": {
+        "bedrooms_outside_tolerance": 1,
+        "different_property_group": 7,
+        "different_room_type": 1,
+        "different_stay_cohort": 2,
+        "different_zcta": 16840,
+        "outside_usable_cohort": 3439,
+        "subject": 1,
+        "unknown_geography": 1,
+        "unknown_stay_cohort": 116,
+        "unsupported_property_group": 241
+      },
+      "matched_count": 2,
+      "median_asking_price_usd": null,
+      "near_boundary_count": 0,
+      "options": {},
+      "profile": "89005_small_house_sample",
+      "support": "thin_sample"
+    },
+    {
+      "exclusions": {
+        "bedrooms_outside_tolerance": 3,
+        "different_property_group": 7,
+        "different_room_type": 1,
+        "different_stay_cohort": 2,
+        "different_zcta": 16840,
+        "outside_usable_cohort": 3439,
+        "subject": 1,
+        "unknown_geography": 1,
+        "unknown_stay_cohort": 116,
+        "unsupported_property_group": 241
+      },
+      "matched_count": 0,
+      "median_asking_price_usd": null,
+      "near_boundary_count": 0,
+      "options": {
+        "bedroom_tolerance": 0
+      },
+      "profile": "89005_small_house_sample",
+      "support": "thin_sample"
+    },
+    {
+      "exclusions": {
+        "bedrooms_outside_tolerance": 1,
+        "different_property_group": 7,
+        "different_room_type": 1,
+        "different_stay_cohort": 2,
+        "different_zcta": 16840,
+        "outside_usable_cohort": 3439,
+        "subject": 1,
+        "unknown_geography": 1,
+        "unknown_stay_cohort": 116,
+        "unsupported_property_group": 241
+      },
+      "matched_count": 2,
+      "median_asking_price_usd": null,
+      "near_boundary_count": 0,
+      "options": {
+        "edge_policy": "exclude"
+      },
+      "profile": "89005_small_house_sample",
+      "support": "thin_sample"
+    },
+    {
+      "exclusions": {
+        "bedrooms_outside_tolerance": 1,
+        "capacity_outside_tolerance": 1,
+        "different_property_group": 7,
+        "different_room_type": 1,
+        "different_stay_cohort": 2,
+        "different_zcta": 16840,
+        "outside_usable_cohort": 3439,
+        "subject": 1,
+        "unknown_geography": 1,
+        "unknown_stay_cohort": 116,
+        "unsupported_property_group": 241
+      },
+      "matched_count": 1,
+      "median_asking_price_usd": null,
+      "near_boundary_count": 0,
+      "options": {
+        "capacity_tolerance": 2
+      },
+      "profile": "89005_small_house_sample",
+      "support": "thin_sample"
+    }
+  ],
+  "limitations": [
+    "Counts are actual snapshot descriptive support, not model quality or confidence.",
+    "No IDs, subject prices, individual research rows, or capacity values published.",
+    "Examples choose first lexicographic ID meeting the documented profile; not representative valuation.",
+    "Capacity tolerance is centered on the selected example's advertised capacity."
+  ],
+  "normalization_sha256": "6416d13dcfd07660b905dfffc5c7d3a7c45e37a379119b06eb3be10521d0f163",
+  "rules_version": "1.0.0",
+  "selector_sha256": "6c5c8450bfd855acc48b3c629cd984abbc862f7505c89bc35a8b17fb48ea753b",
+  "snapshot_date": "2026-09-20",
+  "source_rows": 20651,
+  "usable_rows": 17212
+}

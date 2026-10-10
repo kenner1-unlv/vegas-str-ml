@@ -97,3 +97,7 @@ PR #10 automated review identified a partial-manifest success path in the comple
 ## October 9 private research normalization
 
 Fresh [Phase 1 verification](../specs/001-comparable-price-baseline/verification.md) records Spec Kit setup, 69 fixture tests, all-source/usable reconciliation, deterministic private output and unchanged public artifacts. Comparable selection/model evaluation remain open; this section adds no new browser or model claims.
+
+## October 10 offline comparable selector
+
+[Phase 2 verification](../specs/001-comparable-price-baseline/verification.md#phase-2-fresh-verification-2026-10-10) records fixture/actual-snapshot membership, thresholds, provenance checks and aggregate support evidence. No model or new public UI is claimed; delivery history is linked through issue #13 and its PR.
