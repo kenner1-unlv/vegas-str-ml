@@ -15,6 +15,7 @@ Snapshot **2026-09-20**; **20,651 source rows**, 90 detailed-listing columns. Ge
 | Stay/booking rules | Minimum/maximum nights and forward restrictions, instant booking | Current stay cohort uses minimum nights; additional predictors deferred |
 | Availability | 30/60/90/365-day and end-of-year availability | Candidate only; unavailable does not mean booked |
 | Review timing | First and last review dates | Candidate recency/establishment measures; not yet encoded |
+| Host operational attributes | Superhost flag, response/acceptance rates, listing counts | Source fields exist but current research allowlist omits them; a separate private-use decision is required. Host values cannot be published. |
 | Lot size, living area, condition, renovation cost | Not provided as structured fields in this source | Property-source/owner-assumption work remains separate |
 
 The owner chose **review features first**. Candidate means available for consideration, not developer approval or an implemented predictor. Use the [custom feature command](../specs/002-review-features/quickstart.md) to choose review inputs explicitly. Scores characterize existing comps, not guaranteed results from renovation. Review-count weighting and review-based comp filters are not implemented here; counts are ordinary selectable model inputs.
@@ -36,10 +37,10 @@ The owner chose **review features first**. Candidate means available for conside
 | `bathrooms_text` | 20,503 | 148 | candidate | Physical/amenity feature; parsing and shared/private semantics require owner review. |
 | `bedrooms` | 20,639 | 12 | current | Existing model input, directly or through property/stay grouping. |
 | `beds` | 20,135 | 516 | current | Existing model input, directly or through property/stay grouping. |
-| `calculated_host_listings_count` | 20,651 | 0 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `calculated_host_listings_count_entire_homes` | 20,651 | 0 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `calculated_host_listings_count_private_rooms` | 20,651 | 0 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `calculated_host_listings_count_shared_rooms` | 20,651 | 0 | restricted | Host data excluded from research predictors and public records under current policy. |
+| `calculated_host_listings_count` | 20,651 | 0 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `calculated_host_listings_count_entire_homes` | 20,651 | 0 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `calculated_host_listings_count_private_rooms` | 20,651 | 0 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `calculated_host_listings_count_shared_rooms` | 20,651 | 0 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
 | `calendar_last_scraped` | 20,651 | 0 | provenance | Identifier/link/scrape metadata; not a predictor. |
 | `calendar_updated` | 0 | 20,651 | provenance | Identifier/link/scrape metadata; not a predictor. |
 | `description` | 20,598 | 53 | restricted | Text/images excluded from this experiment; may expose personal or identifying details. |
@@ -47,30 +48,30 @@ The owner chose **review features first**. Candidate means available for conside
 | `estimated_revenue_l365d` | 17,456 | 3,195 | source_estimate | Provider estimate, not observed bookings/revenue; excluded from model inputs. |
 | `first_review` | 14,560 | 6,091 | candidate | Review dates could support age/recency features; not occupancy labels. |
 | `has_availability` | 20,538 | 113 | candidate | Calendar availability, not confirmed bookings; future research only. |
-| `host_about` | 11,598 | 9,053 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `host_acceptance_rate` | 0 | 20,651 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `host_has_profile_pic` | 20,651 | 0 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `host_id` | 20,651 | 0 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `host_identity_verified` | 20,651 | 0 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `host_is_superhost` | 20,651 | 0 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `host_listings_count` | 20,651 | 0 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `host_location` | 14,769 | 5,882 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `host_name` | 20,651 | 0 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `host_neighbourhood` | 0 | 20,651 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `host_picture_url` | 20,651 | 0 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `host_profile_id` | 20,651 | 0 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `host_profile_url` | 20,651 | 0 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `host_response_rate` | 0 | 20,651 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `host_response_time` | 0 | 20,651 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `host_since` | 0 | 20,651 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `host_thumbnail_url` | 0 | 20,651 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `host_total_listings_count` | 0 | 20,651 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `host_url` | 20,651 | 0 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `host_verifications` | 20,651 | 0 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `hosts_time_as_host_months` | 20,651 | 0 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `hosts_time_as_host_years` | 20,651 | 0 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `hosts_time_as_user_months` | 20,651 | 0 | restricted | Host data excluded from research predictors and public records under current policy. |
-| `hosts_time_as_user_years` | 20,651 | 0 | restricted | Host data excluded from research predictors and public records under current policy. |
+| `host_about` | 11,598 | 9,053 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `host_acceptance_rate` | 0 | 20,651 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `host_has_profile_pic` | 20,651 | 0 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `host_id` | 20,651 | 0 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `host_identity_verified` | 20,651 | 0 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `host_is_superhost` | 20,651 | 0 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `host_listings_count` | 20,651 | 0 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `host_location` | 14,769 | 5,882 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `host_name` | 20,651 | 0 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `host_neighbourhood` | 0 | 20,651 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `host_picture_url` | 20,651 | 0 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `host_profile_id` | 20,651 | 0 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `host_profile_url` | 20,651 | 0 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `host_response_rate` | 0 | 20,651 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `host_response_time` | 0 | 20,651 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `host_since` | 0 | 20,651 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `host_thumbnail_url` | 0 | 20,651 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `host_total_listings_count` | 0 | 20,651 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `host_url` | 20,651 | 0 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `host_verifications` | 20,651 | 0 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `hosts_time_as_host_months` | 20,651 | 0 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `hosts_time_as_host_years` | 20,651 | 0 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `hosts_time_as_user_months` | 20,651 | 0 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
+| `hosts_time_as_user_years` | 20,651 | 0 | restricted | Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required. |
 | `id` | 20,651 | 0 | provenance | Identifier/link/scrape metadata; not a predictor. |
 | `instant_bookable` | 0 | 20,651 | candidate | Booking setting; future feature choice. |
 | `last_review` | 14,560 | 6,091 | candidate | Review dates could support age/recency features; not occupancy labels. |

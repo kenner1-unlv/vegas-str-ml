@@ -2,7 +2,7 @@
 
 ## Protocol and actual data evidence
 
-Issue [#22](https://github.com/kenner1-unlv/vegas-str-ml/issues/22); protocol frozen before actual fitting in commit d19e835. Specification-quality checklist: 12/12 pass; no hooks configured. Spec Kit setup-plan/setup-tasks/check-prerequisites ran with explicit 002-review-features directory. Owner selected reviews first; other candidates remain deferred.
+Delivery trail: [PR #23](https://github.com/kenner1-unlv/vegas-str-ml/pull/23) contains implementation, hosted verification and merge/main evidence. Issue [#22](https://github.com/kenner1-unlv/vegas-str-ml/issues/22); protocol frozen before actual fitting in commit d19e835. Specification-quality checklist: 12/12 pass; no hooks configured. Spec Kit setup-plan/setup-tasks/check-prerequisites ran with explicit 002-review-features directory. Owner selected reviews first; other candidates remain deferred.
 
 Pinned local detailed source: 20,651 rows, 90 columns. Exact string-ID join covers all original normalized source rows. [Catalog](../../docs/features.md) and [aggregate report](development-results.json) expose field names/coverage only. No host/reviewer values or raw rows published. Review scores have explicit 1–5 validation; one communication value 5.05 is invalid (raw retained privately), not capped. All four review counts are valid in the 10,366-row development pool.
 

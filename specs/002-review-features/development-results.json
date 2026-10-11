@@ -1048,25 +1048,25 @@
         "role": "current"
       },
       "calculated_host_listings_count": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 0,
         "present": 20651,
         "role": "restricted"
       },
       "calculated_host_listings_count_entire_homes": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 0,
         "present": 20651,
         "role": "restricted"
       },
       "calculated_host_listings_count_private_rooms": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 0,
         "present": 20651,
         "role": "restricted"
       },
       "calculated_host_listings_count_shared_rooms": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 0,
         "present": 20651,
         "role": "restricted"
@@ -1114,145 +1114,145 @@
         "role": "candidate"
       },
       "host_about": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 9053,
         "present": 11598,
         "role": "restricted"
       },
       "host_acceptance_rate": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 20651,
         "present": 0,
         "role": "restricted"
       },
       "host_has_profile_pic": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 0,
         "present": 20651,
         "role": "restricted"
       },
       "host_id": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 0,
         "present": 20651,
         "role": "restricted"
       },
       "host_identity_verified": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 0,
         "present": 20651,
         "role": "restricted"
       },
       "host_is_superhost": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 0,
         "present": 20651,
         "role": "restricted"
       },
       "host_listings_count": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 0,
         "present": 20651,
         "role": "restricted"
       },
       "host_location": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 5882,
         "present": 14769,
         "role": "restricted"
       },
       "host_name": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 0,
         "present": 20651,
         "role": "restricted"
       },
       "host_neighbourhood": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 20651,
         "present": 0,
         "role": "restricted"
       },
       "host_picture_url": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 0,
         "present": 20651,
         "role": "restricted"
       },
       "host_profile_id": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 0,
         "present": 20651,
         "role": "restricted"
       },
       "host_profile_url": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 0,
         "present": 20651,
         "role": "restricted"
       },
       "host_response_rate": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 20651,
         "present": 0,
         "role": "restricted"
       },
       "host_response_time": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 20651,
         "present": 0,
         "role": "restricted"
       },
       "host_since": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 20651,
         "present": 0,
         "role": "restricted"
       },
       "host_thumbnail_url": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 20651,
         "present": 0,
         "role": "restricted"
       },
       "host_total_listings_count": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 20651,
         "present": 0,
         "role": "restricted"
       },
       "host_url": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 0,
         "present": 20651,
         "role": "restricted"
       },
       "host_verifications": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 0,
         "present": 20651,
         "role": "restricted"
       },
       "hosts_time_as_host_months": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 0,
         "present": 20651,
         "role": "restricted"
       },
       "hosts_time_as_host_years": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 0,
         "present": 20651,
         "role": "restricted"
       },
       "hosts_time_as_user_months": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 0,
         "present": 20651,
         "role": "restricted"
       },
       "hosts_time_as_user_years": {
-        "interpretation": "Host data excluded from research predictors and public records under current policy.",
+        "interpretation": "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         "missing": 0,
         "present": 20651,
         "role": "restricted"
@@ -2224,7 +2224,7 @@
       "pipeline/evaluate.py": "458ae271a299f1b8f2d9c008ab16d4bbea703bcc2cdf8dd6f981f6debcf94842",
       "pipeline/review_experiment.py": "16490784ffdc9e53d914de3ebb33c93e2e244cfa644eff71baf10d98c04e642f",
       "pipeline/uv.lock": "71b4ace89c3823107a349c5d51392fb9c3f7ee8a09fc68f5d803b530781a526a",
-      "scripts/review_features.py": "4ef5da7df20799eabdc4b59a29eeb2d87ff8ad31eda40d6ba9902e25c52dc7ad",
+      "scripts/review_features.py": "ac064204ae5c4695055add46753c6eb65ecc760fbc8c8a161ec265fc3052fa5d",
       "specs/002-review-features/contracts/experiment.md": "b9179880377d1f7fc0d38a964f0780fda5c3c49676e5a0789279663ccc4b9b09"
     },
     "normalized_sha256": "6416d13dcfd07660b905dfffc5c7d3a7c45e37a379119b06eb3be10521d0f163",

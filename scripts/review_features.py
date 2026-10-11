@@ -78,7 +78,7 @@ def field_role(field):
     if field.startswith(("host_", "hosts_", "calculated_host_")):
         return (
             "restricted",
-            "Host data excluded from research predictors and public records under current policy.",
+            "Not retained by the current research allowlist; host values cannot be published. Separate private-use decision required.",
         )
     if field in {"estimated_occupancy_l365d", "estimated_revenue_l365d"}:
         return (
@@ -223,6 +223,7 @@ Snapshot **{snapshot}**; **{catalog["source_rows"]:,} source rows**, {len(catalo
 | Stay/booking rules | Minimum/maximum nights and forward restrictions, instant booking | Current stay cohort uses minimum nights; additional predictors deferred |
 | Availability | 30/60/90/365-day and end-of-year availability | Candidate only; unavailable does not mean booked |
 | Review timing | First and last review dates | Candidate recency/establishment measures; not yet encoded |
+| Host operational attributes | Superhost flag, response/acceptance rates, listing counts | Source fields exist but current research allowlist omits them; a separate private-use decision is required. Host values cannot be published. |
 | Lot size, living area, condition, renovation cost | Not provided as structured fields in this source | Property-source/owner-assumption work remains separate |
 
 The owner chose **review features first**. Candidate means available for consideration, not developer approval or an implemented predictor. Use the [custom feature command](../specs/002-review-features/quickstart.md) to choose review inputs explicitly. Scores characterize existing comps, not guaranteed results from renovation. Review-count weighting and review-based comp filters are not implemented here; counts are ordinary selectable model inputs.
