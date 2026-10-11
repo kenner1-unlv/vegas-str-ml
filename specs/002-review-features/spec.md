@@ -2,7 +2,7 @@
 
 **Feature Branch**: `research-review-features`
 **Created**: 2026-10-10
-**Status**: Specified
+**Status**: Implemented; development evidence only, public predictions withheld. Delivery evidence is recorded in verification.md.
 **Input**: Add review scores to the model and expose the available features so the owner determines what is useful. The purpose is neighborhood pricing support from established comparable rentals, assuming purchase and improvements separately.
 
 ## User Scenarios & Testing

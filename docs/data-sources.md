@@ -107,6 +107,8 @@ An Airbnb listing is not evidence of a valid license. Legal jurisdiction is not 
 
 ## Private comparable-data normalization
 
+The separate [review enrichment and full feature catalog](features.md) preserve this normalization contract and original results. scripts/review_features.py verifies detailed-source bytes and exact string-ID coverage, privately parses seven scores/four counts/reviews-per-month with explicit statuses, and exports only aggregate metadata. [Experiment commands](../specs/002-review-features/quickstart.md) select review subsets for development-only comparisons. No review text, reviewer/host values, new public listing fields or occupancy labels are added.
+
 The [Phase 1 contract](../specs/001-comparable-price-baseline/data-model.md) and [reproduction guide](../specs/001-comparable-price-baseline/quickstart.md) define scripts/normalize_research.py. It rechecks all seven archive hashes, verifies the existing usable cohort/geographic join, preserves allowlisted source strings and creates ignored normalized.json with typed characteristics and audit. Only [aggregate evidence](../specs/001-comparable-price-baseline/phase1-audit.json) is published. It adds no public capacity/property/stay fields and trains no model.
 
 ## Address-level property sources: access investigation (October 10, 2026)

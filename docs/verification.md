@@ -96,6 +96,8 @@ PR #10 automated review identified a partial-manifest success path in the comple
 
 ## October 9 private research normalization
 
+Later review-feature checks and measured development comparisons are recorded separately in [002 verification](../specs/002-review-features/verification.md); they preserve original normalization and final evaluation. No public UI interaction checks were repeated for that private research increment.
+
 Fresh [Phase 1 verification](../specs/001-comparable-price-baseline/verification.md) records Spec Kit setup, 69 fixture tests, all-source/usable reconciliation, deterministic private output and unchanged public artifacts. Comparable selection/model evaluation remain open; this section adds no new browser or model claims.
 
 ## October 10 offline comparable selector

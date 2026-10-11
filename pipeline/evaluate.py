@@ -144,10 +144,10 @@ def split(rows):
     return train, held, audit
 
 
-def features(rows):
+def features(rows, numeric=NUMERIC):
     return np.array(
         [
-            [np.nan if r.get(f) is None else r[f] for f in NUMERIC]
+            [np.nan if r.get(f) is None else r[f] for f in numeric]
             + [r[f] for f in CATEGORICAL[:-1]]
             + [r["geography"]["zcta"]]
             for r in rows
@@ -156,7 +156,8 @@ def features(rows):
     )
 
 
-def make_model(alpha):
+def make_model(alpha, numeric=NUMERIC):
+    numeric_features = tuple(numeric)
     numeric = Pipeline(
         [
             (
@@ -168,11 +169,11 @@ def make_model(alpha):
     )
     transform = ColumnTransformer(
         [
-            ("numeric", numeric, list(range(3))),
+            ("numeric", numeric, list(range(len(numeric_features)))),
             (
                 "category",
                 OneHotEncoder(handle_unknown="ignore", sparse_output=False),
-                list(range(3, 7)),
+                list(range(len(numeric_features), len(numeric_features) + len(CATEGORICAL))),
             ),
         ]
     )

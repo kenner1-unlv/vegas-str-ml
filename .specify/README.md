@@ -13,3 +13,5 @@ Do not rerun --force as a routine workflow: review scaffold changes and preserve
 Constitution -> $speckit-specify -> $speckit-plan -> $speckit-tasks -> scoped $speckit-implement -> verification. Skills are instructions, not shell commands. Active milestone: [comparable listings](../specs/001-comparable-price-baseline/spec.md). No extensions/hooks were configured during initial setup. Future skill refreshes should pin/version-review the toolkit.
 
 The machine-local feature.json pointer is ignored by the toolkit. For a fresh checkout, set `$env:SPECIFY_FEATURE_DIRECTORY = "specs/001-comparable-price-baseline"` before prerequisite/planning scripts; task and feature paths are not inferred solely from branch names. Keep auth/session files out of version control; only generated .agents/skills/speckit-* instructions are tracked.
+
+Review features and the owner-visible source menu use [002-review-features](../specs/002-review-features/spec.md). Set `$env:SPECIFY_FEATURE_DIRECTORY = "specs/002-review-features"` for this increment. The original milestone remains historical baseline evidence, not a contract to overwrite.
