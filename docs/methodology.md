@@ -18,7 +18,7 @@ Every summary and map cluster uses the same filtered sample. Median advertised p
 
 **Potentially undervalued investment:** requires acquisition costs and explicit occupancy, fee, expense, tax, financing and regulatory assumptions. Airbnb asking prices alone cannot establish this. Hypothetical revenue must be labeled modeled/scenario revenue, never observed revenue. Unavailable nights include blocked and unavailable dates, not confirmed bookings; never calculate actual occupancy as 365 minus availability.
 
-## Planned ML protocol â€” not implemented
+## Planned ML protocol — not implemented
 
 1. Predict advertised USD nightly rate for comparable listings. Begin with a global training median and room-type medians; report how unknown groups fall back.
 2. Freeze feature allowlist and target definition. Exclude price-derived measures, prediction-time-unavailable fields and identifiers. Fit imputers, encoders and transforms inside a training-only pipeline. For ZCTA categories, fit one-hot vocabulary on training folds only and handle unseen/held-out ZCTAs explicitly (for example an unknown-category fallback); report that unseen areas receive no learned area-specific effect. IDs/codes are categories, not ordinal numbers. Geography holdouts and boundary buffers remain required. This encoding is implemented offline in Phase 3; held-out areas receive no learned area-specific coefficient. Include room/property characteristics and coarse geography where justified; do not imply exact parcel location.

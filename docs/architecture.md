@@ -2,7 +2,7 @@
 
 Offline processing feeds a static public client:
 
-Inside Airbnb â†’ ignored data/raw/{snapshot} + SHA-256 manifest â†’ validated allowlisted artifacts in web/static/data/{snapshot} â†’ index.json â†’ SvelteKit static build â†’ Cloudflare Pages at str.housev.dev â†’ browser filters and MapLibre clusters.
+Inside Airbnb → ignored data/raw/{snapshot} + SHA-256 manifest → validated allowlisted artifacts in web/static/data/{snapshot} → index.json → SvelteKit static build → Cloudflare Pages at str.housev.dev → browser filters and MapLibre clusters.
 
 The uv-managed Python pipeline streams gzip CSV records, validates essential columns and polygon geometry with Shapely, and publishes small JSON files. Outputs contain schema_version=1 and a snapshot date. All IDs are strings. Inputs stay outside Git; lockfiles are included. --all downloads the seven supplied files for private research; scripts/audit_sources.py produces an ignored allowlisted candidate-feature table and coverage report. Calendar/review data never establish confirmed bookings.
 

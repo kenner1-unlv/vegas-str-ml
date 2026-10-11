@@ -17,14 +17,14 @@ No accounts, database, persistent Python server, paid infrastructure, listing sc
 
 The original repository README (initial commit 4401c16) requested a "Short Term rental interactive map for Las Vegas". The current static explorer implements that map, filters, clustering, listing selection and neighborhood sample comparisons using the validated Clark County snapshot. This checkout contains no separate original requirements specification or task checklist beyond this roadmap; broader milestones must remain distinct from the original map request.
 
-Operational follow-up: [issue #4](https://github.com/kenner1-unlv/vegas-str-ml/issues/4) tracks Pages dashboard status and pausing the separate Worker Git build trigger without deleting the Worker. Product milestones 2â€“6 above remain future work; no acquisition data, models, occupancy/revenue conclusions, investment rankings or legal eligibility are implemented.
+Operational follow-up: [issue #4](https://github.com/kenner1-unlv/vegas-str-ml/issues/4) tracks Pages dashboard status and pausing the separate Worker Git build trigger without deleting the Worker. Product milestones 2–6 above remain future work; no acquisition data, models, occupancy/revenue conclusions, investment rankings or legal eligibility are implemented.
 
 ## Issue roadmap
 
 - Completed retrospective records: [#1 explorer foundation](https://github.com/kenner1-unlv/vegas-str-ml/issues/1), [#2 Pages delivery](https://github.com/kenner1-unlv/vegas-str-ml/issues/2).
 - [#3 portfolio navigation](https://github.com/kenner1-unlv/vegas-str-ml/issues/3) links [PR #7](https://github.com/kenner1-unlv/vegas-str-ml/pull/7) and its implementation, validation and merge history.
-- Open: [#4 hosting follow-up](https://github.com/kenner1-unlv/vegas-str-ml/issues/4), [#5 housing-cost evidence](https://github.com/kenner1-unlv/vegas-str-ml/issues/5), [#6 advertised-price baselines](https://github.com/kenner1-unlv/vegas-str-ml/issues/6).
-- Later milestones 4â€“6 remain roadmap proposals rather than scheduled or completed implementations.
+- Open: [#4 hosting follow-up](https://github.com/kenner1-unlv/vegas-str-ml/issues/4), [#5 housing-cost evidence](https://github.com/kenner1-unlv/vegas-str-ml/issues/5), [#6 advertised-price evaluation](https://github.com/kenner1-unlv/vegas-str-ml/issues/6) links implemented research in [PR #18](https://github.com/kenner1-unlv/vegas-str-ml/pull/18).
+- Later milestones 4–6 remain roadmap proposals rather than scheduled or completed implementations.
 
 ## Research layers before ML
 

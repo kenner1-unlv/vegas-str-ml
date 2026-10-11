@@ -1,6 +1,6 @@
 # Las Vegas STR Explorer
 
-[**Try the live demo â†’ str.housev.dev**](https://str.housev.dev) Â· [Development issues](https://github.com/kenner1-unlv/vegas-str-ml/issues?q=is%3Aissue) Â· [Pull requests](https://github.com/kenner1-unlv/vegas-str-ml/pulls) Â· [CI and deployments](https://github.com/kenner1-unlv/vegas-str-ml/actions)
+[**Try the live demo → str.housev.dev**](https://str.housev.dev) · [Development issues](https://github.com/kenner1-unlv/vegas-str-ml/issues?q=is%3Aissue) · [Pull requests](https://github.com/kenner1-unlv/vegas-str-ml/pulls) · [CI and deployments](https://github.com/kenner1-unlv/vegas-str-ml/actions)
 
 A public map for exploring advertised Airbnb nightly prices across the Las Vegas Valley. The engineering focus is a reproducible data pipeline, an interactive geographic client, honest data limitations and verified static delivery. The repository name includes ML; the current release is a descriptive explorer, with an offline evaluated price model documented separately from the demo.
 
@@ -30,9 +30,9 @@ Asking prices are not realized revenue. Unavailable calendar nights are not conf
 | Housing costs | [Issue #5](https://github.com/kenner1-unlv/vegas-str-ml/issues/5) | Future: licensing, geographic coverage and benchmark validation |
 | Comparable-data foundation | [Milestone #11](https://github.com/kenner1-unlv/vegas-str-ml/issues/11), [Phase 1 #12](https://github.com/kenner1-unlv/vegas-str-ml/issues/12), [spec and tasks](specs/001-comparable-price-baseline/spec.md) | Private normalization and aggregate evidence in [PR #14](https://github.com/kenner1-unlv/vegas-str-ml/pull/14); comps and offline evaluation are implemented in their linked stages |
 | Geographic comp research | [Issue #13](https://github.com/kenner1-unlv/vegas-str-ml/issues/13), [matching contract](specs/001-comparable-price-baseline/contracts/comps.md), [actual aggregate evidence](specs/001-comparable-price-baseline/phase2-audit.json) | Offline private matching and support evidence in [PR #15](https://github.com/kenner1-unlv/vegas-str-ml/pull/15); no public comp UI |
-| Advertised-price ML | [Issue #6](https://github.com/kenner1-unlv/vegas-str-ml/issues/6) | Future: baseline-first, grouped geographic evaluation |
+| Advertised-price evaluation | [Issue #6](https://github.com/kenner1-unlv/vegas-str-ml/issues/6), [model card](docs/model-card.md) | Offline baselines and candidate evaluation in [PR #18](https://github.com/kenner1-unlv/vegas-str-ml/pull/18); public predictions withheld |
 
-The foundation and deployment were originally committed directly to main. Issues #1 and #2 document that work retrospectively; they do not imply earlier issue planning or PR reviews. New changes follow the [issue â†’ branch â†’ PR â†’ CI â†’ merge â†’ deployment procedure](CONTRIBUTING.md).
+The foundation and deployment were originally committed directly to main. Issues #1 and #2 document that work retrospectively; they do not imply earlier issue planning or PR reviews. New changes follow the [issue → branch → PR → CI → merge → deployment procedure](CONTRIBUTING.md).
 
 ## Engineering walkthrough
 
