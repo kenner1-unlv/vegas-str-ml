@@ -3,13 +3,13 @@
 **Branch**: `001-comparable-price-baseline` | **Date**: 2026-10-09 | **Spec**: [spec.md](spec.md)
 
 ## Summary
-Normalize pinned private source data before choosing comps or training. Phases 1 and 2 deliver private normalization and offline comparable research; Phase 3 training remains separate. [Milestone #11](https://github.com/kenner1-unlv/vegas-str-ml/issues/11), [Phase 1 #12](https://github.com/kenner1-unlv/vegas-str-ml/issues/12), [Phase 2 #13](https://github.com/kenner1-unlv/vegas-str-ml/issues/13), [Phase 3 #6](https://github.com/kenner1-unlv/vegas-str-ml/issues/6).
+Normalize pinned private source data before choosing comps or training. Phases 1 and 2 deliver private normalization and offline comparable research; Phase 3 training/evaluation is implemented offline; public predictions withheld. [Milestone #11](https://github.com/kenner1-unlv/vegas-str-ml/issues/11), [Phase 1 #12](https://github.com/kenner1-unlv/vegas-str-ml/issues/12), [Phase 2 #13](https://github.com/kenner1-unlv/vegas-str-ml/issues/13), [Phase 3 #6](https://github.com/kenner1-unlv/vegas-str-ml/issues/6).
 
 ## Technical Context
 
 **Language/Version**: Python 3.12+; CI Python 3.14. Existing TypeScript/Svelte client is unchanged.
 
-**Primary Dependencies**: Standard library plus existing Shapely; pytest/Ruff. Phase 3 will add a pinned scikit-learn dependency through the existing lockfile, not during normalization.
+**Primary Dependencies**: Standard library plus existing Shapely; pytest/Ruff. Phase 3 pins scikit-learn 1.9.1 through the existing lockfile.
 
 **Storage**: Ignored local raw archives and a single atomically replaced private normalized JSON artifact containing rows plus audit. Aggregate report can be published explicitly.
 
@@ -23,7 +23,7 @@ Normalize pinned private source data before choosing comps or training. Phases 1
 
 **Constraints**: No raw/research rows, host/reviewer data, model binaries or secrets published. No CI data downloads or live training. No coordinate correction/parcel joins. Public schema unchanged.
 
-**Scale/Scope**: One source snapshot, 20,651 source / 17,212 usable rows. Multiple snapshots, training encoders and model release are subsequent tasks.
+**Scale/Scope**: One source snapshot, 20,651 source / 17,212 usable rows. Training encoders are implemented; multiple-snapshot validation and public model release remain subsequent tasks.
 
 ## Constitution Check
 
@@ -54,8 +54,12 @@ data/research/<snapshot>/normalized.json  # ignored
 
 ## Complexity Tracking
 
-No constitution deviations. No new production infrastructure. One private file keeps row/audit publication consistent. Detailed split geometry and candidate release thresholds must be frozen in Phase 3 before training, and are explicitly open tasks, not completed decisions.
+No constitution deviations. No new production infrastructure. One private file keeps row/audit publication consistent. Split geometry and candidate release thresholds were frozen before fitting in contracts/evaluation.md; no outcome-driven retuning.
 
 ## Phase 2 implementation decision (2026-10-10)
 
 Branch phase2-geographic-comps implements [comps contract](contracts/comps.md). CLI revalidates the private normalized artifact by rebuilding from pinned local inputs in a temporary ignored directory and comparing parsed data, then selects explicit same-area/group/room/stay matches. Pure selection has no price-dependent membership or area expansion. Fixed support floor 20, optional edge exclusion and capacity tolerance remain explicit. Other/unknown property groups are unsupported rather than bundling unusual lodging as comps. No frontend, public schema or training changes.
+
+## Phase 3 implementation decision (2026-10-10)
+
+Use pipeline/evaluate.py for verified private normalized inputs, grouped whole-ZCTA hash splits with 1 km observed-point separation, train-only imputation/scaling/one-hot and log1p Ridge inner-fold tuning. Keep full manifest private; aggregate phase3-evaluation.json and docs/model-card.md publish measured outcomes, failed subgroup gate and withheld prediction release. Fixture CI performs synthetic fits only.

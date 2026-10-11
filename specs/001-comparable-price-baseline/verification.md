@@ -32,7 +32,7 @@ Automated review found that initial geography acceptance did not require pinned 
 
 ## Remaining work
 
-[#13](https://github.com/kenner1-unlv/vegas-str-ml/issues/13) records implemented private comparable membership/support rules. [#6](https://github.com/kenner1-unlv/vegas-str-ml/issues/6): freeze splits/features/release criteria, train baselines/candidate and report actual errors. Bathroom/amenity predictors need reviewed semantics. No ML results, temporal generalization, occupancy, acquisition valuation or public capacity fields are delivered. Separate hosting follow-up #4 and housing-cost research #5 remain open.
+[#13](https://github.com/kenner1-unlv/vegas-str-ml/issues/13) records implemented private comparable membership/support rules. [#6](https://github.com/kenner1-unlv/vegas-str-ml/issues/6) implements frozen splits/features/release criteria, training baselines/candidate and actual errors in Phase 3 below. Bathroom/amenity predictors need reviewed semantics. Phase 3 delivers offline ML results below; no temporal generalization, occupancy, acquisition valuation or public capacity fields are delivered. Separate hosting follow-up #4 and housing-cost research #5 remain open.
 
 ## Phase 2 fresh verification (2026-10-10)
 
@@ -44,3 +44,13 @@ Automated review found that initial geography acceptance did not require pinned 
 - Local locked sync/Ruff/tests, geographic/assets and Markdown checks passed. [PR #15](https://github.com/kenner1-unlv/vegas-str-ml/pull/15) records final-head and main delivery history. Implementation head ca72109 passed [PR Verify 38088211285](https://github.com/kenner1-unlv/vegas-str-ml/actions/runs/38088211285) and push run 38088208546 (web/pipeline). The separate legacy Worker build failed and remains #4; it is not the Pages delivery gate.
 
 Release scope: private research selector for the next evaluation milestone. Public comp UI/schema changes need a separate reviewed contract. n=20 is not confidence, ZCTA boundaries remain approximate, other/unknown categories remain unsupported, and no acquisition/occupancy/earnings claims are produced.
+
+## Phase 3 fresh verification (2026-10-10)
+
+Exact root/main b51be27 verified; phase3-price-evaluation branch preserves pre-existing .vscode/. Spec Kit implementation prerequisites passed, requirements checklist 8/8 passed, no extension hooks. Scope T018..024. Commit 609e030 freezes contract and fixture-tested evaluator before actual-data fitting; issue #6 records this pre-fit checkpoint. Initial tests failed ModuleNotFoundError before implementation. Pinned scikit-learn 1.9.1 and resolved lockfile support Python 3.12+ (CI Python 3.14).
+
+Local locked offline uv sync, Ruff check/format, **129 pytest cases**, geographic contract and asset checks passed. Sixteen Phase 3 cases cover target-independent/reproducible splits, repeated snapshot grouping, geographic drift, buffer/ID exclusions, train-only imputation/category vocabulary, inner partitions, known baseline/errors, missing numeric/studio distinctions, atomic writing and CLI failure preservation. CI fits synthetic examples only.
+
+Two actual evaluation CLI runs from pinned inputs produced identical private output bytes. [Aggregate evidence](phase3-evaluation.json) reconciles 20,651 inputs -> 13,288 research observations -> 10,366 training / 1,642 held out / 1,280 spatial-buffer exclusions. Nine final ZCTAs, zero ID overlap, measured minimum separation >1 km; each inner fold has separate buffers. Selected alpha 10 from development-only tuning. Candidate MAE 123.09 USD vs room-median 170.30 USD; hotel-room subgroup gate fails. [Model card](../../docs/model-card.md) reports all outcomes and withheld public prediction release. Private manifests/binaries/rows remain uncommitted, public artifacts unchanged. No fresh UI interaction claims.
+
+Requirements FR-009..012 and SC-005 implemented/checked. Remaining product work is explicit in #16 address/property lookup and #17 subgroup/temporal/interval validation, plus existing #4 hosting and #5 housing-cost evidence. Public predictions require a separate contract and release review. PR records final-head hosted validation and production delivery separately from this local evidence.

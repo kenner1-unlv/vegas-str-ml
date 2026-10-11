@@ -28,7 +28,7 @@ Firefox 156 managed by Playwright, production preview at http://127.0.0.1:4173/.
 - Maximum $1 displayed empty state; reset restored sample.
 - Henderson source filter yielded 784 listings. Room-type and bedroom filters checked against loaded source records.
 - Map rendered OpenFreeMap basemap, source boundaries, clusters and points. Clicking a cluster changed map extent/zoom; marker click populated listing 1411646708410770759 at $136 and preserved its ID exactly.
-- At 390×844 the page had no horizontal overflow. Controls and listing selection remained operable.
+- At 390Ã—844 the page had no horizontal overflow. Controls and listing selection remained operable.
 - Failed listing request showed error and Retry recovered after restoring access; delayed request exposed loading state.
 - Initial worker resolution defect was fixed by bundling the MapLibre worker URL explicitly. Final browser run had no application errors or missing map-resource notice.
 
@@ -38,7 +38,7 @@ Desktop/mobile screenshots in evidence/ are actual local browser output. The mob
 
 Vite warns about the dynamically imported MapLibre chunk (~1.04 MB / ~280 KB gzip); its worker is ~508 KB. OpenFreeMap Liberty emits nonfatal null road-shield filter warnings. Tile service offers no SLA. Automated refresh and ML/housing integration remain unimplemented. The optional source-file archive/audit was added on October 8; see the separate record below. Historical local browser checks do not prove current hosted cluster/marker behavior; fresh hosted checks follow.
 
-## Fresh production checks — October 7, 2026 Pacific
+## Fresh production checks â€” October 7, 2026 Pacific
 
 - Public DNS-over-HTTPS lookup returned str.housev.dev CNAME vegas-str-ml.pages.dev, TTL 300. housev.dev retains four AWS Route 53 nameservers. No DNS records or nameservers were changed.
 - A fresh browser context with ignoreHTTPSErrors=false loaded the custom domain with HTTP 200; certificate subject str.housev.dev, issuer WE1. No certificate warning was bypassed. The Pages dashboard's domain Active label was not available to inspect.
@@ -47,7 +47,7 @@ Vite warns about the dynamically imported MapLibre chunk (~1.04 MB / ~280 KB gzi
 - Map canvas rendered with basemap, clusters, points, boundary lines and attribution; Loading map notice disappeared. Nonfatal road-shield warnings remain. Fresh cluster-click/marker-click behavior was not repeated; those interactions remain historical local evidence above.
 - Default sample: 17,212 listings, median asking $229. Henderson filter: 784, median $200; listing 3955163 selected with $90 asking price. Maximum $100: 2,853 records; maximum $1: empty sample; reset recovered.
 - Sixteen-bedroom filter: five records. Selecting listing 654407021180063478 preserved the exact ID (above JavaScript safe-integer range) and showed $3,986 asking price. Private-room filter returned 4,717, matching freshly fetched data.
-- At 390×844, no horizontal document overflow. This is a narrow layout check, not a full mobile or accessibility audit.
+- At 390Ã—844, no horizontal document overflow. This is a narrow layout check, not a full mobile or accessibility audit.
 
 ## Fresh local checks and deployment audit
 
@@ -68,17 +68,17 @@ Wrangler 4.148.0 whoami and pages project list were attempted using the cached C
 
 CI now contains a main-only Pages upload job gated on web and pipeline success, using the checked build artifact, serialized uploads, superseded-commit skipping and HTTPS endpoint checks. YAML formatting/syntax and git diff whitespace checks are local validation only; Hosted validation subsequently passed; see the delivery record below. Deployment ownership is documented in deployment.md. No Worker build trigger, account token, GitHub secret, AWS resource or DNS record was changed.
 
-## Hosted delivery — October 7, 2026 Pacific
+## Hosted delivery â€” October 7, 2026 Pacific
 
 [Commit 739a55a](https://github.com/kenner1-unlv/vegas-str-ml/commit/739a55a) was published directly to main. [Verify run 37738181925](https://github.com/kenner1-unlv/vegas-str-ml/actions/runs/37738181925), attempt 2, passed web locked installation/format/lint/types/build/asset checks, pipeline locked sync/Ruff/tests, and Pages deployment. The initial attempt failed at the explicit missing-account-ID check; the API token was present. After user configuration, the rerun uploaded successfully to [88bf2920.vegas-str-ml.pages.dev](https://88bf2920.vegas-str-ml.pages.dev). str.housev.dev and data/index.json returned 200 after upload, with snapshot 2026-09-20. No fresh post-upload map-interaction run is implied by those HTTP checks.
 
 Retrospective issues #1 and #2 record shipped work; they are not evidence of prior PR review. New changes follow CONTRIBUTING.md. Local .git synchronization was denied, so local HEAD remains 088dfee despite remote main 739a55a; preserved tracked edits must not be blindly recommitted. Untracked .vscode/, .playwright-mcp/ and %SystemDrive%/ were not published or removed.
 
-## Portfolio follow-up — October 7, 2026 Pacific
+## Portfolio follow-up â€” October 7, 2026 Pacific
 
 README/demo navigation and contributor templates address issue #3. Local Markdown link checks resolved 18 relative file targets with zero missing files. Frontend ESLint, svelte-check (zero diagnostics) and static build passed after adding the repository footer link; the existing MapLibre bundle warning remains. The generated HTML includes the repository link. [PR #7](https://github.com/kenner1-unlv/vegas-str-ml/pull/7) subsequently merged after hosted validation. [Main run 37739667370](https://github.com/kenner1-unlv/vegas-str-ml/actions/runs/37739667370) passed and deployed; the production repository footer link was freshly checked.
 
-## ZCTA research layer and complete source audit — October 8, 2026
+## ZCTA research layer and complete source audit â€” October 8, 2026
 
 Fresh local evidence for issues [#8](https://github.com/kenner1-unlv/vegas-str-ml/issues/8) and [#9](https://github.com/kenner1-unlv/vegas-str-ml/issues/9), separate from earlier deployed checks:
 
@@ -101,3 +101,7 @@ Fresh [Phase 1 verification](../specs/001-comparable-price-baseline/verification
 ## October 10 offline comparable selector
 
 [Phase 2 verification](../specs/001-comparable-price-baseline/verification.md#phase-2-fresh-verification-2026-10-10) records fixture/actual-snapshot membership, thresholds, provenance checks and aggregate support evidence. No model or new public UI is claimed; delivery history is linked through issue #13 and its PR.
+
+## Offline Phase 3 evaluation ? October 10, 2026
+
+[Feature verification](../specs/001-comparable-price-baseline/verification.md#phase-3-fresh-verification-2026-10-10) records 129 local fixture tests, frozen protocol before fitting, identical repeated actual evaluation bytes and unchanged public data. [Model card](model-card.md) publishes measured geographic errors and failed hotel-room gate; public predictions remain withheld. No new map/filter/selection checks are claimed for this research increment. PR/main delivery evidence belongs to the linked PR trail.

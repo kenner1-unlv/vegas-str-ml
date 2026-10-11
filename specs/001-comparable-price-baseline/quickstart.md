@@ -34,3 +34,7 @@ uv run --project pipeline python scripts/audit_comps.py --snapshot 2026-09-20
 ```
 
 The selector prints aggregate results without IDs; full optional results stay in ignored data/research/. A stale/edited normalized artifact fails with a rerun instruction instead of trusting altered data. Changing checkout line endings can change code-provenance hashes: regenerate private normalization before a run if needed. No network downloads or raw/research-row publication. Aggregate audit examples choose the first lexicographic subject ID meeting the documented profile, not a representative property valuation. No new public UI or model training.
+
+## Phase 3: fit and evaluate offline
+
+After verified normalization, run `uv run --project pipeline python pipeline/evaluate.py --snapshot 2026-09-20 --output data/research/2026-09-20/evaluation.json`. The pinned lockfile installs scikit-learn 1.9.1. Full output contains private split membership and aggregates; never commit it. Stdout contains aggregate evidence only. Repeat with a different ignored output filename to compare bytes; contract choices are fixed, not runtime tuning switches. Missing/stale source normalization or empty buffered folds fail before replacing prior output. [Model card](../../docs/model-card.md) records actual results and reproduction limits.

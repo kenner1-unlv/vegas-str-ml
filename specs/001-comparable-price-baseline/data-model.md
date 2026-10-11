@@ -43,8 +43,8 @@ Schema/rules/snapshot, source manifest/seven archive hashes, public/geography/co
 
 Validate inputs and serialize all rows before writing. Atomically replace the single normalized artifact via sibling .part file; prior output survives validation failure. Aggregate audit is embedded so rows/audit never mismatch. Optional --audit-report writes the identical aggregate to an explicitly named path; it is not used as a runtime row pointer. No timestamp in normalized content: identical inputs and code yield identical bytes. Private output must never be copied to web/static or committed.
 
-## Future interfaces
+## Research interfaces
 
 Phase 2 implemented: [comps contract](contracts/comps.md) freezes the interface. Request has subject characteristics, explicit ZCTA, bedroom tolerance default 1, optional capacity tolerance and edge policy. Result has private member IDs, counts/exclusions/support and descriptive price summaries only for n>=20. No silent geographic fallback. Concrete interface and validation evidence are linked in #13.
 
-Phase 3: versioned split manifest, training-only fitted transforms, baseline/candidate metrics and model card. Freeze split and release decisions in #6 before fitting; no numeric IDs or price-derived predictors, no public binaries.
+Phase 3 implemented: [evaluation contract](contracts/evaluation.md), private versioned split manifest, training-only fitted transforms, baseline/candidate metrics and model card. Split and release decisions were frozen in #6 before fitting; no numeric IDs or price-derived predictors, no public binaries.

@@ -11,8 +11,12 @@ Reviewed October 7, 2026.
 
 - **GitHub Actions to existing Pages:** native Git integration cannot be added to the Direct Upload project. Gate Wrangler upload on both CI jobs and reuse the checked artifact; production only on main pushes. This preserves the existing domain and Pages history. Hosted delivery passed on October 7, 2026 in Verify run 37738181925, attempt 2. Retain the legacy Worker config until its separate Git build trigger is paused; no Worker deletion or DNS migration.
 
-## ZIP-area research and source enrichment — October 8, 2026
+## ZIP-area research and source enrichment â€” October 8, 2026
 
 Start geographic stratification with Census 2020 ZCTAs after the user selected ZIP areas over bespoke street partitions. ZCTAs offer reproducible categorical geography but can hide variation within an area. Preserve original labels and use a hash-pinned sidecar to avoid changing the base listing schema. Never treat anonymized dots as houses, force nearest assignments or shift coordinates based on anecdotal direction. Show edge sensitivity and withhold sparse ZIP-table medians. The 150 m sensitivity distance and n=20 display threshold are transparent choices, not validated confidence bounds.
 
-Archive all seven supplied Inside Airbnb files privately with hashes. Summary files duplicate detailed observations. Preserve a nonpersonal research feature allowlist separately from deployed data; source coverage is measured before normalization or modeling. Numeric bathrooms and calendar prices are unavailable in this snapshot. More ingestion preserves research options; it is not evidence of model improvement. One-hot encoding, property-cohort mappings and ML evaluation remain future work.
+Archive all seven supplied Inside Airbnb files privately with hashes. Summary files duplicate detailed observations. Preserve a nonpersonal research feature allowlist separately from deployed data; source coverage is measured before normalization or modeling. Numeric bathrooms and calendar prices are unavailable in this snapshot. More ingestion preserves research options; it is not evidence of model improvement. Property-cohort mappings, train-only one-hot encoding and offline ML evaluation are now implemented; public prediction release remains withheld.
+
+## First price model ? October 10, 2026
+
+Freeze whole-area hash splits, observed-point buffers and research gates before fitting. Compare training medians with log1p Ridge tuned only in development geographic folds. Publish all final results, including the failed hotel-room gate, rather than change selection after viewing outcomes. [Contract](../specs/001-comparable-price-baseline/contracts/evaluation.md) and [model card](model-card.md) contain the single detailed protocol/result record. Future address input requires a permitted source and verification of property details, separate from approximate Airbnb geography.

@@ -1,0 +1,1052 @@
+{
+  "baseline_training": {
+    "global_median_usd": 227.0,
+    "room_medians_usd": {
+      "entire_home_apt": 243.4,
+      "hotel_room": 191.0,
+      "private_room": 149.45,
+      "shared_room": 29.380000000000003
+    },
+    "unseen_room_fallback_count": 0
+  },
+  "cohort_observations": 13288,
+  "cohort_unique_listings": 13288,
+  "evaluation_rules_version": "1.0.0",
+  "exclusions": {
+    "near_boundary": 3566,
+    "outside_usable_cohort": 3439,
+    "unknown_geography": 1,
+    "unknown_stay": 116,
+    "unsupported_property": 241
+  },
+  "feature_allowlist": {
+    "categorical": [
+      "property_group",
+      "room_type",
+      "stay_cohort",
+      "zcta"
+    ],
+    "numeric": [
+      "bedrooms",
+      "beds",
+      "accommodates"
+    ]
+  },
+  "input_observations": 20651,
+  "limitations": [
+    "Advertised price, not revenue or occupancy",
+    "One snapshot does not establish temporal generalization",
+    "Anonymized point buffers cannot guarantee actual property separation",
+    "Different IDs may describe related physical units",
+    "Unseen areas have no learned area-specific effect",
+    "No calibrated prediction intervals or public prediction contract"
+  ],
+  "metrics": {
+    "global_median": {
+      "log1p_mae": 0.6525380418885142,
+      "mae_usd": 177.92962241169303,
+      "median_absolute_error_usd": 115.5,
+      "n": 1642,
+      "rmse_usd": 438.4953609106884
+    },
+    "ridge_log1p": {
+      "log1p_mae": 0.36502079867308684,
+      "mae_usd": 123.09139928998594,
+      "median_absolute_error_usd": 55.446827250803935,
+      "n": 1642,
+      "rmse_usd": 392.25622928898156
+    },
+    "room_median": {
+      "log1p_mae": 0.6131948279657247,
+      "mae_usd": 170.29908038976856,
+      "median_absolute_error_usd": 105.6,
+      "n": 1642,
+      "rmse_usd": 435.20478649104234
+    }
+  },
+  "negative_prediction_clamp_count": 0,
+  "provenance": {
+    "contract_sha256": "a40ba282fcc5f4cec9d68cae6ac65b5532d50e8c436519752fbb34aa42447dd3",
+    "evaluation_sha256": "5779907f5dd91bae807e0de63be542a570a7e3c629e9e2025f30f8d6d620b444",
+    "inputs": {
+      "base_ingest_sha256": "859d561d6463a409cebe8ffed33b79f0e1bed6b84edb9b8d841440963e50b445",
+      "boundary_vintage": "2020-01-01",
+      "census_source": {
+        "attribution": "U.S. Census Bureau",
+        "boundary_vintage": "2020-01-01",
+        "bytes": 2044560,
+        "expected_features": 66,
+        "retrieved_at": "2026-10-08T17:34:02.217Z",
+        "sha256": "d0a9d7bc2949a161f76ab710fd44a1453f6bfd867c10467e85e473aaaac8030b",
+        "url": "https://tigerweb.geo.census.gov/arcgis/rest/services/Census2020/PUMA_TAD_TAZ_UGA_ZCTA/MapServer/2/query?where=1%3D1&geometry=-115.5%2C35.8%2C-114.8%2C36.5&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=ZCTA5&outSR=4326&f=geojson"
+      },
+      "geography_sha256": "7e5fede5332f1e483f35513178fe9880a3b1d3b4d8523ab680e927691e2e6841",
+      "normalizer_sha256": "6cbe6915606a293d88cd4444f88dc22a10e5644d9bc9d15242385123bc6afe88",
+      "source_manifest_sha256": "ec18d497b0cf3e64099e66ea923b1e27d9c0498639a1af1685bc5b72703bec3d",
+      "source_sha256": {
+        "calendar.csv.gz": "43208f9bbf83a42f583c6f7e862a8990a632cd6d435451a6de4f4e92dc0e30f1",
+        "listings-summary.csv": "e3afd6adc11c53b0aed2f819a95027ea647870d1865c162292917373c6505e15",
+        "listings.csv.gz": "98bf79593638dc0f8638cd538ec9293efb65cd9af01b5f34f335e2ea9e371cb1",
+        "neighbourhoods.csv": "c3643e533471cc8ea0b69089a425dada11c79ee427be1de19991249cd9901ace",
+        "neighbourhoods.geojson": "24e69d2db4732ce63b4344ffef367151cb017f5528812b546cf7cd760d77afbc",
+        "reviews-summary.csv": "b4cce1d07d162de3ba4e257220bfeb09c8c02458785cc1788e01cf5891ebc8fd",
+        "reviews.csv.gz": "4949acd31af44aa7039287f9954eaedf0a56504f8738f6aa65613bc09a817224"
+      },
+      "usable_listing_sha256": "d8c98639d707c0f38bfcd115128197588a9e221a89fc99e5f3aa6e366b1fac50"
+    },
+    "lockfile_sha256": "622450b50740e3812d41e8b5f3c988e5a76a8b782683238532628976e0e9ecc0",
+    "normalized_sha256": "6416d13dcfd07660b905dfffc5c7d3a7c45e37a379119b06eb3be10521d0f163",
+    "sklearn_version": "1.9.1"
+  },
+  "public_prediction_release": "withheld",
+  "review_gates": {
+    "holdout_support": true,
+    "mae_improvement": true,
+    "rmse_non_regression": true,
+    "supported_subgroup_non_regression": false
+  },
+  "schema_version": 1,
+  "snapshot_dates": [
+    "2026-09-20"
+  ],
+  "split": {
+    "buffer": {
+      "buffer_excluded": 1280,
+      "id_excluded": 0,
+      "minimum_distance_m": 1000.3180997449706
+    },
+    "holdout_observations": 1642,
+    "holdout_unique_listings": 1642,
+    "holdout_zctas": [
+      "89002",
+      "89030",
+      "89052",
+      "89104",
+      "89117",
+      "89123",
+      "89145",
+      "89156",
+      "89179"
+    ],
+    "id_overlap": 0,
+    "manifest_sha256": "803b81fe87a2ec257dac1c30667d8a0645d8afb88d9a19e87e665022d7d99756",
+    "train_observations": 10366,
+    "train_unique_listings": 10366,
+    "train_zctas": [
+      "89005",
+      "89011",
+      "89012",
+      "89014",
+      "89015",
+      "89019",
+      "89031",
+      "89032",
+      "89044",
+      "89074",
+      "89081",
+      "89084",
+      "89085",
+      "89086",
+      "89101",
+      "89102",
+      "89103",
+      "89106",
+      "89107",
+      "89108",
+      "89109",
+      "89110",
+      "89113",
+      "89115",
+      "89118",
+      "89119",
+      "89120",
+      "89121",
+      "89122",
+      "89128",
+      "89129",
+      "89130",
+      "89131",
+      "89134",
+      "89135",
+      "89138",
+      "89139",
+      "89141",
+      "89142",
+      "89143",
+      "89144",
+      "89146",
+      "89147",
+      "89148",
+      "89149",
+      "89158",
+      "89166",
+      "89169",
+      "89178",
+      "89183"
+    ]
+  },
+  "subgroup_regressions": [
+    {
+      "dimension": "room_type",
+      "group": "hotel_room"
+    }
+  ],
+  "subgroups": {
+    "price_band": {
+      "100_249": {
+        "metrics": {
+          "global_median": {
+            "log1p_mae": 0.3290228626085465,
+            "mae_usd": 59.37887230514096,
+            "median_absolute_error_usd": 60.06,
+            "n": 603,
+            "rmse_usd": 70.84860740206969
+          },
+          "ridge_log1p": {
+            "log1p_mae": 0.2872361571639184,
+            "mae_usd": 56.91187685509868,
+            "median_absolute_error_usd": 39.836997178776926,
+            "n": 603,
+            "rmse_usd": 82.48333827514851
+          },
+          "room_median": {
+            "log1p_mae": 0.3605372902031333,
+            "mae_usd": 67.02678275290216,
+            "median_absolute_error_usd": 66.69,
+            "n": 603,
+            "rmse_usd": 79.14061371259368
+          }
+        },
+        "thin_sample": false
+      },
+      "250_499": {
+        "metrics": {
+          "global_median": {
+            "log1p_mae": 0.41078622941867965,
+            "mae_usd": 121.74641404805915,
+            "median_absolute_error_usd": 117.0,
+            "n": 541,
+            "rmse_usd": 138.09411483523002
+          },
+          "ridge_log1p": {
+            "log1p_mae": 0.3556569614210174,
+            "mae_usd": 123.3094452213101,
+            "median_absolute_error_usd": 91.80076946843963,
+            "n": 541,
+            "rmse_usd": 176.52489695208024
+          },
+          "room_median": {
+            "log1p_mae": 0.38929800561416644,
+            "mae_usd": 114.66730129390018,
+            "median_absolute_error_usd": 107.6,
+            "n": 541,
+            "rmse_usd": 133.98162240312843
+          }
+        },
+        "thin_sample": false
+      },
+      "500_plus": {
+        "metrics": {
+          "global_median": {
+            "log1p_mae": 1.2183754436407725,
+            "mae_usd": 684.745096153846,
+            "median_absolute_error_usd": 452.0,
+            "n": 208,
+            "rmse_usd": 1189.4249905376062
+          },
+          "ridge_log1p": {
+            "log1p_mae": 0.614721013077359,
+            "mae_usd": 447.08979059392857,
+            "median_absolute_error_usd": 261.5559700926375,
+            "n": 208,
+            "rmse_usd": 1054.3730518928742
+          },
+          "room_median": {
+            "log1p_mae": 1.2002191992361788,
+            "mae_usd": 678.3342788461539,
+            "median_absolute_error_usd": 444.5,
+            "n": 208,
+            "rmse_usd": 1186.00130942961
+          }
+        },
+        "thin_sample": false
+      },
+      "lt100": {
+        "metrics": {
+          "global_median": {
+            "log1p_mae": 1.3703766766731051,
+            "mae_usd": 165.7351379310345,
+            "median_absolute_error_usd": 167.5,
+            "n": 290,
+            "rmse_usd": 167.25906686727134
+          },
+          "ridge_log1p": {
+            "log1p_mae": 0.3651322820776021,
+            "mae_usd": 27.907343387125884,
+            "median_absolute_error_usd": 19.322448334829133,
+            "n": 290,
+            "rmse_usd": 39.45695074413496
+          },
+          "room_median": {
+            "log1p_mae": 1.1351934725822113,
+            "mae_usd": 124.43241379310342,
+            "median_absolute_error_usd": 117.30499999999998,
+            "n": 290,
+            "rmse_usd": 130.50547760468748
+          }
+        },
+        "thin_sample": false
+      }
+    },
+    "property_group": {
+      "apartment_condo": {
+        "metrics": {
+          "global_median": {
+            "log1p_mae": 0.5217957644262443,
+            "mae_usd": 121.93096926713949,
+            "median_absolute_error_usd": 100.0,
+            "n": 423,
+            "rmse_usd": 296.77485313999364
+          },
+          "ridge_log1p": {
+            "log1p_mae": 0.35647954467672444,
+            "mae_usd": 93.45625791476353,
+            "median_absolute_error_usd": 48.82579816460894,
+            "n": 423,
+            "rmse_usd": 295.45635299655453
+          },
+          "room_median": {
+            "log1p_mae": 0.5050874872085014,
+            "mae_usd": 119.58087470449173,
+            "median_absolute_error_usd": 99.4,
+            "n": 423,
+            "rmse_usd": 297.68594518313165
+          }
+        },
+        "thin_sample": false
+      },
+      "guesthouse_suite": {
+        "metrics": {
+          "global_median": {
+            "log1p_mae": 0.8682031193759743,
+            "mae_usd": 123.08814432989692,
+            "median_absolute_error_usd": 124.42,
+            "n": 97,
+            "rmse_usd": 131.10646270843222
+          },
+          "ridge_log1p": {
+            "log1p_mae": 0.24639944313195877,
+            "mae_usd": 27.663130660431307,
+            "median_absolute_error_usd": 21.521815337148468,
+            "n": 97,
+            "rmse_usd": 37.871734515073655
+          },
+          "room_median": {
+            "log1p_mae": 0.8757935591002616,
+            "mae_usd": 127.43144329896906,
+            "median_absolute_error_usd": 123.4,
+            "n": 97,
+            "rmse_usd": 135.88289544772636
+          }
+        },
+        "thin_sample": false
+      },
+      "hotel_resort": {
+        "metrics": {
+          "global_median": {
+            "log1p_mae": 0.44695798491463457,
+            "mae_usd": 126.85630136986299,
+            "median_absolute_error_usd": 71.5,
+            "n": 146,
+            "rmse_usd": 201.75394432157967
+          },
+          "ridge_log1p": {
+            "log1p_mae": 0.40494464436907374,
+            "mae_usd": 112.9824536258058,
+            "median_absolute_error_usd": 85.78202765192142,
+            "n": 146,
+            "rmse_usd": 155.42058215213126
+          },
+          "room_median": {
+            "log1p_mae": 0.5989656429587344,
+            "mae_usd": 154.62842465753425,
+            "median_absolute_error_usd": 81.25,
+            "n": 146,
+            "rmse_usd": 237.4616555506369
+          }
+        },
+        "thin_sample": false
+      },
+      "house_like": {
+        "metrics": {
+          "global_median": {
+            "log1p_mae": 0.7320630313590627,
+            "mae_usd": 218.21726086956522,
+            "median_absolute_error_usd": 130.0,
+            "n": 920,
+            "rmse_usd": 539.1493235368263
+          },
+          "ridge_log1p": {
+            "log1p_mae": 0.36637635914310396,
+            "mae_usd": 145.9733129505138,
+            "median_absolute_error_usd": 57.52453564011731,
+            "n": 920,
+            "rmse_usd": 476.4808827470423
+          },
+          "room_median": {
+            "log1p_mae": 0.647260054632999,
+            "mae_usd": 201.4457065217391,
+            "median_absolute_error_usd": 106.09,
+            "n": 920,
+            "rmse_usd": 531.9126977618847
+          }
+        },
+        "thin_sample": false
+      },
+      "serviced_apartment": {
+        "metrics": {
+          "global_median": {
+            "log1p_mae": 0.4960410571659838,
+            "mae_usd": 167.1998214285714,
+            "median_absolute_error_usd": 116.0,
+            "n": 56,
+            "rmse_usd": 247.38921180211443
+          },
+          "ridge_log1p": {
+            "log1p_mae": 0.5086498133859584,
+            "mae_usd": 162.67626282696008,
+            "median_absolute_error_usd": 112.4523968153814,
+            "n": 56,
+            "rmse_usd": 238.43040839703048
+          },
+          "room_median": {
+            "log1p_mae": 0.4523873404190028,
+            "mae_usd": 156.81660714285718,
+            "median_absolute_error_usd": 99.6,
+            "n": 56,
+            "rmse_usd": 238.85144809887288
+          }
+        },
+        "thin_sample": false
+      }
+    },
+    "room_type": {
+      "entire_home_apt": {
+        "metrics": {
+          "global_median": {
+            "log1p_mae": 0.5625715815734719,
+            "mae_usd": 183.22054901960786,
+            "median_absolute_error_usd": 108.31,
+            "n": 1275,
+            "rmse_usd": 464.5162104503321
+          },
+          "ridge_log1p": {
+            "log1p_mae": 0.34747425660928716,
+            "mae_usd": 134.2445812643066,
+            "median_absolute_error_usd": 61.497526228070996,
+            "n": 1275,
+            "rmse_usd": 412.8113562773457
+          },
+          "room_median": {
+            "log1p_mae": 0.5543798378148279,
+            "mae_usd": 181.29303529411763,
+            "median_absolute_error_usd": 109.9,
+            "n": 1275,
+            "rmse_usd": 460.8581305706757
+          }
+        },
+        "thin_sample": false
+      },
+      "hotel_room": {
+        "metrics": {
+          "global_median": {
+            "log1p_mae": 0.35284956460344935,
+            "mae_usd": 78.19892857142858,
+            "median_absolute_error_usd": 60.41,
+            "n": 28,
+            "rmse_usd": 119.75521039961953
+          },
+          "ridge_log1p": {
+            "log1p_mae": 0.4016631820240244,
+            "mae_usd": 83.31015299441991,
+            "median_absolute_error_usd": 53.0288795725306,
+            "n": 28,
+            "rmse_usd": 138.3020435268861
+          },
+          "room_median": {
+            "log1p_mae": 0.33537886362076524,
+            "mae_usd": 74.27035714285715,
+            "median_absolute_error_usd": 53.0,
+            "n": 28,
+            "rmse_usd": 121.67903500897057
+          }
+        },
+        "thin_sample": false
+      },
+      "private_room": {
+        "metrics": {
+          "global_median": {
+            "log1p_mae": 1.0087971381561724,
+            "mae_usd": 166.05569732937687,
+            "median_absolute_error_usd": 159.17000000000002,
+            "n": 337,
+            "rmse_usd": 345.05460037171724
+          },
+          "ridge_log1p": {
+            "log1p_mae": 0.42198852539976645,
+            "mae_usd": 84.43031830482681,
+            "median_absolute_error_usd": 37.89512499250701,
+            "n": 337,
+            "rmse_usd": 321.4357798429295
+          },
+          "room_median": {
+            "log1p_mae": 0.8615069836224608,
+            "mae_usd": 137.66836795252226,
+            "median_absolute_error_usd": 100.60999999999999,
+            "n": 337,
+            "rmse_usd": 343.605992642477
+          }
+        },
+        "thin_sample": false
+      },
+      "shared_room": {
+        "metrics": {
+          "global_median": {
+            "log1p_mae": 2.1721374536185345,
+            "mae_usd": 201.95,
+            "median_absolute_error_usd": 201.95,
+            "n": 2,
+            "rmse_usd": 201.95941423959417
+          },
+          "ridge_log1p": {
+            "log1p_mae": 1.4388860439867135,
+            "mae_usd": 84.26748479780822,
+            "median_absolute_error_usd": 84.26748479780822,
+            "n": 2,
+            "rmse_usd": 85.62782328118284
+          },
+          "room_median": {
+            "log1p_mae": 0.1565763218317202,
+            "mae_usd": 4.330000000000002,
+            "median_absolute_error_usd": 4.330000000000002,
+            "n": 2,
+            "rmse_usd": 4.74883143520593
+          }
+        },
+        "thin_sample": true
+      }
+    },
+    "zcta": {
+      "89002": {
+        "metrics": {
+          "global_median": {
+            "log1p_mae": 0.6882360938113335,
+            "mae_usd": 188.76910447761193,
+            "median_absolute_error_usd": 123.12,
+            "n": 67,
+            "rmse_usd": 331.22169130740417
+          },
+          "ridge_log1p": {
+            "log1p_mae": 0.32266213178265435,
+            "mae_usd": 120.26479376117885,
+            "median_absolute_error_usd": 54.90642470701934,
+            "n": 67,
+            "rmse_usd": 262.7276746683815
+          },
+          "room_median": {
+            "log1p_mae": 0.6233422045592354,
+            "mae_usd": 175.90940298507462,
+            "median_absolute_error_usd": 104.1,
+            "n": 67,
+            "rmse_usd": 322.1409374537519
+          }
+        },
+        "thin_sample": false
+      },
+      "89030": {
+        "metrics": {
+          "global_median": {
+            "log1p_mae": 0.7552499292868929,
+            "mae_usd": 186.64489655172414,
+            "median_absolute_error_usd": 129.0,
+            "n": 145,
+            "rmse_usd": 336.1349418119106
+          },
+          "ridge_log1p": {
+            "log1p_mae": 0.4973287771920878,
+            "mae_usd": 175.7443447095437,
+            "median_absolute_error_usd": 75.16642810972073,
+            "n": 145,
+            "rmse_usd": 274.38271972693656
+          },
+          "room_median": {
+            "log1p_mae": 0.6610169983955282,
+            "mae_usd": 168.3471724137931,
+            "median_absolute_error_usd": 102.20999999999998,
+            "n": 145,
+            "rmse_usd": 324.58475860280527
+          }
+        },
+        "thin_sample": false
+      },
+      "89052": {
+        "metrics": {
+          "global_median": {
+            "log1p_mae": 0.7000888151602348,
+            "mae_usd": 203.8247747747748,
+            "median_absolute_error_usd": 117.47,
+            "n": 111,
+            "rmse_usd": 400.0828198641507
+          },
+          "ridge_log1p": {
+            "log1p_mae": 0.3717617241723212,
+            "mae_usd": 139.52742584990867,
+            "median_absolute_error_usd": 38.05383482283102,
+            "n": 111,
+            "rmse_usd": 378.8779989047243
+          },
+          "room_median": {
+            "log1p_mae": 0.7156691157673066,
+            "mae_usd": 207.50621621621622,
+            "median_absolute_error_usd": 130.35000000000002,
+            "n": 111,
+            "rmse_usd": 397.01599477956904
+          }
+        },
+        "thin_sample": false
+      },
+      "89104": {
+        "metrics": {
+          "global_median": {
+            "log1p_mae": 0.6737362222039269,
+            "mae_usd": 134.4198823529412,
+            "median_absolute_error_usd": 109.21,
+            "n": 255,
+            "rmse_usd": 186.1279876827328
+          },
+          "ridge_log1p": {
+            "log1p_mae": 0.3262084272350849,
+            "mae_usd": 74.52365212444995,
+            "median_absolute_error_usd": 39.687758899171726,
+            "n": 255,
+            "rmse_usd": 133.3636100962954
+          },
+          "room_median": {
+            "log1p_mae": 0.6270919854722788,
+            "mae_usd": 127.21780392156865,
+            "median_absolute_error_usd": 109.4,
+            "n": 255,
+            "rmse_usd": 179.72276442059416
+          }
+        },
+        "thin_sample": false
+      },
+      "89117": {
+        "metrics": {
+          "global_median": {
+            "log1p_mae": 0.8226767215241501,
+            "mae_usd": 278.0652534562212,
+            "median_absolute_error_usd": 145.76999999999998,
+            "n": 217,
+            "rmse_usd": 937.1073327510849
+          },
+          "ridge_log1p": {
+            "log1p_mae": 0.3650560362162115,
+            "mae_usd": 187.65581130554597,
+            "median_absolute_error_usd": 41.277713274355534,
+            "n": 217,
+            "rmse_usd": 877.3118645054918
+          },
+          "room_median": {
+            "log1p_mae": 0.713401420001564,
+            "mae_usd": 257.2194470046083,
+            "median_absolute_error_usd": 101.6,
+            "n": 217,
+            "rmse_usd": 933.9271643385265
+          }
+        },
+        "thin_sample": false
+      },
+      "89123": {
+        "metrics": {
+          "global_median": {
+            "log1p_mae": 0.5260688813836526,
+            "mae_usd": 167.00798816568047,
+            "median_absolute_error_usd": 105.0,
+            "n": 676,
+            "rmse_usd": 322.6920718849418
+          },
+          "ridge_log1p": {
+            "log1p_mae": 0.3654114576677074,
+            "mae_usd": 123.56489286474222,
+            "median_absolute_error_usd": 76.789881798981,
+            "n": 676,
+            "rmse_usd": 267.6699820167191
+          },
+          "room_median": {
+            "log1p_mae": 0.5293456771838918,
+            "mae_usd": 166.49102071005916,
+            "median_absolute_error_usd": 102.48999999999998,
+            "n": 676,
+            "rmse_usd": 322.2068481799437
+          }
+        },
+        "thin_sample": false
+      },
+      "89145": {
+        "metrics": {
+          "global_median": {
+            "log1p_mae": 0.8218608762937709,
+            "mae_usd": 133.5787387387387,
+            "median_absolute_error_usd": 127.29,
+            "n": 111,
+            "rmse_usd": 155.4011535083048
+          },
+          "ridge_log1p": {
+            "log1p_mae": 0.29480948299912074,
+            "mae_usd": 50.540349434601715,
+            "median_absolute_error_usd": 30.314983886865036,
+            "n": 111,
+            "rmse_usd": 76.82284977981331
+          },
+          "room_median": {
+            "log1p_mae": 0.729002922468803,
+            "mae_usd": 116.69063063063064,
+            "median_absolute_error_usd": 110.52000000000001,
+            "n": 111,
+            "rmse_usd": 138.05213787903818
+          }
+        },
+        "thin_sample": false
+      },
+      "89156": {
+        "metrics": {
+          "global_median": {
+            "log1p_mae": 0.622950794599013,
+            "mae_usd": 123.40145454545454,
+            "median_absolute_error_usd": 106.5,
+            "n": 55,
+            "rmse_usd": 171.81136119699312
+          },
+          "ridge_log1p": {
+            "log1p_mae": 0.3734237864694036,
+            "mae_usd": 74.66681973719722,
+            "median_absolute_error_usd": 56.04593790359121,
+            "n": 55,
+            "rmse_usd": 97.44589667436222
+          },
+          "room_median": {
+            "log1p_mae": 0.552801770863156,
+            "mae_usd": 110.66690909090912,
+            "median_absolute_error_usd": 94.4,
+            "n": 55,
+            "rmse_usd": 159.9644421852443
+          }
+        },
+        "thin_sample": false
+      },
+      "89179": {
+        "metrics": {
+          "global_median": {
+            "log1p_mae": 1.3399096493100262,
+            "mae_usd": 139.18,
+            "median_absolute_error_usd": 196.75,
+            "n": 5,
+            "rmse_usd": 159.20393575537005
+          },
+          "ridge_log1p": {
+            "log1p_mae": 0.3373898919671869,
+            "mae_usd": 23.299681108731843,
+            "median_absolute_error_usd": 17.053765383168113,
+            "n": 5,
+            "rmse_usd": 32.21954034031571
+          },
+          "room_median": {
+            "log1p_mae": 1.1875158386272713,
+            "mae_usd": 111.44000000000001,
+            "median_absolute_error_usd": 119.19999999999999,
+            "n": 5,
+            "rmse_usd": 112.26290910180441
+          }
+        },
+        "thin_sample": true
+      }
+    }
+  },
+  "training_preprocessing": {
+    "categories": {
+      "property_group": [
+        "apartment_condo",
+        "guesthouse_suite",
+        "hotel_resort",
+        "house_like",
+        "serviced_apartment"
+      ],
+      "room_type": [
+        "entire_home_apt",
+        "hotel_room",
+        "private_room",
+        "shared_room"
+      ],
+      "stay_cohort": [
+        "1_27_nights",
+        "28_plus_nights"
+      ],
+      "zcta": [
+        "89005",
+        "89011",
+        "89012",
+        "89014",
+        "89015",
+        "89019",
+        "89031",
+        "89032",
+        "89044",
+        "89074",
+        "89081",
+        "89084",
+        "89085",
+        "89086",
+        "89101",
+        "89102",
+        "89103",
+        "89106",
+        "89107",
+        "89108",
+        "89109",
+        "89110",
+        "89113",
+        "89115",
+        "89118",
+        "89119",
+        "89120",
+        "89121",
+        "89122",
+        "89128",
+        "89129",
+        "89130",
+        "89131",
+        "89134",
+        "89135",
+        "89138",
+        "89139",
+        "89141",
+        "89142",
+        "89143",
+        "89144",
+        "89146",
+        "89147",
+        "89148",
+        "89149",
+        "89158",
+        "89166",
+        "89169",
+        "89178",
+        "89183"
+      ]
+    },
+    "numeric_medians": [
+      1.0,
+      2.0,
+      4.0
+    ],
+    "unseen_holdout_zcta_count": 1642
+  },
+  "tuning": {
+    "alphas": [
+      1,
+      10,
+      100
+    ],
+    "folds": [
+      {
+        "buffer": {
+          "buffer_excluded": 2235,
+          "id_excluded": 0,
+          "minimum_distance_m": 1006.8894858435954
+        },
+        "candidates": {
+          "1": {
+            "log1p_mae": 0.40198090504871414,
+            "mae_usd": 126.39388604712998,
+            "median_absolute_error_usd": 54.055782099821556,
+            "n": 1345,
+            "negative_clamp_count": 0,
+            "rmse_usd": 445.641748609538
+          },
+          "10": {
+            "log1p_mae": 0.40293418351108024,
+            "mae_usd": 126.2884282970621,
+            "median_absolute_error_usd": 53.84665271018514,
+            "n": 1345,
+            "negative_clamp_count": 0,
+            "rmse_usd": 445.51683768508786
+          },
+          "100": {
+            "log1p_mae": 0.4109378310220474,
+            "mae_usd": 127.36917829302627,
+            "median_absolute_error_usd": 55.73749226620049,
+            "n": 1345,
+            "negative_clamp_count": 0,
+            "rmse_usd": 446.16340973725215
+          }
+        },
+        "fold": 0,
+        "train_n": 6786,
+        "validation_n": 1345,
+        "validation_zctas": [
+          "89012",
+          "89019",
+          "89074",
+          "89081",
+          "89101",
+          "89120",
+          "89121",
+          "89122",
+          "89128",
+          "89144",
+          "89158",
+          "89166"
+        ]
+      },
+      {
+        "buffer": {
+          "buffer_excluded": 2951,
+          "id_excluded": 0,
+          "minimum_distance_m": 1000.441790721355
+        },
+        "candidates": {
+          "1": {
+            "log1p_mae": 0.36945762018583406,
+            "mae_usd": 110.29240217883493,
+            "median_absolute_error_usd": 53.360499670890505,
+            "n": 2720,
+            "negative_clamp_count": 0,
+            "rmse_usd": 272.35995756130944
+          },
+          "10": {
+            "log1p_mae": 0.3640884523512802,
+            "mae_usd": 108.7925109213861,
+            "median_absolute_error_usd": 51.37820400276657,
+            "n": 2720,
+            "negative_clamp_count": 0,
+            "rmse_usd": 273.04779265345854
+          },
+          "100": {
+            "log1p_mae": 0.3664571335443229,
+            "mae_usd": 107.83163725810905,
+            "median_absolute_error_usd": 50.63711582841297,
+            "n": 2720,
+            "negative_clamp_count": 0,
+            "rmse_usd": 273.12417313824835
+          }
+        },
+        "fold": 1,
+        "train_n": 4695,
+        "validation_n": 2720,
+        "validation_zctas": [
+          "89005",
+          "89011",
+          "89014",
+          "89044",
+          "89084",
+          "89085",
+          "89108",
+          "89113",
+          "89119",
+          "89129",
+          "89131",
+          "89135",
+          "89139",
+          "89142",
+          "89146",
+          "89147",
+          "89148",
+          "89169"
+        ]
+      },
+      {
+        "buffer": {
+          "buffer_excluded": 833,
+          "id_excluded": 0,
+          "minimum_distance_m": 1000.0394083549005
+        },
+        "candidates": {
+          "1": {
+            "log1p_mae": 0.4811405140814886,
+            "mae_usd": 198.032706057502,
+            "median_absolute_error_usd": 74.33848418026645,
+            "n": 6301,
+            "negative_clamp_count": 0,
+            "rmse_usd": 1374.7736201054659
+          },
+          "10": {
+            "log1p_mae": 0.4832337810731813,
+            "mae_usd": 198.39250721247413,
+            "median_absolute_error_usd": 73.55234672870677,
+            "n": 6301,
+            "negative_clamp_count": 0,
+            "rmse_usd": 1375.1524006014433
+          },
+          "100": {
+            "log1p_mae": 0.5158852350731422,
+            "mae_usd": 204.0202807135303,
+            "median_absolute_error_usd": 72.31752779372678,
+            "n": 6301,
+            "negative_clamp_count": 0,
+            "rmse_usd": 1377.2273322986428
+          }
+        },
+        "fold": 2,
+        "train_n": 3232,
+        "validation_n": 6301,
+        "validation_zctas": [
+          "89015",
+          "89031",
+          "89032",
+          "89086",
+          "89102",
+          "89103",
+          "89106",
+          "89107",
+          "89109",
+          "89110",
+          "89115",
+          "89118",
+          "89130",
+          "89134",
+          "89138",
+          "89141",
+          "89143",
+          "89149",
+          "89178",
+          "89183"
+        ]
+      }
+    ],
+    "pooled_metrics": {
+      "1": {
+        "log1p_mae": 0.44156428935205955,
+        "mae_usd": 165.71475897435275,
+        "median_absolute_error_usd": 65.27159819308363,
+        "n": 10366,
+        "rmse_usd": 1092.7376612868952
+      },
+      "10": {
+        "log1p_mae": 0.44155152631294625,
+        "mae_usd": 165.52621587029884,
+        "median_absolute_error_usd": 63.830424694348494,
+        "n": 10366,
+        "rmse_usd": 1093.0657535710777
+      },
+      "100": {
+        "log1p_mae": 0.46305881267230187,
+        "mae_usd": 168.83517141830322,
+        "median_absolute_error_usd": 62.18478926349667,
+        "n": 10366,
+        "rmse_usd": 1094.6917101398683
+      }
+    },
+    "selected_alpha": 10
+  }
+}

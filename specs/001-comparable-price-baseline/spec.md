@@ -4,7 +4,7 @@
 
 **Created**: 2026-10-09
 
-**Status**: Phases 1 (normalization) and 2 (offline comps) implemented; Phase 3 evaluation remains planned. Delivery evidence is linked in verification.md.
+**Status**: Phases 1?3 (normalization, offline comps and price evaluation) implemented. Public model predictions withheld after subgroup gate failure. Delivery evidence is linked in verification.md.
 
 **Input**: Organize STR data into meaningful geographic/property comparisons before ML; preserve source evidence and evaluate advertised nightly price.
 
