@@ -17,14 +17,15 @@ No accounts, database, persistent Python server, paid infrastructure, listing sc
 
 The original repository README (initial commit 4401c16) requested a "Short Term rental interactive map for Las Vegas". The current static explorer implements that map, filters, clustering, listing selection and neighborhood sample comparisons using the validated Clark County snapshot. This checkout contains no separate original requirements specification or task checklist beyond this roadmap; broader milestones must remain distinct from the original map request.
 
-Operational follow-up: [issue #4](https://github.com/kenner1-unlv/vegas-str-ml/issues/4) tracks Pages dashboard status and pausing the separate Worker Git build trigger without deleting the Worker. Product milestones 2–6 above remain future work; no acquisition data, models, occupancy/revenue conclusions, investment rankings or legal eligibility are implemented.
+Operational follow-up: [issue #4](https://github.com/kenner1-unlv/vegas-str-ml/issues/4) tracks Pages dashboard status and pausing the separate Worker Git build trigger without deleting the Worker. Milestone 3's offline baselines/candidate are implemented; uncertainty and public prediction release remain open. Milestone 4 has geographic evaluation and development experiments, with temporal/final follow-up pending. Acquisition integration and milestones 5–6 remain future work; no occupancy/revenue conclusions, investment rankings or legal eligibility are implemented.
 
 ## Issue roadmap
 
 - Completed retrospective records: [#1 explorer foundation](https://github.com/kenner1-unlv/vegas-str-ml/issues/1), [#2 Pages delivery](https://github.com/kenner1-unlv/vegas-str-ml/issues/2).
 - [#3 portfolio navigation](https://github.com/kenner1-unlv/vegas-str-ml/issues/3) links [PR #7](https://github.com/kenner1-unlv/vegas-str-ml/pull/7) and its implementation, validation and merge history.
-- Open: [#4 hosting follow-up](https://github.com/kenner1-unlv/vegas-str-ml/issues/4), [#5 housing-cost evidence](https://github.com/kenner1-unlv/vegas-str-ml/issues/5), [#6 advertised-price evaluation](https://github.com/kenner1-unlv/vegas-str-ml/issues/6) links implemented research in [PR #18](https://github.com/kenner1-unlv/vegas-str-ml/pull/18).
-- Later milestones 4–6 remain roadmap proposals rather than scheduled or completed implementations.
+- Open: [#4 hosting follow-up](https://github.com/kenner1-unlv/vegas-str-ml/issues/4), [#5 housing-cost evidence](https://github.com/kenner1-unlv/vegas-str-ml/issues/5), [#16 address research](https://github.com/kenner1-unlv/vegas-str-ml/issues/16), [#17 model validation](https://github.com/kenner1-unlv/vegas-str-ml/issues/17).
+- [#6 advertised-price evaluation](https://github.com/kenner1-unlv/vegas-str-ml/issues/6) links implemented research in [PR #18](https://github.com/kenner1-unlv/vegas-str-ml/pull/18); public predictions remain withheld.
+- Remaining milestone 4 validation and milestones 5–6 remain roadmap work.
 
 ## Research layers before ML
 
@@ -41,3 +42,7 @@ Private property/stay mappings are now implemented in the active milestone below
 The requested next workflow is address entry -> verify property details through a permitted provider (Zillow if access/reuse is available) -> suitable Airbnb comps and an evaluated advertised-rate estimate -> user-controlled occupancy/cost scenarios. [Issue #16](https://github.com/kenner1-unlv/vegas-str-ml/issues/16) tracks source access, field conflicts, manual confirmation and privacy before implementation. Exact property addresses stay distinct from anonymized Airbnb points; no parcel matching from dots. Additional Airbnb snapshots require immutable provenance, feature/support drift checks and grouped temporal evaluation (#17). No Zillow access, scrape automation, address lookup or refresh scheduler is implemented.
 
 [Property-source access investigation](data-sources.md#address-level-property-sources-access-investigation-october-10-2026) records actual limited county query evidence, Zillow request route, detailed county waiver option and RentCast account/overage dependencies. No address integration, paid access or public field expansion is delivered.
+
+## Owner-selected review features
+
+[Review-feature specification](../specs/002-review-features/spec.md) and [#22](https://github.com/kenner1-unlv/vegas-str-ml/issues/22) add seven scores, four counts and reviews/month to selectable private development experiments. [Feature menu](features.md) exposes all 90 source columns with coverage and role. Owner selected reviews first; bathrooms/amenities and other candidates remain deferred. [Model card](model-card.md#review-feature-development-follow-up) records the modest measured development improvement; no new final-test evidence or public model is delivered.

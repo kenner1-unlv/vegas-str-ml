@@ -1,0 +1,11 @@
+# Development review experiment v1
+
+CLI: uv run --project pipeline python pipeline/review_experiment.py --snapshot YYYY-MM-DD --output data/research/<snapshot>/review-experiment.json [--features comma,separated,review,fields].
+
+No --features: compare property_only, scores_without_value, counts, scores_counts_without_value, all_reviews. With --features: compare property_only and custom; exact allowlist of seven scores/four counts/reviews_per_month; unknown/duplicate/empty names fail before writes. Order canonicalized to allowlist order and recorded. Base numeric bedrooms/beds/accommodates and categorical property_group/room_type/stay_cohort/ZCTA always retained.
+
+Verify current base normalization using load_verified; reverify gzip bytes against pinned manifest immediately before enrichment. Validate snapshot/date, digit string IDs, exact complete one-to-one source join and required review columns. Source missingness does not exclude rows. Source strings stay private; statuses audited. Output is .json in ignored data/research and must not overwrite normalized.json or any existing output owned by another experiment.
+
+Retain frozen Phase 3 cohort/outer partition rule; use outer holdout only for partition exclusion and geographic buffer, never fit/score its targets. Three inner geographic folds on the buffered development pool, grouped IDs and separate 1 km fitting buffers. For each feature set and alpha in 1/10/100, fit train-only median imputation/missing indicators/scaling/one-hot plus log1p Ridge. Zero-clip backtransformed negatives and audit clamp counts. Global/room medians fit separately in each fold. Select alpha by pooled development USD MAE, tie smaller alpha. Selected-alpha pooled/subgroup metrics are selection-biased exploratory diagnostics, not unbiased nested-CV or final test estimates. No feature-set winner auto-promoted.
+
+Record fold training/validation counts, area sets, ID overlap, buffer exclusions, manifest hash; coverage and errors by room/property/ZCTA with thin n<20 flag. Publish report only, never rows or manifests. Hash source, base normalized artifact, experiment/enrichment/evaluation code, contract, lockfile. Preserve baseline final results; public_prediction_release remains withheld. No public review fields, deployment model or new release gate.

@@ -86,3 +86,5 @@ See [scope and remaining milestones](docs/scope.md). Regional housing benchmarks
 ## Offline ML evidence
 
 [Model card](docs/model-card.md) reports the first frozen geographic evaluation: 1,642 held-out listings, Ridge MAE $123.09 versus room-median $170.30. A hotel-room subgroup fails the release gate; the public demo remains descriptive. [Address/property research #16](https://github.com/kenner1-unlv/vegas-str-ml/issues/16) and [model follow-up #17](https://github.com/kenner1-unlv/vegas-str-ml/issues/17) show what remains.
+
+[Airbnb feature menu](docs/features.md) exposes all 90 detailed source fields, coverage and current/candidate/restricted roles so the project owner can choose features. [Review experiment](specs/002-review-features/spec.md), tracked in [#22](https://github.com/kenner1-unlv/vegas-str-ml/issues/22), adds selectable ratings/counts privately: development-fold MAE $165.53 property-only versus $161.33 with all reviews. These exploratory tuning-fold errors are separate from the earlier final holdout. [Commands](specs/002-review-features/quickstart.md) support an explicit review subset; bathrooms/amenities remain owner-deferred candidates.

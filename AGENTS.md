@@ -27,3 +27,5 @@ Use issue checkbox criteria and focused PRs for new changes; link evidence befor
 # Research development
 
 Use the pinned Spec Kit workflow in .specify/README.md and .specify/memory/constitution.md for substantial research semantics/evaluation changes. Active milestone specs/001-comparable-price-baseline/ defines phased requirements and checkbox tasks. Private normalization in scripts/normalize_research.py does not expand public fields, fit encoders or train a model. Keep source values and explicit unknowns; review aggregate audit evidence before advancing phases.
+
+Review-feature research follows specs/002-review-features/: expose docs/features.md for owner choices, keep scores/counts private, and use development geographic folds only. Do not reuse the inspected Phase 3 final holdout for feature selection or call tuning-fold metrics fresh final evidence. Bathrooms/amenities remain deferred candidates. Review scores are comparable-property characteristics, not promised renovation outcomes; review counts are not occupancy.

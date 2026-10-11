@@ -34,4 +34,24 @@ Price-band diagnostics also expose weaknesses: $250-499 listings have candidate 
 
 ## Reproduction and ownership
 
+### Review-feature development follow-up
+
+The [owner feature menu](features.md) catalogs all 90 detailed-listing columns. The [review experiment contract](../specs/002-review-features/contracts/experiment.md) was frozen in commit d19e835 before actual fitting. It adds seven scores, four review counts and reviews/month as selectable private inputs without changing the first evaluation above. Owner chose review features first; bathrooms, amenities and other candidates await selection and parsing.
+
+On the same three buffered geographic development folds (10,366 validation observations pooled), independently tuned log1p Ridge variants produced:
+
+| Feature set | USD MAE | USD RMSE | Selected alpha |
+| --- | ---: | ---: | ---: |
+| Property only | 165.53 | 1,093.07 | 10 |
+| Scores excluding value | 163.14 | 1,091.89 | 10 |
+| Review counts/rate | 161.71 | 1,091.26 | 10 |
+| Scores + counts excluding value | 161.44 | 1,090.96 | 10 |
+| All reviews including value | 161.33 | 1,090.60 | 1 |
+
+All-review MAE is about 2.53% below the property-only reference in this exploration. Global/room-median development baselines are $217.69/$213.03. Property-only pooled alpha metrics exactly reproduce the original development tuning metrics. **Do not compare this $161.33 with the original $123.09 final MAE as an improvement/regression:** they use different observations. Each alpha is selected on these same folds, so these are selection-biased development diagnostics, not new final-test or unbiased nested-CV estimates. No feature-set winner is promoted.
+
+Development coverage: 7,595 of 10,366 have valid overall/accuracy/cleanliness scores and reviews/month; check-in/location/value have 7,594. Communication has 7,594 valid, 2,771 missing and one invalid (source 5.05 preserved privately, not capped). All four counts are present/valid for all development rows. Missing values are imputed inside fitting partitions with indicators; zero review counts remain distinct from missing ratings.
+
+[Aggregate results](../specs/002-review-features/development-results.json) include every fold/alpha and room/property/ZCTA diagnostics. [Verification](../specs/002-review-features/verification.md) records repeatability and preserved baseline/public artifacts. Ratings describe established comps and may reflect management/service or perceived price; they are not guaranteed subject-property outcomes or causal renovation effects. Counts are not bookings. Large RMSE persists from extreme asking-price errors. No outer-holdout errors were recomputed; fresh final/temporal evidence, calibrated intervals and public prediction release remain [#17](https://github.com/kenner1-unlv/vegas-str-ml/issues/17).
+
 Follow [quickstart](../specs/001-comparable-price-baseline/quickstart.md) with pinned private archives/normalization, then run `uv run --project pipeline python pipeline/evaluate.py --snapshot 2026-09-20 --output data/research/2026-09-20/evaluation.json`. Private output contains split membership; stdout contains aggregates only. CI runs synthetic evaluation fixtures, not private source training or downloads. Research owner explicitly reviews/publishes aggregate results; GitHub Actions deploys only the static frontend artifact after main checks. Lockfile/code/contract/dataset hashes accompany results. Numeric-library/platform differences can affect floating-point last digits; bitwise repeatability was checked on this Windows environment, not promised across platforms.
