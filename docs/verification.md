@@ -101,3 +101,7 @@ Fresh [Phase 1 verification](../specs/001-comparable-price-baseline/verification
 ## October 10 offline comparable selector
 
 [Phase 2 verification](../specs/001-comparable-price-baseline/verification.md#phase-2-fresh-verification-2026-10-10) records fixture/actual-snapshot membership, thresholds, provenance checks and aggregate support evidence. No model or new public UI is claimed; delivery history is linked through issue #13 and its PR.
+
+## Offline Phase 3 evaluation ? October 10, 2026
+
+[Feature verification](../specs/001-comparable-price-baseline/verification.md#phase-3-fresh-verification-2026-10-10) records 129 local fixture tests, frozen protocol before fitting, identical repeated actual evaluation bytes and unchanged public data. [Model card](model-card.md) publishes measured geographic errors and failed hotel-room gate; public predictions remain withheld. No new map/filter/selection checks are claimed for this research increment. PR/main delivery evidence belongs to the linked PR trail.

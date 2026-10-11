@@ -2,7 +2,7 @@
 
 **Input**: spec.md, plan.md, research.md, data-model.md, quickstart.md. Tests required by FR-012.
 
-The user's **Phase 1** means normalization/US1, including the setup and foundational sections below. Spec Kit template phase numbers are organizational; Phase 2 is the current increment; Phase 3 product work remains unchecked.
+The user's **Phase 1** means normalization/US1, including the setup and foundational sections below. Spec Kit template phase numbers are organizational; Phases 1?3 research are implemented; public predictions remain withheld.
 
 ## Setup
 
@@ -41,19 +41,19 @@ Independent check: fixture membership/exclusions match expected rules; price alo
 
 Independent check: reproducible holdouts, zero ID overlap and no training preprocessing fitted on held-out values.
 
-- [ ] T018 [US3] Freeze supported cohort/feature allowlist, geographic split units/buffers, tuning folds and review thresholds before fitting in specs/001-comparable-price-baseline/contracts/evaluation.md.
-- [ ] T019 [US3] Add locked evaluation dependencies in pipeline/pyproject.toml and pipeline/uv.lock; implement deterministic grouped geographic split manifest in pipeline/evaluate.py.
-- [ ] T020 [US3] Implement global/room-type training medians and train-only imputation/one-hot vocabulary with explicit unseen-area fallback in pipeline/evaluate.py.
-- [ ] T021 [US3] Evaluate a regularized candidate against baselines and report USD MAE/median absolute error/RMSE and subgroup counts in pipeline/evaluate.py.
-- [ ] T022 [US3] Verify ID exclusion, train-only transforms, geographic separation and reproducible baseline metrics in pipeline/tests/test_evaluation.py.
-- [ ] T023 [US3] Publish measured model card, failure analysis and prediction release decision in docs/model-card.md; keep private splits/binaries ignored.
+- [x] T018 [US3] Freeze supported cohort/feature allowlist, geographic split units/buffers, tuning folds and review thresholds before fitting in specs/001-comparable-price-baseline/contracts/evaluation.md.
+- [x] T019 [US3] Add locked evaluation dependencies in pipeline/pyproject.toml and pipeline/uv.lock; implement deterministic grouped geographic split manifest in pipeline/evaluate.py.
+- [x] T020 [US3] Implement global/room-type training medians and train-only imputation/one-hot vocabulary with explicit unseen-area fallback in pipeline/evaluate.py.
+- [x] T021 [US3] Evaluate a regularized candidate against baselines and report USD MAE/median absolute error/RMSE and subgroup counts in pipeline/evaluate.py.
+- [x] T022 [US3] Verify ID exclusion, train-only transforms, geographic separation and reproducible baseline metrics in pipeline/tests/test_evaluation.py.
+- [x] T023 [US3] Publish measured model card, failure analysis and prediction release decision in docs/model-card.md; keep private splits/binaries ignored.
 
 ## Cross-cutting
 
-- [ ] T024 Reconcile remaining requirements, task/issue checkboxes and actual release evidence in specs/001-comparable-price-baseline/verification.md.
+- [x] T024 Reconcile remaining requirements, task/issue checkboxes and actual release evidence in specs/001-comparable-price-baseline/verification.md.
 
 ## Dependencies and execution strategy
 
-Setup -> foundation -> US1 -> US2 -> US3 -> final convergence. Tests and independent checks apply at each stage. US1 and US2 are implemented; deliver US2 with recorded validation before beginning US3. US2 requires normalized contract; US3 can be evaluated independently of a UI but needs the reviewed cohort semantics. Fixture design and documentation may be prepared in parallel after the respective contract is fixed; mutation of shared scripts/task files is sequential. No parallel implementation agents are required.
+Setup -> foundation -> US1 -> US2 -> US3 -> final convergence. Tests and independent checks apply at each stage. US1, US2 and US3 are implemented; Phase 3 measured evidence is in docs/model-card.md. US2 requires normalized contract; US3 can be evaluated independently of a UI but needs the reviewed cohort semantics. Fixture design and documentation may be prepared in parallel after the respective contract is fixed; mutation of shared scripts/task files is sequential. No parallel implementation agents are required.
 
 There are 24 tasks: 3 setup, 2 foundation, 7 US1, 5 US2, 6 US3, 1 cross-cutting. Checked tasks have local implementation evidence; T017 links Phase 2 PR #15 and hosted checks; T012 links hosted implementation checks and PR #14, which records final-head/delivery evidence. Specification-quality checks are not implementation completion.

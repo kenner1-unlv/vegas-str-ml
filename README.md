@@ -2,7 +2,7 @@
 
 [**Try the live demo → str.housev.dev**](https://str.housev.dev) · [Development issues](https://github.com/kenner1-unlv/vegas-str-ml/issues?q=is%3Aissue) · [Pull requests](https://github.com/kenner1-unlv/vegas-str-ml/pulls) · [CI and deployments](https://github.com/kenner1-unlv/vegas-str-ml/actions)
 
-A public map for exploring advertised Airbnb nightly prices across the Las Vegas Valley. The engineering focus is a reproducible data pipeline, an interactive geographic client, honest data limitations and verified static delivery. The repository name includes ML; the current release is a descriptive explorer, with model work still planned.
+A public map for exploring advertised Airbnb nightly prices across the Las Vegas Valley. The engineering focus is a reproducible data pipeline, an interactive geographic client, honest data limitations and verified static delivery. The repository name includes ML; the current release is a descriptive explorer, with an offline evaluated price model documented separately from the demo.
 
 ![Explorer map with clustered listings](docs/evidence/map-clusters.png)
 
@@ -16,7 +16,7 @@ A public map for exploring advertised Airbnb nightly prices across the Las Vegas
 4. Zoom into a map cluster or choose a listing from the keyboard-accessible listing browser. Compare its asking price, room type, bedrooms and source neighborhood.
 5. Return through the demo's **Source code & development history** footer link to inspect the implementation and evidence below.
 
-Asking prices are not realized revenue. Unavailable calendar nights are not confirmed bookings. Anonymized points can be displaced by approximately a block; they do not identify a particular house. Approximate points, Census ZIP areas and source neighborhood labels do not establish parcel matches or legal eligibility. No housing-cost integration, occupancy estimate, trained model or investment ranking is shipped.
+Asking prices are not realized revenue. Unavailable calendar nights are not confirmed bookings. Anonymized points can be displaced by approximately a block; they do not identify a particular house. Approximate points, Census ZIP areas and source neighborhood labels do not establish parcel matches or legal eligibility. The public demo ships no housing-cost integration, occupancy estimate, model predictions or investment ranking. Offline model results and failures are documented in the [model card](docs/model-card.md).
 
 ## Follow the development trail
 
@@ -28,9 +28,9 @@ Asking prices are not realized revenue. Unavailable calendar nights are not conf
 | Geographic research and source audit | [Issue #8](https://github.com/kenner1-unlv/vegas-str-ml/issues/8), [#9](https://github.com/kenner1-unlv/vegas-str-ml/issues/9) | Implementation, validation and merge history in [PR #10](https://github.com/kenner1-unlv/vegas-str-ml/pull/10) |
 | Hosting follow-up | [Issue #4](https://github.com/kenner1-unlv/vegas-str-ml/issues/4) | Pages dashboard verification and duplicate Worker build-trigger cleanup remain |
 | Housing costs | [Issue #5](https://github.com/kenner1-unlv/vegas-str-ml/issues/5) | Future: licensing, geographic coverage and benchmark validation |
-| Comparable-data foundation | [Milestone #11](https://github.com/kenner1-unlv/vegas-str-ml/issues/11), [Phase 1 #12](https://github.com/kenner1-unlv/vegas-str-ml/issues/12), [spec and tasks](specs/001-comparable-price-baseline/spec.md) | Private normalization and aggregate evidence in [PR #14](https://github.com/kenner1-unlv/vegas-str-ml/pull/14); comp selection/training remain future stages |
-| Geographic comp research | [Issue #13](https://github.com/kenner1-unlv/vegas-str-ml/issues/13), [matching contract](specs/001-comparable-price-baseline/contracts/comps.md), [actual aggregate evidence](specs/001-comparable-price-baseline/phase2-audit.json) | Offline private matching and support evidence in [PR #15](https://github.com/kenner1-unlv/vegas-str-ml/pull/15); no public comp UI or model |
-| Advertised-price ML | [Issue #6](https://github.com/kenner1-unlv/vegas-str-ml/issues/6) | Future: baseline-first, grouped geographic evaluation |
+| Comparable-data foundation | [Milestone #11](https://github.com/kenner1-unlv/vegas-str-ml/issues/11), [Phase 1 #12](https://github.com/kenner1-unlv/vegas-str-ml/issues/12), [spec and tasks](specs/001-comparable-price-baseline/spec.md) | Private normalization and aggregate evidence in [PR #14](https://github.com/kenner1-unlv/vegas-str-ml/pull/14); comps and offline evaluation are implemented in their linked stages |
+| Geographic comp research | [Issue #13](https://github.com/kenner1-unlv/vegas-str-ml/issues/13), [matching contract](specs/001-comparable-price-baseline/contracts/comps.md), [actual aggregate evidence](specs/001-comparable-price-baseline/phase2-audit.json) | Offline private matching and support evidence in [PR #15](https://github.com/kenner1-unlv/vegas-str-ml/pull/15); no public comp UI |
+| Advertised-price evaluation | [Issue #6](https://github.com/kenner1-unlv/vegas-str-ml/issues/6), [model card](docs/model-card.md) | Offline baselines and candidate evaluation in [PR #18](https://github.com/kenner1-unlv/vegas-str-ml/pull/18); public predictions withheld |
 
 The foundation and deployment were originally committed directly to main. Issues #1 and #2 document that work retrospectively; they do not imply earlier issue planning or PR reviews. New changes follow the [issue → branch → PR → CI → merge → deployment procedure](CONTRIBUTING.md).
 
@@ -39,7 +39,7 @@ The foundation and deployment were originally committed directly to main. Issues
 - **Data pipeline:** [pipeline/ingest.py](pipeline/ingest.py) streams and validates pinned source downloads, verifies SHA-256 for offline reprocessing, exports allowlisted records and publishes the index last. [Sources and provenance](docs/data-sources.md) document exclusions, licensing and quality. [Census enrichment](scripts/build_geography.py) adds the approximate ZIP layer; [source audit](scripts/audit_sources.py) prepares private research features. [Normalization](scripts/normalize_research.py) preserves those source values and derives explicit private cohorts; [research contract](specs/001-comparable-price-baseline/data-model.md) defines the fields. [How data was treated](specs/001-comparable-price-baseline/research.md#how-the-data-was-treated) shows before/after examples, exclusions and group counts. [Comparable selector](scripts/select_comps.py) matches explicit geographic/property cohorts privately; [audit command](scripts/audit_comps.py) reproduces aggregate support evidence.
 - **Interactive client:** [Map.svelte](web/src/lib/Map.svelte) clusters the filtered sample, bundles its map worker and preserves string IDs; [data.ts](web/src/lib/data.ts) validates the client contract. The listing browser remains usable when WebGL or tile requests fail.
 - **Delivery:** [CI workflow](.github/workflows/ci.yml) gates production Pages uploads on frontend and Python checks and reuses the verified build artifact. [Deployment](docs/deployment.md) describes ownership, secrets by name, recovery and the separate legacy Worker.
-- **Evidence:** [Verification](docs/verification.md) separates historical local checks, fresh hosted browser checks and the successful hosted deployment. [Decisions](docs/decisions.md) explains technical tradeoffs; [methodology](docs/methodology.md) distinguishes descriptive statistics from future model/scenario claims.
+- **Evidence:** [Verification](docs/verification.md) separates historical local checks, fresh hosted browser checks and the successful hosted deployment. [Decisions](docs/decisions.md) explains technical tradeoffs; [methodology](docs/methodology.md) distinguishes descriptive statistics, evaluated research models and future scenario claims.
 
 ```mermaid
 flowchart LR
@@ -81,4 +81,8 @@ Review provenance and quality before publishing. Raw files stay ignored. CI neve
 
 Derived from [Inside Airbnb Clark County](https://insideairbnb.com/get-the-data/), snapshot 2026-09-20, retrieved October 7, 2026 Pacific. Filtering and allowlisting are our modifications. Data attribution: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); map attribution is visible in the app. Host/reviewer data, descriptions, secrets, raw datasets and model binaries are excluded from public outputs. Application code has no selected redistribution license yet.
 
-See [scope and remaining milestones](docs/scope.md). Regional housing benchmarks, ML evaluation, scenario analysis and refresh operations require additional evidence; they are not presented as completed features.
+See [scope and remaining milestones](docs/scope.md). Regional housing benchmarks, further ML validation/public predictions, scenario analysis and refresh operations require additional evidence; they are not presented as completed features.
+
+## Offline ML evidence
+
+[Model card](docs/model-card.md) reports the first frozen geographic evaluation: 1,642 held-out listings, Ridge MAE $123.09 versus room-median $170.30. A hotel-room subgroup fails the release gate; the public demo remains descriptive. [Address/property research #16](https://github.com/kenner1-unlv/vegas-str-ml/issues/16) and [model follow-up #17](https://github.com/kenner1-unlv/vegas-str-ml/issues/17) show what remains.
