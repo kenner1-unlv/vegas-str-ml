@@ -13,6 +13,20 @@ all four local archives were streamed to compute the aggregate counts below. The
 | Los Angeles, CA | 2026-09-14 | 43,781 | 7,094 | 10,845 | 412 | 26,795,298 | `83de2cb0188c058a839cc0533bef3d2725b59c51ac7e83c049dc2e2c69edf1bf` |
 | Nashville, TN | 2026-09-19 | 10,133 | 814 | 1,296 | 73 | 6,053,738 | `cb528c862fd11ced99eafd2d8d6e21a1f0918e082388299cccde7061a791b24b` |
 
+The first private normalization retained 17,456 Clark County, 19,406 NYC, 36,687 LA and
+9,319 Nashville rows with a parsed positive price and valid coordinates: **82,868 of
+104,483 source rows**. The 21,615 exclusions all have a missing asking price in these
+snapshots. These are broad source-area cohorts, not final modeling cohorts; further
+feature and geographic support rules are pending. NYC excludes 10,512 of 29,918 rows,
+so selection bias is a material cross-market limitation. Extreme positive advertised
+rates remain in the private cohort for diagnosis rather than being silently capped.
+The [aggregate source audit](source-audit.json) records all 90 columns' missing counts,
+selected field statuses, source room support, price tails and candidate spatial support.
+Two local normalization runs on the same pinned inputs produced byte-identical private
+rows and private audits for all four markets. This checks repeatability on the current
+Windows environment, not across all platforms. No model training or final evaluation
+has run.
+
 Detailed source URLs:
 
 - Clark County: https://data.insideairbnb.com/united-states/nv/clark-county-nv/2026-09-20/data/listings.csv.gz
@@ -22,10 +36,10 @@ Detailed source URLs:
 
 Each archive has 90 columns with the same header SHA-256
 `061445eae4bb06f8e0275de05af3ea20c2205078f98f350709debefc99a84cd1`.
-The three new local files have filesystem write-completion timestamps on 2026-11-09 UTC
-(NYC 01:44:44.995, LA 01:44:45.436, Nashville 01:44:45.733). These are local file
-timestamps, not provider publication times or a complete acquisition manifest; T002 will
-record explicit retrieval events before treating them as finalized provenance.
+The [source manifest](source-manifest.json) records explicit successful local retrieval
+events on 2026-11-09 UTC for the three new markets. Clark County retains the earlier
+retrieval timestamp from its verified private manifest. Retrieval and provider snapshot
+dates are distinct.
 Core fields `id`, `last_scraped`, `price`, `room_type`, `property_type`, `bedrooms`,
 `beds`, `accommodates`, coordinates and selected review fields are present. No duplicate
 listing IDs or malformed nonempty prices were found by the preliminary scan; this does not

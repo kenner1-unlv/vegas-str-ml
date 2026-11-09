@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "source_page": "https://insideairbnb.com/get-the-data/",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "header_sha256": "061445eae4bb06f8e0275de05af3ea20c2205078f98f350709debefc99a84cd1",
+  "markets": {
+    "clark-county-nv": {
+      "snapshot_date": "2026-09-20",
+      "source_area": "Clark County, NV",
+      "url": "https://data.insideairbnb.com/united-states/nv/clark-county-nv/2026-09-20/data/listings.csv.gz",
+      "bytes": 10743024,
+      "sha256": "98bf79593638dc0f8638cd538ec9293efb65cd9af01b5f34f335e2ea9e371cb1",
+      "retrieved_at_utc": "2026-10-08T05:15:57.640511+00:00"
+    },
+    "new-york-city": {
+      "snapshot_date": "2026-09-14",
+      "source_area": "New York City, NY",
+      "url": "https://data.insideairbnb.com/united-states/ny/new-york-city/2026-09-14/data/listings.csv.gz",
+      "bytes": 16005851,
+      "sha256": "a67bf574e47aa6eba5b2262987dbd9684f206d5cd0183470056f9c936b8e7ae1",
+      "retrieved_at_utc": "2026-11-09T01:56:15.597916+00:00"
+    },
+    "los-angeles": {
+      "snapshot_date": "2026-09-14",
+      "source_area": "Los Angeles, CA",
+      "url": "https://data.insideairbnb.com/united-states/ca/los-angeles/2026-09-14/data/listings.csv.gz",
+      "bytes": 26795298,
+      "sha256": "83de2cb0188c058a839cc0533bef3d2725b59c51ac7e83c049dc2e2c69edf1bf",
+      "retrieved_at_utc": "2026-11-09T01:56:15.586764+00:00"
+    },
+    "nashville": {
+      "snapshot_date": "2026-09-19",
+      "source_area": "Nashville, TN",
+      "url": "https://data.insideairbnb.com/united-states/tn/nashville/2026-09-19/data/listings.csv.gz",
+      "bytes": 6053738,
+      "sha256": "cb528c862fd11ced99eafd2d8d6e21a1f0918e082388299cccde7061a791b24b",
+      "retrieved_at_utc": "2026-11-09T01:56:15.432864+00:00"
+    }
+  }
+}

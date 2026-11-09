@@ -9,8 +9,26 @@ The four current detailed Inside Airbnb listing URLs returned HTTP 200. Four loc
 archives were streamed for headers, aggregate row counts, room types and missing target
 counts. All have the same 90-column header; [research.md](research.md) records dates,
 bytes, hashes and limitations. The three new archives are ignored under `data/raw/`.
-Full row/type/geographic audit, explicit retrieval-event manifests and normalized cohorts
-are pending issues below. No raw row or personal field was added to version control.
+The four private cohorts now have verified local source manifests, explicit retrieval
+events for the three new archives, typed selected fields, all-column missingness,
+geographic support summaries and reconciled row counts in [source-audit.json](source-audit.json).
+The tracked aggregate audit contains no raw row or personal field value. Full model-cohort
+eligibility and frozen split rules remain pending issue #26.
+
+## Cohort implementation checks (#25)
+
+`pipeline/market_sources.py` verifies bytes, SHA-256 and the detailed header before use;
+downloads are explicit and replace a local archive only after verification.
+`pipeline/market_normalize.py` writes private normalized rows and an audit under ignored
+`data/research/multi-city/`; its selected field allowlist excludes host/reviewer details.
+Synthetic tests cover four market paths, string IDs, Hotel room, zero/missing/invalid
+values, duplicate IDs, changed headers, hash mismatch and prior-output preservation.
+An allowlist test checks that the committed audit contains aggregate counts and provenance
+without source rows.
+All four actual normalized outputs and private audits matched byte-for-byte on a repeated
+run. Ruff passed and the full fixture suite reported **170 passed** locally. Web
+formatting/lint/types/build, geography and asset gates also passed. This is
+source/cohort evidence only; no price model has been trained or released.
 
 ## Spec Kit consistency analysis
 

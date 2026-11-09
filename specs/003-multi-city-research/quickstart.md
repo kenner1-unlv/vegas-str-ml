@@ -4,12 +4,23 @@ From the repository root, follow [CONTRIBUTING.md](../../CONTRIBUTING.md) for th
 web and Python gates. `uv sync --project pipeline --locked` installs the current pipeline.
 CI runs fixture tests only: `uv run --project pipeline pytest pipeline/tests -q`.
 
-The four source URLs, dates and hashes are in [research.md](research.md). Download the
-detailed files deliberately to ignored `data/raw/`, verify bytes against the manifest,
-then run the future normalization and experiment CLIs from an issue branch. Exact commands
-will be added when their interfaces and code exist; no multi-city training command is
-implemented yet. Keep private normalized rows, split membership and model artifacts in
-ignored `data/research/`. Only reviewed aggregate evidence enters `specs/` or the case study.
+The four source URLs, dates and hashes are in [source-manifest.json](source-manifest.json).
+Download explicitly only when needed. The current four local archives were verified against
+the pinned manifest; the three new source files and all normalized rows stay ignored.
+
+```powershell
+# Example: explicit local acquisition or verification without acquisition.
+uv run --project pipeline python pipeline/market_sources.py --market new-york-city --download
+uv run --project pipeline python pipeline/market_sources.py --market new-york-city
+uv run --project pipeline python pipeline/market_normalize.py --market new-york-city
+# Repeat normalization for each market, then review before publishing aggregates.
+uv run --project pipeline python scripts/summarize_market_audits.py --output specs/003-multi-city-research/source-audit.json
+```
+
+The normalizer writes private `normalized.jsonl` and `audit.json` per market under
+`data/research/multi-city/`. The summary command publishes only reviewed aggregate fields.
+No multi-city training command is implemented yet. Future private split membership and model
+artifacts also stay in ignored `data/research/`.
 
 The existing Clark County public path remains `pipeline/ingest.py`; historical evaluation
 is `pipeline/evaluate.py` and review exploration is `pipeline/review_experiment.py`. Do not
