@@ -42,9 +42,9 @@ membership; compared methods use the same partition and train-only transforms.
 Independent test: one question has a target, baseline, validation/stability protocol and
 interpretation; unsupported methods are explicitly deferred.
 
-- [ ] T018 [US3] Audit secondary questions against sample support, prediction-time availability and leakage; freeze one selected protocol or an evidence-backed deferral in specs/003-multi-city-research/secondary-protocol.md.
-- [ ] T019 [US3] Add synthetic target/baseline/split tests for the selected secondary question in pipeline/tests/test_market_secondary.py.
-- [ ] T020 [US3] Implement and evaluate the selected question in pipeline/market_secondary.py; publish only aggregate findings or a documented support failure in specs/003-multi-city-research/secondary-results.json.
+- [x] T018 [US3] Audit secondary questions against sample support, prediction-time availability and leakage; freeze market-relative price-segment classification in specs/003-multi-city-research/secondary-protocol.md.
+- [x] T019 [US3] Add synthetic training-derived target, candidate and metric tests in pipeline/tests/test_market_secondary.py.
+- [x] T020 [US3] Implement and evaluate the development-only question in pipeline/market_secondary.py; publish only aggregate findings in specs/003-multi-city-research/secondary-results.json.
 
 ## Phase 5: User Story 4 - Portfolio and delivery
 

@@ -59,6 +59,16 @@ delete the final result to retune or claim a new final test. Any revised candida
 a newly sourced, untouched evaluation protocol. CI exercises synthetic fixtures, not
 full-data training.
 
+The separate price-segment question is defined in
+[secondary-protocol.md](secondary-protocol.md). It uses only existing development folds:
+
+```powershell
+uv run --project pipeline python pipeline/market_secondary.py --output specs/003-multi-city-research/secondary-results.json
+```
+
+This emits aggregate classification support, confusion matrices and metrics only. It
+does not score the outer final blocks or publish a classifier.
+
 The existing Clark County public path remains `pipeline/ingest.py`; historical evaluation
 is `pipeline/evaluate.py` and review exploration is `pipeline/review_experiment.py`. Do not
 interpret their already reported final/development metrics as new cross-city evidence.
