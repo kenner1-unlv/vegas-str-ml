@@ -1,18 +1,10 @@
-# Las Vegas STR Explorer
+# Short-term rental pricing across four US markets
 
-An interactive map of advertised short-term rental prices in the Las Vegas Valley, with a separate four-market ML study behind it. I built this to show the whole process: verify a real dataset, make a useful explorer, test simple baselines before more complex models, and show where the models fail.
+Can a model trained on Airbnb listing characteristics predict advertised nightly prices in a different part of a city or in a different city? This study compares simple baselines and ML models, tests geographic generalization, and documents where the models fail.
 
-[Explore the map](https://str.housev.dev/) · [Research case study](https://str.housev.dev/research/) · [Model card](docs/model-card.md) · [Source and methods](docs/data-sources.md)
+On 8,568 newly held-out listings, histogram gradient boosting reduced mean absolute error to **$144.11** from **$176.46** for the room-type median. Hotel-room error increased, and public predictions remain withheld.
 
-![Clusters of Las Vegas listings on the map](docs/evidence/map-clusters.png)
-
-*The Las Vegas map in an October 2026 local production preview. Its September 2026 release has 17,212 validated listings.*
-
-## What you can explore
-
-The public map lets you filter by room type, bedrooms, source neighborhood, asking price and approximate Census ZIP area. The map, counts, medians and keyboard-friendly listing browser all use the same filtered sample. If map tiles or WebGL fail, the listing browser still works.
-
-Try [the map](https://str.housev.dev/) and choose **City of Henderson** to inspect that sample. Reset the filters, then try **Entire home/apt**, **4 bedrooms** and ZIP area **89146**. The ZIP filter includes a boundary-sensitivity option because listing coordinates are approximate.
+[ML study and results](https://str.housev.dev/) · [Explore the Vegas map](https://str.housev.dev/explore/) · [Model card](docs/model-card.md) · [Source and methods](docs/data-sources.md)
 
 ## The research question
 
@@ -40,6 +32,16 @@ Boosting improved the overall error, but **the hotel-room subgroup got worse**: 
 The price-segment experiment showed that nonlinear methods do not win everywhere. Random forest macro F1 was 0.773 in NYC, 0.734 in Nashville and 0.780 in LA; logistic regression was slightly better in LA. Those scores are **development-fold diagnostics**, not a fresh final test or an investment label.
 
 The [case-study page](https://str.housev.dev/research/) walks through the comparisons. For exact cohorts, configurations, uncertainty estimates and subgroup errors, see the [model card](docs/model-card.md), [research specification](specs/003-multi-city-research/spec.md) and [aggregate results](specs/003-multi-city-research/final-evaluation.json). The earlier Clark County $123.09 MAE used a different cohort and protocol; it is not a before/after comparison with the four-market result.
+
+![Clusters of Las Vegas listings on the map](docs/evidence/map-clusters.png)
+
+*The Las Vegas map in an October 2026 local production preview. Its September 2026 release has 17,212 validated listings.*
+
+## What you can explore
+
+The public map lets you filter by room type, bedrooms, source neighborhood, asking price and approximate Census ZIP area. The map, counts, medians and keyboard-friendly listing browser all use the same filtered sample. If map tiles or WebGL fail, the listing browser still works.
+
+Try [the map](https://str.housev.dev/explore/) and choose **City of Henderson** to inspect that sample. Reset the filters, then try **Entire home/apt**, **4 bedrooms** and ZIP area **89146**. The ZIP filter includes a boundary-sensitivity option because listing coordinates are approximate.
 
 ## Run it locally
 
