@@ -30,6 +30,23 @@ run. Ruff passed and the full fixture suite reported **170 passed** locally. Web
 formatting/lint/types/build, geography and asset gates also passed. This is
 source/cohort evidence only; no price model has been trained or released.
 
+## Frozen partition checks (#26)
+
+The spatial grid, hash assignment, observed-point buffer, minimum support and core feature
+allowlist were frozen in [contracts/evaluation.md](contracts/evaluation.md) before any
+multi-city model fit. Synthetic fixtures test repeated IDs across snapshots, cross-market
+identity, deterministic blocks, near-point exclusion, insufficient support, city exclusion,
+and local adaptation that avoids target prices and final rows. Actual private manifests
+for all four markets reproduced byte-for-byte on two local runs. The reviewed
+[split-support.json](split-support.json) shows zero fitting/final group and block overlap,
+per-fold counts and minimum retained observed-coordinate distances above 1 km. Source
+coordinate anonymization still limits physical separation claims. No final prices have
+been scored.
+
+At this checkpoint, the full Python fixture suite passed **178 tests**, Ruff lint and
+format checks passed, and the existing geography and Pages asset checks passed. The web
+code has not changed since its previous full passing check.
+
 ## Spec Kit consistency analysis
 
 The pinned prerequisite check found the new spec, research, data model, contracts and
