@@ -12,13 +12,19 @@ Snapshot hashes, normalization versions, exclusions and missingness MUST accompa
 Property group, room type, geography, capacity and stay restrictions remain distinct. Unknowns MUST NOT silently enter known groups. Geographic expansion and thin samples MUST be disclosed. Asking price MUST NOT determine default comp membership.
 
 ### IV. Baseline-first evaluation
-Fit preprocessing only on training data, group repeated IDs and hold out geography. Baseline comparisons, subgroup counts and failure analysis precede model quality claims. A single snapshot cannot establish temporal generalization.
+Fit preprocessing only on training data, group repeated IDs and hold out geography. Baseline comparisons, subgroup counts and failure analysis precede model quality claims. Training, validation and final evaluation MUST remain distinct. A single snapshot cannot establish temporal generalization.
 
 ### V. Reviewable increments
 Issues use checkbox criteria and PRs link actual evidence. Future tasks remain open. CI uses fixtures, never dataset downloads. Verification must exercise meaningful contracts and failure cases.
 
+### VI. Source provenance and responsible publication
+Every source MUST have a recorded location, snapshot date, retrieval URL, hash and applicable license or terms. Raw source archives and full source tables MUST stay out of GitHub and deployed assets. Public analysis MUST follow a reviewed, versioned output contract, credit the provider, describe modifications and exclude host/reviewer identities and text. Aggregate scores and counts may be published only at reviewed granularity. Authentication does not replace these checks.
+
+### VII. Hypothesis-driven, reproducible experiments
+Every experiment MUST define a question, testable hypothesis, cohort, split strategy, baseline, configuration, metrics, error analysis and limitations before interpreting results. Use deterministic seeds where supported and record software and data versions. Compare advanced methods on the same partitions; do not fabricate outcomes or claim a model is better from tuning-fold metrics or an exposed final holdout.
+
 ## Infrastructure constraints
-Keep static SvelteKit and offline Python unless a justified change is specified. Pages via main Actions remains production. Preserve the legacy Worker and unrelated AWS/DNS resources; no paid resources. Document secrets by name only.
+Keep static SvelteKit and offline Python unless a justified change is specified. Pages via main Actions remains production. Preserve the legacy Worker and unrelated AWS/DNS resources; no paid resources. Document secrets by name only. A portfolio case study may publish reviewed aggregate research independently of a gated reviewer demo.
 
 ## Development workflow
 Use Spec Kit for substantial data semantics, evaluation or architecture: constitution -> spec -> plan -> tasks -> scoped implementation -> verification. Small fixes use focused issue/PR checks. General deployment/methodology docs remain canonical; feature artifacts define their specific requirements. Verify repository root and preserve existing work.
@@ -26,4 +32,4 @@ Use Spec Kit for substantial data semantics, evaluation or architecture: constit
 ## Governance
 Initial adoption consolidates existing project instructions; user instructions take precedence and authority is not expanded. Amend principles in a PR with rationale and affected contracts. Semantic versioning: major incompatible changes, minor additions, patch clarifications. Review plans and changes against these principles and record justified deviations.
 
-**Version**: 1.0.0 | **Ratified**: 2026-10-09 | **Last Amended**: 2026-10-09
+**Version**: 1.1.0 | **Ratified**: 2026-10-09 | **Last Amended**: 2026-11-08
