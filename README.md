@@ -1,100 +1,66 @@
 # Las Vegas STR Explorer
 
-[**Try the live demo → str.housev.dev**](https://str.housev.dev) · [Development issues](https://github.com/kenner1-unlv/vegas-str-ml/issues?q=is%3Aissue) · [Pull requests](https://github.com/kenner1-unlv/vegas-str-ml/pulls) · [CI and deployments](https://github.com/kenner1-unlv/vegas-str-ml/actions)
+An interactive map of advertised short-term rental prices in the Las Vegas Valley, with a separate four-market ML study behind it. I built this to show the whole process: verify a real dataset, make a useful explorer, test simple baselines before more complex models, and show where the models fail.
 
-A public map for exploring advertised Airbnb nightly prices across the Las Vegas Valley. The engineering focus is a reproducible data pipeline, an interactive geographic client, honest data limitations and verified static delivery. The repository also contains offline four-market ML research and a [research case-study page](web/src/routes/research/+page.svelte), prepared for the existing static site. Public model predictions remain withheld; the current hosted release must be verified separately after merge.
+[Explore the map](https://str.housev.dev/) · [Research case study](https://str.housev.dev/research/) · [Model card](docs/model-card.md) · [Source and methods](docs/data-sources.md)
 
-![Explorer map with clustered listings](docs/evidence/map-clusters.png)
+![Clusters of Las Vegas listings on the map](docs/evidence/map-clusters.png)
 
-*Screenshot from the local production preview, October 7, 2026; the live demo is the current release.*
+*The Las Vegas map in an October 2026 local production preview. Its September 2026 release has 17,212 validated listings.*
 
-## Try it in two minutes
+## What you can explore
 
-1. Open the [demo](https://str.housev.dev). The September 20, 2026 snapshot contains 17,212 usable listings from 20,651 source rows.
-2. Choose **City of Henderson** to inspect its 784-listing sample. Reset, then set the maximum asking price to **100** to see 2,853 matching listings.
-3. Try **ZIP area (Census ZCTA) 89146**, **Entire home/apt**, **4 bedrooms**: 58 listings; excluding locations near ZCTA edges leaves 46. These are approximate area comps, not verified property locations.
-4. Zoom into a map cluster or choose a listing from the keyboard-accessible listing browser. Compare its asking price, room type, bedrooms and source neighborhood.
-5. Return through the demo's **Source code & development history** footer link to inspect the implementation and evidence below.
+The public map lets you filter by room type, bedrooms, source neighborhood, asking price and approximate Census ZIP area. The map, counts, medians and keyboard-friendly listing browser all use the same filtered sample. If map tiles or WebGL fail, the listing browser still works.
 
-Asking prices are not realized revenue. Unavailable calendar nights are not confirmed bookings. Anonymized points can be displaced by approximately a block; they do not identify a particular house. Approximate points, Census ZIP areas and source neighborhood labels do not establish parcel matches or legal eligibility. The public demo ships no housing-cost integration, occupancy estimate, model predictions or investment ranking. Offline model results and failures are documented in the [model card](docs/model-card.md).
+Try [the map](https://str.housev.dev/) and choose **City of Henderson** to inspect that sample. Reset the filters, then try **Entire home/apt**, **4 bedrooms** and ZIP area **89146**. The ZIP filter includes a boundary-sensitivity option because listing coordinates are approximate.
 
-## Follow the development trail
+## The research question
 
-| Stage | What to inspect | Evidence / status |
-| --- | --- | --- |
-| Explorer and ingestion | [Foundation record #1](https://github.com/kenner1-unlv/vegas-str-ml/issues/1), [initial implementation](https://github.com/kenner1-unlv/vegas-str-ml/commit/b5e8b80) | Implemented; retrospective issue recorded after delivery |
-| Production delivery | [Deployment record #2](https://github.com/kenner1-unlv/vegas-str-ml/issues/2), [delivery commit](https://github.com/kenner1-unlv/vegas-str-ml/commit/739a55a) | [Successful CI + Pages deployment](https://github.com/kenner1-unlv/vegas-str-ml/actions/runs/37738181925), attempt 2 |
-| Portfolio documentation | [Issue #3](https://github.com/kenner1-unlv/vegas-str-ml/issues/3), [PR #7](https://github.com/kenner1-unlv/vegas-str-ml/pull/7) | Implementation, validation and merge history in PR #7 |
-| Geographic research and source audit | [Issue #8](https://github.com/kenner1-unlv/vegas-str-ml/issues/8), [#9](https://github.com/kenner1-unlv/vegas-str-ml/issues/9) | Implementation, validation and merge history in [PR #10](https://github.com/kenner1-unlv/vegas-str-ml/pull/10) |
-| Hosting follow-up | [Issue #4](https://github.com/kenner1-unlv/vegas-str-ml/issues/4) | Duplicate Worker Git Builds connection disconnected; Pages custom-domain dashboard verification remains |
-| Housing costs | [Issue #5](https://github.com/kenner1-unlv/vegas-str-ml/issues/5) | Future: licensing, geographic coverage and benchmark validation |
-| Comparable-data foundation | [Milestone #11](https://github.com/kenner1-unlv/vegas-str-ml/issues/11), [Phase 1 #12](https://github.com/kenner1-unlv/vegas-str-ml/issues/12), [spec and tasks](specs/001-comparable-price-baseline/spec.md) | Private normalization and aggregate evidence in [PR #14](https://github.com/kenner1-unlv/vegas-str-ml/pull/14); comps and offline evaluation are implemented in their linked stages |
-| Geographic comp research | [Issue #13](https://github.com/kenner1-unlv/vegas-str-ml/issues/13), [matching contract](specs/001-comparable-price-baseline/contracts/comps.md), [actual aggregate evidence](specs/001-comparable-price-baseline/phase2-audit.json) | Offline private matching and support evidence in [PR #15](https://github.com/kenner1-unlv/vegas-str-ml/pull/15); no public comp UI |
-| Advertised-price evaluation | [Issue #6](https://github.com/kenner1-unlv/vegas-str-ml/issues/6), [model card](docs/model-card.md) | Offline baselines and candidate evaluation in [PR #18](https://github.com/kenner1-unlv/vegas-str-ml/pull/18); public predictions withheld |
+**Can a model trained on Airbnb listing characteristics predict advertised nightly prices in a different part of a city—or in a different city?**
 
-The foundation and deployment were originally committed directly to main. Issues #1 and #2 document that work retrospectively; they do not imply earlier issue planning or PR reviews. New changes follow the [issue → branch → PR → CI → merge → deployment procedure](CONTRIBUTING.md).
+The study uses pinned Inside Airbnb snapshots for Clark County, New York City, Los Angeles and Nashville. Of 104,483 source rows, 82,868 had a usable advertised price and coordinates. Missing prices vary sharply by market, so the study reports who entered the modeling sample instead of treating the four files as interchangeable.
 
-## Engineering walkthrough
+We compared a global median, a room-type median, Ridge regression and histogram gradient boosting. Preprocessing was fit only on training rows. Listing IDs were grouped, 3 km geographic blocks were held out, and a 1 km observed-point buffer separated training from evaluation. We also tested fixed models with one city left out and with a small amount of local training data. A separate **development-only** experiment classified listings above or below each market's training-derived median asking price.
 
-- **Data pipeline:** [pipeline/ingest.py](pipeline/ingest.py) streams and validates pinned source downloads, verifies SHA-256 for offline reprocessing, exports allowlisted records and publishes the index last. [Sources and provenance](docs/data-sources.md) document exclusions, licensing and quality. [Census enrichment](scripts/build_geography.py) adds the approximate ZIP layer; [source audit](scripts/audit_sources.py) prepares private research features. [Normalization](scripts/normalize_research.py) preserves those source values and derives explicit private cohorts; [research contract](specs/001-comparable-price-baseline/data-model.md) defines the fields. [How data was treated](specs/001-comparable-price-baseline/research.md#how-the-data-was-treated) shows before/after examples, exclusions and group counts. [Comparable selector](scripts/select_comps.py) matches explicit geographic/property cohorts privately; [audit command](scripts/audit_comps.py) reproduces aggregate support evidence.
-- **Interactive client:** [Map.svelte](web/src/lib/Map.svelte) clusters the filtered sample, bundles its map worker and preserves string IDs; [data.ts](web/src/lib/data.ts) validates the client contract. The listing browser remains usable when WebGL or tile requests fail.
-- **Delivery:** [CI workflow](.github/workflows/ci.yml) gates production Pages uploads on frontend and Python checks and reuses the verified build artifact. [Deployment](docs/deployment.md) describes ownership, secrets by name, recovery and the separate legacy Worker.
-- **Evidence:** [Verification](docs/verification.md) separates historical local checks, fresh hosted browser checks and the successful hosted deployment. [Decisions](docs/decisions.md) explains technical tradeoffs; [methodology](docs/methodology.md) distinguishes descriptive statistics, evaluated research models and future scenario claims.
+The older Clark County snapshot had already informed earlier model work. Its results are historical/development evidence; **New York City, Los Angeles and Nashville supplied the new frozen final test blocks**.
 
-```mermaid
-flowchart LR
-  A[Inside Airbnb snapshot] --> B[Offline Python validation]
-  H[Census 2020 ZCTAs] --> B
-  B --> R[Private research files]
-  B --> C[Allowlisted public JSON]
-  C --> D[SvelteKit static build]
-  D --> E[CI checks]
-  E --> F[Cloudflare Pages]
-  F --> G[MapLibre and listing browser]
-```
+## What we found
 
-## Run locally
+On 8,568 newly held-out listings across those three markets:
 
-Requirements: Node 24, pnpm 12.10.1; Python 3.12+ and uv for pipeline development. CI uses Python 3.14. Compact public artifacts are checked in, so running the demo requires no data download or credentials.
+| Pooled method | Mean absolute error | Root mean squared error |
+| --- | ---: | ---: |
+| Global training median | $197.84 | $480.72 |
+| Room-type training median | $176.46 | $473.21 |
+| Ridge | $149.83 | $433.03 |
+| Histogram gradient boosting | **$144.11** | **$413.58** |
+
+Boosting improved the overall error, but **the hotel-room subgroup got worse**: $229.94 MAE versus $201.20 for the room-type median (60 listings). The $250–499 asking-price band also regressed. Ridge showed severe tail instability when Nashville was left out of training. These are reasons to keep public price predictions off the map, not details to hide behind the overall average.
+
+The price-segment experiment showed that nonlinear methods do not win everywhere. Random forest macro F1 was 0.773 in NYC, 0.734 in Nashville and 0.780 in LA; logistic regression was slightly better in LA. Those scores are **development-fold diagnostics**, not a fresh final test or an investment label.
+
+The [case-study page](https://str.housev.dev/research/) walks through the comparisons. For exact cohorts, configurations, uncertainty estimates and subgroup errors, see the [model card](docs/model-card.md), [research specification](specs/003-multi-city-research/spec.md) and [aggregate results](specs/003-multi-city-research/final-evaluation.json). The earlier Clark County $123.09 MAE used a different cohort and protocol; it is not a before/after comparison with the four-market result.
+
+## Run it locally
+
+The static explorer and research page use reviewed compact artifacts already in the repository. Running the site does **not** download the full datasets.
 
 ```powershell
-git clone https://github.com/kenner1-unlv/vegas-str-ml.git
-cd vegas-str-ml
-npx.cmd --yes pnpm@12.10.1 --dir web install --frozen-lockfile
-npx.cmd --yes pnpm@12.10.1 --dir web dev
+pnpm --dir web install --frozen-lockfile
+pnpm --dir web dev
 ```
 
-On Linux/macOS use npx instead of npx.cmd. Open the Vite URL printed in the terminal. Optional map-style configuration is documented in web/.env.example. See [contribution checks](CONTRIBUTING.md) for frontend/Python verification commands and [deployment](docs/deployment.md) for production delivery.
-
-For a deliberate dataset refresh, from repository root:
+Python research uses the locked environment. CI runs small synthetic fixtures, not full-data training:
 
 ```powershell
 uv sync --project pipeline --locked
-uv run --project pipeline python pipeline/ingest.py --snapshot 2026-09-20
-# Requires previously downloaded raw files; verifies checksums, no network:
-uv run --project pipeline python pipeline/ingest.py --snapshot 2026-09-20 --offline
+uv run --project pipeline pytest pipeline/tests -q
 ```
 
-Review provenance and quality before publishing. Raw files stay ignored. CI never downloads full datasets; use --all for the seven supplied files. Private research features and Census enrichment commands are documented in [data sources](docs/data-sources.md). After base reprocessing, rebuild geography before deployment. Calendar/review data do not establish bookings or earnings.
+The [reproduction guide](specs/003-multi-city-research/quickstart.md) covers deliberate local source downloads, normalization, split manifests and experiment commands. [CONTRIBUTING.md](CONTRIBUTING.md) lists all checks. The [architecture](docs/architecture.md), [deployment guide](docs/deployment.md) and [verification record](docs/verification.md) explain how the static site reaches Cloudflare Pages and which checks were actually run.
 
-## Data, license and roadmap
+## Data and limits
 
-Derived from [Inside Airbnb Clark County](https://insideairbnb.com/get-the-data/), snapshot 2026-09-20, retrieved October 7, 2026 Pacific. Filtering and allowlisting are our modifications. Data attribution: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); map attribution is visible in the app. Host/reviewer data, descriptions, secrets, raw datasets and model binaries are excluded from public outputs. Application code has no selected redistribution license yet.
+Source: [Inside Airbnb](https://insideairbnb.com/get-the-data/), September 2026 market snapshots, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Filtering, normalization, splits and analysis are project modifications. Full source tables, host/reviewer details, review text, private research rows and model binaries stay out of GitHub. The site publishes only reviewed explorer fields and aggregate research results. Application code does not yet have a selected redistribution license.
 
-See [scope and remaining milestones](docs/scope.md). Regional housing benchmarks, further ML validation/public predictions, scenario analysis and refresh operations require additional evidence; they are not presented as completed features.
-
-## Offline ML evidence
-
-[Model card](docs/model-card.md) reports the first frozen geographic evaluation: 1,642 held-out listings, Ridge MAE $123.09 versus room-median $170.30. A hotel-room subgroup fails the release gate; the public demo remains descriptive. [Address/property research #16](https://github.com/kenner1-unlv/vegas-str-ml/issues/16) and [model follow-up #17](https://github.com/kenner1-unlv/vegas-str-ml/issues/17) show what remains.
-
-[Airbnb feature menu](docs/features.md) exposes all 90 detailed source fields, coverage and current/candidate/restricted roles so the project owner can choose features. [Review experiment](specs/002-review-features/spec.md), tracked in [#22](https://github.com/kenner1-unlv/vegas-str-ml/issues/22), adds selectable ratings/counts privately: development-fold MAE $165.53 property-only versus $161.33 with all reviews. These exploratory tuning-fold errors are separate from the earlier final holdout. [Commands](specs/002-review-features/quickstart.md) support an explicit review subset; bathrooms/amenities remain owner-deferred candidates.
-
-### Four-market research increment
-
-[Spec Kit feature 003](specs/003-multi-city-research/spec.md) extends the private research path to Clark County, New York City, Los Angeles and Nashville. The [source audit](specs/003-multi-city-research/source-audit.json) reconciles 104,483 source rows to 82,868 rows with parsed asking prices and valid coordinates; missing price varies sharply by market. A [frozen geographic protocol](specs/003-multi-city-research/contracts/evaluation.md) compares training medians, Ridge and histogram boosting using 3 km blocks, a 1 km observed-point buffer and training-only preprocessing. [Split support](specs/003-multi-city-research/split-support.json) records counts and hashes without publishing membership.
-
-On 8,568 newly held-out NYC/LA/Nashville listings, pooled histogram boosting MAE was **$144.11** versus **$176.46** for the room-type median baseline. The hotel-room subgroup (n=60) regressed to $229.94 versus $201.20, so public predictions remain withheld. Fixed-candidate leave-one-city-out and limited-local-data diagnostics reveal further transfer limits; Clark County's same-snapshot evidence is historical, not a fresh final test. The [model card](docs/model-card.md) and [aggregate results](specs/003-multi-city-research/final-evaluation.json) give failure analysis, uncertainty and provenance.
-
-The earlier Clark County $123.09 final MAE and this four-market $144.11 pooled MAE use different observations and protocols; they are not a before/after model-improvement comparison.
-
-A separate [development-only classification experiment](specs/003-multi-city-research/secondary-protocol.md) tests market-relative asking-price segments against a majority baseline. Random forest macro F1 was 0.773 in NYC, 0.734 in Nashville and 0.780 in LA; logistic regression was slightly better in LA. These are exploratory development-fold results, not an investment score or released classifier. The [case-study page](web/src/routes/research/+page.svelte) uses only a small [aggregate payload](web/src/lib/research-summary.json) derived from reviewed evidence. Raw source files, private rows, split membership and models remain ignored. This page is **locally built and browser-checked**; production delivery and reviewer access are separate decisions.
+**Advertised price is not realized revenue.** Unavailable calendar nights are not confirmed bookings. Approximate listing points cannot identify a property, prove legal eligibility or support an investment ranking. The [roadmap](docs/scope.md) tracks acquisition-cost evidence, temporal validation and any future prediction release separately. Development is tracked through [issues](https://github.com/kenner1-unlv/vegas-str-ml/issues) and [focused PRs](https://github.com/kenner1-unlv/vegas-str-ml/pulls).
