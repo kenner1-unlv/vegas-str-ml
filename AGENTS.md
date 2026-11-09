@@ -20,7 +20,7 @@ Use baseline-first ML, fit preprocessing only on training data, group listing ID
 
 # Deployment
 
-Production is the existing Direct Upload Cloudflare Pages project vegas-str-ml at https://str.housev.dev. .github/workflows/ci.yml deploys the verified web/build artifact on main pushes after web and pipeline checks, using CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID. Pull requests do not deploy; CI never ingests full datasets. Root wrangler.jsonc belongs to the separate legacy Git-connected Worker and is retained to preserve it; bare wrangler deploy does not update production Pages. Follow docs/deployment.md for activation, manual recovery and ownership. Preserve the working Worker, Route 53 nameservers, ops.housev.dev and unrelated resources; no paid resources.
+Production is the existing Direct Upload Cloudflare Pages project vegas-str-ml at https://str.housev.dev. .github/workflows/ci.yml deploys the verified web/build artifact on main pushes after web and pipeline checks, using CLOUDFLARE_API_TOKEN / CLOUDFLARE_ACCOUNT_ID. Pull requests do not deploy; CI never ingests full datasets. Root wrangler.jsonc belongs to the separate legacy Worker and is retained to preserve it; its duplicate Git Builds connection was disconnected November 8, 2026 Pacific. Bare wrangler deploy does not update production Pages. Follow docs/deployment.md for activation, manual recovery and ownership. Preserve the working Worker, Route 53 nameservers, ops.housev.dev and unrelated resources; no paid resources.
 
 Use issue checkbox criteria and focused PRs for new changes; link evidence before checking criteria or closing issues. PR publication, merge approval and production success are distinct. See CONTRIBUTING.md.
 

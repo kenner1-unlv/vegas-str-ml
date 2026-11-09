@@ -107,3 +107,42 @@ Fresh [Phase 1 verification](../specs/001-comparable-price-baseline/verification
 ## Offline Phase 3 evaluation ? October 10, 2026
 
 [Feature verification](../specs/001-comparable-price-baseline/verification.md#phase-3-fresh-verification-2026-10-10) records 129 local fixture tests, frozen protocol before fitting, identical repeated actual evaluation bytes and unchanged public data. [Model card](model-card.md) publishes measured geographic errors and failed hotel-room gate; public predictions remain withheld. No new map/filter/selection checks are claimed for this research increment. PR/main delivery evidence belongs to the linked PR trail.
+
+## Four-market case study — local verification, November 8, 2026 Pacific
+
+The [feature verification](../specs/003-multi-city-research/verification.md) separates
+source/cohort, split, regression and development-only classification evidence. This
+case-study increment adds a generated aggregate-only payload and static `/research/`
+route; the existing public listing data and map behavior are unchanged. The payload
+check, Python fixtures, Ruff, web format/lint/types/build, geography and Pages asset
+checks passed locally. The production build includes the prerendered research route.
+
+Local preview at `http://127.0.0.1:4173/research/` rendered the source counts,
+baseline chart, release-gate failure, market selector, transfer table, citations and
+evidence links. Clicking Nashville changed the market panel to 1,332 held-out listings,
+$125.57 boosting MAE, $180.57 room-median MAE and development-only macro F1 values.
+At 390 px and 320 px viewports, document scroll width matched client width (no page-wide
+horizontal overflow). The existing map route rendered its new research link and loaded
+the original 2026-09-20 snapshot. These are local browser checks, not hosted production
+verification. The existing OpenFreeMap road-shield warnings remain nonfatal.
+
+## Legacy Worker build-check cleanup — November 8, 2026 Pacific
+
+[Draft PR #35](https://github.com/kenner1-unlv/vegas-str-ml/pull/35) passed the intended
+GitHub Actions web and pipeline jobs, while its separate
+[Workers Builds check](https://dash.cloudflare.com/813633500286a71db46e6b8c957edf13/workers/services/view/vegas-str-ml/production/builds/adfa0fc9-86ce-4f6e-8d37-7356ea589f1f)
+failed. The exact Cloudflare log ran `npx wrangler preview` without a build command and
+reported that `/opt/buildhome/repo/web/build` did not exist. This was the legacy
+Git-connected Worker path, not the Direct Upload Pages job; PR Pages deployment was
+skipped by design.
+
+Cloudflare account `813633500286a71db46e6b8c957edf13` listed Worker `vegas-str-ml`
+with immutable script tag `c515b0dfe5d7483eab4eef980d965595`. Its build settings
+showed empty production/preview build commands, `npx wrangler preview` for previews,
+and the repository's main Git connection. After confirming both the Worker and Pages
+endpoints returned HTTP 200, only that Worker's build configuration was disconnected.
+The build-settings GET then returned "No build configuration associated with that script
+tag"; the Worker script and modification timestamp remained present/unchanged, and
+both endpoints still returned HTTP 200. No Worker deployment, Pages setting, token,
+DNS record or other resource was changed. Historical failed check runs remain visible;
+the next PR head check is the verification of check-trigger removal.

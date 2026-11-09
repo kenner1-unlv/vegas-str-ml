@@ -1,0 +1,167 @@
+{
+  "development_mae_usd": {
+    "global_median": 236.9166622647395,
+    "hist_gradient_boosting": 182.86198421682815,
+    "ridge": 193.80550320398095,
+    "room_median": 223.14275002599567
+  },
+  "development_n": 48085,
+  "evidence_sha256": {
+    "development": "e6b6d08997c03f7086868fdae6ff74f6d598f273fc3b187206b32704af4c1881",
+    "final": "f68ad5481b2ba66828ac7da83a6b7dbef8b80b7215684949590abc1857f9b81e",
+    "secondary": "5061f8b57ae53d898d0ad0d9d3428dff019e5371b11607b70843d4b8855b315c",
+    "source_audit": "4e15ecdc4c7795eb998df45280bec64d56ae2a1f193fbf135e7afdf11b997112",
+    "source_manifest": "9c32d8979f685912753ea7dac6362900e204263a54b51ba4bd91012b16b5bf6e"
+  },
+  "final_metrics": {
+    "global_median": {
+      "mae_usd": 197.84305672268908,
+      "rmse_usd": 480.71531120194686
+    },
+    "hist_gradient_boosting": {
+      "mae_usd": 144.1129702494059,
+      "rmse_usd": 413.5750062431387
+    },
+    "ridge": {
+      "mae_usd": 149.83038613710545,
+      "rmse_usd": 433.0267879954735
+    },
+    "room_median": {
+      "mae_usd": 176.46348622782446,
+      "rmse_usd": 473.20854166470315
+    }
+  },
+  "final_n": 8568,
+  "hotel_failure": {
+    "candidate_mae_usd": 229.94474647830697,
+    "n": 60,
+    "room_median_mae_usd": 201.1963333333333
+  },
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "loco_mae_usd": {
+    "clark-county-nv": {
+      "hist_gradient_boosting": 206.74196281210686,
+      "room_median": 196.5072934807516
+    },
+    "los-angeles": {
+      "hist_gradient_boosting": 194.76090133761627,
+      "room_median": 221.9685685665222
+    },
+    "nashville": {
+      "hist_gradient_boosting": 157.25584623671386,
+      "room_median": 202.28999678077048
+    },
+    "new-york-city": {
+      "hist_gradient_boosting": 172.73645241193827,
+      "room_median": 199.02211274863444
+    }
+  },
+  "markets": [
+    {
+      "area": "Clark County, NV",
+      "fresh_final": false,
+      "id": "clark-county-nv",
+      "missing_price_rows": 3195,
+      "priced_rows": 17456,
+      "snapshot_date": "2026-09-20",
+      "source_rows": 20651,
+      "source_url": "https://data.insideairbnb.com/united-states/nv/clark-county-nv/2026-09-20/data/listings.csv.gz"
+    },
+    {
+      "adaptation_mae_usd": {
+        "0": 166.62654295055322,
+        "100": 166.5697546241655,
+        "500": 166.16304135734583
+      },
+      "area": "New York City, NY",
+      "classification_macro_f1": {
+        "logistic": 0.7207598434670319,
+        "majority": 0.4663875480731497,
+        "random_forest": 0.7726756298483975
+      },
+      "final_n": 1885,
+      "fresh_final": true,
+      "id": "new-york-city",
+      "missing_price_rows": 10512,
+      "priced_rows": 19406,
+      "snapshot_date": "2026-09-14",
+      "source_rows": 29918,
+      "source_url": "https://data.insideairbnb.com/united-states/ny/new-york-city/2026-09-14/data/listings.csv.gz",
+      "within_city_mae_usd": {
+        "global_median": 206.91514058355438,
+        "hist_gradient_boosting": 158.08637074192808,
+        "ridge": 167.78476307549766,
+        "room_median": 193.2783978779841
+      }
+    },
+    {
+      "adaptation_mae_usd": {
+        "0": 147.67069760554347,
+        "100": 147.6244829869956,
+        "500": 146.15581935750737
+      },
+      "area": "Los Angeles, CA",
+      "classification_macro_f1": {
+        "logistic": 0.7806725455116272,
+        "majority": 0.5098859934822331,
+        "random_forest": 0.7798096575742102
+      },
+      "final_n": 5351,
+      "fresh_final": true,
+      "id": "los-angeles",
+      "missing_price_rows": 7094,
+      "priced_rows": 36687,
+      "snapshot_date": "2026-09-14",
+      "source_rows": 43781,
+      "source_url": "https://data.insideairbnb.com/united-states/ca/los-angeles/2026-09-14/data/listings.csv.gz",
+      "within_city_mae_usd": {
+        "global_median": 193.52363109699124,
+        "hist_gradient_boosting": 144.30033635786359,
+        "ridge": 148.94866570997021,
+        "room_median": 169.22629228181648
+      }
+    },
+    {
+      "adaptation_mae_usd": {
+        "0": 155.87745444470212,
+        "100": 156.48683928445254,
+        "500": 151.92935530876147
+      },
+      "area": "Nashville, TN",
+      "classification_macro_f1": {
+        "logistic": 0.7324224244573694,
+        "majority": 0.40428149886315273,
+        "random_forest": 0.7342945201491371
+      },
+      "final_n": 1332,
+      "fresh_final": true,
+      "id": "nashville",
+      "missing_price_rows": 814,
+      "priced_rows": 9319,
+      "snapshot_date": "2026-09-19",
+      "source_rows": 10133,
+      "source_url": "https://data.insideairbnb.com/united-states/tn/nashville/2026-09-19/data/listings.csv.gz",
+      "within_city_mae_usd": {
+        "global_median": 187.63867867867867,
+        "hist_gradient_boosting": 125.56863128844876,
+        "ridge": 123.82522441961231,
+        "room_median": 180.56615615615615
+      }
+    }
+  ],
+  "mid_price_failure": {
+    "candidate_mae_usd": 110.54555073934931,
+    "n": 2182,
+    "room_median_mae_usd": 97.42798120989919
+  },
+  "nashville_loco_ridge_rmse_usd": 14570.851839358756,
+  "pooled_mae_interval_usd": [114.5211953517785, 177.83661871100406],
+  "priced_rows": 82868,
+  "public_prediction_release": "withheld",
+  "schema_version": 1,
+  "selected_candidate": "hist_gradient_boosting",
+  "source_name": "Inside Airbnb",
+  "source_page": "https://insideairbnb.com/get-the-data/",
+  "source_rows": 104483,
+  "study_date": "2026-11-08"
+}

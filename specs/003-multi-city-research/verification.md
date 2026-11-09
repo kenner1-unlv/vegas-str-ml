@@ -82,6 +82,28 @@ the nonlinear hypothesis held and failed. No classifier or source row was publis
 The full Python fixture suite now passes **192 tests**; Ruff lint/format and Pages asset
 checks also pass. The web application has not changed in this increment.
 
+## Public case-study preparation (#29)
+
+`scripts/build_case_study.py` derives a 5.6 KB allowlisted payload from only reviewed
+aggregate source, split, regression and classification evidence. Its check mode is in the
+web CI job. The [publication contract](contracts/publication.md) lists every output class
+and defers listing-level review aggregates and reviewer auth to separate issues.
+`web/src/routes/research/+page.svelte` presents actual results and failures; the existing
+map links to it without changing its listing schema or filters. A local production build
+prerendered the route and passed the Pages asset check.
+
+In a local browser preview, the research page exposed the expected citations, release
+gate, model bars, market-detail selector, transfer diagnostic and evidence links. Selecting
+Nashville updated counts/metrics; the original map route loaded its existing snapshot and
+showed the new research link. At 390 px and 320 px viewports there was no page-wide
+horizontal overflow. These are local checks only. PR publication, hosted CI, review,
+merge approval and production verification remain separate; T024 and issue criteria
+remain open until the relevant evidence is linked.
+After the final page and CI changes, frozen installs, **193 Python tests**, Ruff
+lint/format, frontend format/lint/typecheck/build, case-study freshness, geography and
+Pages asset checks all passed locally. Relative Markdown links resolved, and the built
+research HTML contained no reviewer/host field, listing ID or private research path.
+
 ## Spec Kit consistency analysis
 
 The pinned prerequisite check found the new spec, research, data model, contracts and

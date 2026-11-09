@@ -109,6 +109,29 @@ An Airbnb listing is not evidence of a valid license. Legal jurisdiction is not 
 
 The separate [review enrichment and full feature catalog](features.md) preserve this normalization contract and original results. scripts/review_features.py verifies detailed-source bytes and exact string-ID coverage, privately parses seven scores/four counts/reviews-per-month with explicit statuses, and exports only aggregate metadata. [Experiment commands](../specs/002-review-features/quickstart.md) select review subsets for development-only comparisons. No review text, reviewer/host values, new public listing fields or occupancy labels are added.
 
+## Four-market research sources (November 8, 2026 Pacific)
+
+The private [multi-city source manifest](../specs/003-multi-city-research/source-manifest.json)
+pins detailed Inside Airbnb listing archives for Clark County (2026-09-20), New York City
+(2026-09-14), Los Angeles (2026-09-14) and Nashville (2026-09-19), with each URL, byte
+size, SHA-256, header digest, local retrieval time and [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+attribution. [Inside Airbnb's current policy](https://insideairbnb.com/data-policies/)
+asks users not to republish the source dataset. Raw archives are ignored and downloaded
+only for deliberate local research; CI uses fixtures. The original Clark County source
+area and public Valley bounding box remain distinct.
+
+All four detailed archives have the same 90-column header, but source values and
+missingness differ. The [aggregate audit](../specs/003-multi-city-research/source-audit.json)
+reconciles 104,483 source rows to 82,868 with parsed asking prices and valid coordinates.
+NYC has 10,512 missing asking prices in 29,918 source rows; this selection matters when
+comparing markets. `Hotel room` is retained from each source; no separate hotel dataset
+was ingested. Selected private review-score/count fields are parsed with explicit
+missing/invalid status, but excluded from the core four-market price model. No host or
+reviewer identity/text is in normalized research rows. The public research page uses
+only reviewed [aggregate summary data](../web/src/lib/research-summary.json), not a
+copy of source listings or model binaries. Availability and reviews are not observed
+bookings or realized revenue.
+
 The [Phase 1 contract](../specs/001-comparable-price-baseline/data-model.md) and [reproduction guide](../specs/001-comparable-price-baseline/quickstart.md) define scripts/normalize_research.py. It rechecks all seven archive hashes, verifies the existing usable cohort/geographic join, preserves allowlisted source strings and creates ignored normalized.json with typed characteristics and audit. Only [aggregate evidence](../specs/001-comparable-price-baseline/phase1-audit.json) is published. It adds no public capacity/property/stay fields and trains no model.
 
 ## Address-level property sources: access investigation (October 10, 2026)

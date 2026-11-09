@@ -18,7 +18,13 @@ Every summary and map cluster uses the same filtered sample. Median advertised p
 
 **Potentially undervalued investment:** requires acquisition costs and explicit occupancy, fee, expense, tax, financing and regulatory assumptions. Airbnb asking prices alone cannot establish this. Hypothetical revenue must be labeled modeled/scenario revenue, never observed revenue. Unavailable nights include blocked and unavailable dates, not confirmed bookings; never calculate actual occupancy as 365 minus availability.
 
-## Planned ML protocol — not implemented
+## ML protocol — implemented and pending elements
+
+The original Clark County baseline and the newer four-market price evaluation implement
+the source, baseline, grouped geographic split, training-only transform and error-reporting
+parts below. Temporal tests, calibrated individual intervals and a public prediction
+contract remain pending. The numbered list records the method and its current limits;
+it is not a claim that every item is complete.
 
 1. Predict advertised USD nightly rate for comparable listings. Begin with a global training median and room-type medians; report how unknown groups fall back.
 2. Freeze feature allowlist and target definition. Exclude price-derived measures, prediction-time-unavailable fields and identifiers. Fit imputers, encoders and transforms inside a training-only pipeline. For ZCTA categories, fit one-hot vocabulary on training folds only and handle unseen/held-out ZCTAs explicitly (for example an unknown-category fallback); report that unseen areas receive no learned area-specific effect. IDs/codes are categories, not ordinal numbers. Geography holdouts and boundary buffers remain required. This encoding is implemented offline in Phase 3; held-out areas receive no learned area-specific coefficient. Include room/property characteristics and coarse geography where justified; do not imply exact parcel location.
@@ -36,3 +42,13 @@ Every summary and map cluster uses the same filtered sample. Median advertised p
 Phase 2 uses same-ZCTA/group/room/stay matching, adjustable bedrooms and optional capacity; price is an outcome. Subject exclusion and n<20 suppression apply. Boundary sensitivity and first-failure exclusions are explicit; no silent widening. [Actual examples and support counts](../specs/001-comparable-price-baseline/research.md#how-comparable-membership-is-treated-phase-2-october-10) are descriptive asking-rate comparisons, not predicted earnings.
 
 The first evaluation follows the [frozen Phase 3 contract](../specs/001-comparable-price-baseline/contracts/evaluation.md): whole-ZCTA hash holdout, 1 km observed-point buffers, three inner geographic folds and training-only transforms. [Model card](model-card.md) records actual errors and failed hotel-room subgroup review; public predictions are withheld. Temporal tests, calibrated intervals and physical-duplicate analysis remain future validation.
+
+The [four-market contract](../specs/003-multi-city-research/contracts/evaluation.md)
+freezes a new 3 km block protocol and 1 km observed-point buffer before fitting.
+Clark County's current snapshot remains historical/development evidence; NYC, LA and
+Nashville provide new frozen final blocks. The [aggregate final report](../specs/003-multi-city-research/final-evaluation.json)
+records within-city, pooled, fixed-candidate leave-one-city-out and limited-local-data
+results. Its hotel-room and mid-price failures prevent a public prediction release.
+The [secondary classification protocol](../specs/003-multi-city-research/secondary-protocol.md)
+uses each fold's fitting-market median to define a relative asking-price segment;
+its development scores are neither final price accuracy nor an investment label.

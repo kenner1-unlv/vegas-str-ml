@@ -51,9 +51,9 @@ interpretation; unsupported methods are explicitly deferred.
 Independent test: every public metric traces to a private run and source; no source rows,
 identities, review text or binary enter the Git diff or built site.
 
-- [ ] T021 [US4] Review field/granularity allowlist, attribution, thin-cell suppression and asset privacy with fixtures in pipeline/tests/test_market_publication.py and contracts/publication.md.
-- [ ] T022 [US4] Write the measured public research narrative, source citations, comparisons, failures and reproduction path in README.md and docs/model-card.md; mark planned work plainly.
-- [ ] T023 [US4] Decide whether a listing-level review aggregate or authenticated demo adds value; if selected, specify it as a separately reviewed issue and contract before any web/src/ or Pages change in specs/003-multi-city-research/verification.md.
+- [x] T021 [US4] Review field/granularity allowlist, attribution, thin-cell suppression and asset privacy with fixtures in pipeline/tests/test_case_study_summary.py, test_market_results_publication.py and contracts/publication.md.
+- [x] T022 [US4] Write the measured public research narrative, source citations, comparisons, failures and reproduction path in README.md, docs/model-card.md and web/src/routes/research/+page.svelte; mark planned work plainly.
+- [x] T023 [US4] Decide whether a listing-level review aggregate or authenticated demo adds value; defer both to a separate reviewed issue/contract because the public case study works without them, as recorded in contracts/publication.md.
 - [ ] T024 [US4] Run full fixture/web/asset gates, verify public artifact contents and link actual PR/CI evidence in specs/003-multi-city-research/verification.md before checking issue criteria.
 
 ## Dependencies and ownership

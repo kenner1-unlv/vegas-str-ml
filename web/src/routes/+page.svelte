@@ -163,9 +163,11 @@
   /></svelte:head
 >
 <header>
-  <a class="brand" href="/">LV <span>Las Vegas STR Explorer</span></a><span
-    class="stage">DATA EXPLORER · INITIAL MILESTONE</span
-  >
+  <a class="brand" href="/">LV <span>Las Vegas STR Explorer</span></a>
+  <div class="header-actions">
+    <a href="/research/">Four-market ML research →</a>
+    <span class="stage">DATA EXPLORER · INITIAL MILESTONE</span>
+  </div>
 </header>
 <main>
   <div class="intro">
@@ -416,7 +418,8 @@
         href="https://www.census.gov/programs-surveys/geography/guidance/geo-areas/zctas.html"
         >U.S. Census Bureau, 2020 ZCTAs</a
       >. <a href="/data/{path}/geography.json">Assignment provenance</a>.{/if}
-    Housing costs and ML evaluation are future milestones.
+    Housing costs and public predictions remain future milestones.
+    <a href="/research/">Four-market ML research case study</a>.
     <a href="https://github.com/kenner1-unlv/vegas-str-ml"
       >Source code &amp; development history</a
     >
@@ -458,6 +461,16 @@
     justify-content: space-between;
     align-items: center;
     padding: 22px 4vw;
+  }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .header-actions a {
+    color: #b9eee0;
+    font-size: 13px;
+    font-weight: 700;
   }
   .brand {
     color: #fff;
