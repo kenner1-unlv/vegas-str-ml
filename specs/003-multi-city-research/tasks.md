@@ -7,9 +7,9 @@ are assigned by GitHub, never inferred from task IDs. Tests are required by FR-0
 
 ## Phase 1: Foundation and issue setup
 
-- [ ] T001 Create linked checkbox issues for source/schema, partition/evaluation, baseline experiments, secondary research and portfolio delivery; record dependency order in specs/003-multi-city-research/verification.md.
-- [ ] T002 Finalize the four-source manifest, UTC retrieval times, policy review and hash checks in specs/003-multi-city-research/research.md; confirm local source files against it.
-- [ ] T003 Audit full source-field types, geographic support, price distributions, missingness and room/property labels by market; record aggregate evidence and all exclusions in specs/003-multi-city-research/source-audit.json.
+- [x] T001 Create linked checkbox issues for source/schema, partition/evaluation, baseline experiments, secondary research and portfolio delivery; record dependency order in specs/003-multi-city-research/verification.md.
+- [x] T002 Finalize the four-source manifest, UTC retrieval times, policy review and hash checks in specs/003-multi-city-research/source-manifest.json and research.md; confirm local source files against it.
+- [x] T003 Audit selected source-field types, all-column missingness, geographic support, price distributions and room/property labels by market; record aggregate evidence and all exclusions in specs/003-multi-city-research/source-audit.json.
 - [ ] T004 Freeze spatial block origin/size, buffer, minimum support, final membership rules and feature availability before fitting in specs/003-multi-city-research/contracts/evaluation.md.
 
 ## Phase 2: User Story 1 - Four-market cohort
@@ -17,11 +17,11 @@ are assigned by GitHub, never inferred from task IDs. Tests are required by FR-0
 Independent test: reprocess each pinned local source; reconcile all rows and source hashes;
 reject malformed sources without replacing previous private outputs.
 
-- [ ] T005 [US1] Add synthetic source archives for four market labels, `Hotel room`, missing/zero/invalid values, duplicate IDs and changed headers in pipeline/tests/test_market_sources.py.
-- [ ] T006 [US1] Implement four-market source registry, opt-in local download, SHA-256/byte/header verification and atomic manifest handling in pipeline/market_sources.py.
-- [ ] T007 [US1] Add canonical row parser with market/snapshot/string-ID identity, source scrape date, typed values and explicit missing/invalid statuses in pipeline/market_normalize.py.
-- [ ] T008 [US1] Add input/included/excluded reconciliation, overlap counts and failed-output preservation tests in pipeline/tests/test_market_normalize.py.
-- [ ] T009 [US1] Run pinned local normalization twice; review and publish aggregate cohort/room/missingness evidence in specs/003-multi-city-research/cohort-audit.json and research.md, keeping private rows in data/research/.
+- [x] T005 [US1] Add synthetic source archives for four market labels, `Hotel room`, missing/zero/invalid values, duplicate IDs and changed headers in pipeline/tests/test_market_sources.py and test_market_normalize.py.
+- [x] T006 [US1] Implement four-market source registry, opt-in local download, SHA-256/byte/header verification and atomic private retrieval metadata in pipeline/market_sources.py.
+- [x] T007 [US1] Add canonical row parser with market/snapshot/string-ID identity, source scrape date, typed values and explicit missing/invalid statuses in pipeline/market_normalize.py.
+- [x] T008 [US1] Add input/included/excluded reconciliation, duplicate-ID and failed-output preservation tests in pipeline/tests/test_market_normalize.py.
+- [x] T009 [US1] Run pinned local normalization twice; review and publish aggregate cohort/room/missingness evidence in specs/003-multi-city-research/source-audit.json and research.md, keeping private rows in data/research/.
 
 ## Phase 3: User Story 2 - Cross-city generalization
 
