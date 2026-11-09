@@ -19,8 +19,19 @@ uv run --project pipeline python scripts/summarize_market_audits.py --output spe
 
 The normalizer writes private `normalized.jsonl` and `audit.json` per market under
 `data/research/multi-city/`. The summary command publishes only reviewed aggregate fields.
-No multi-city training command is implemented yet. Future private split membership and model
-artifacts also stay in ignored `data/research/`.
+No multi-city training command is implemented yet. Private split membership and future
+model artifacts stay in ignored `data/research/`.
+
+The frozen split command reads those normalized private rows and writes only private
+membership to ignored `data/research/multi-city/splits.json`:
+
+```powershell
+uv run --project pipeline python pipeline/market_splits.py --output data/research/multi-city/splits.json
+```
+
+Its stdout is aggregate support evidence; the reviewed [split-support.json](split-support.json)
+records counts and membership hashes without listing IDs. Re-run from the same pinned
+inputs to check byte repeatability before using any results.
 
 The existing Clark County public path remains `pipeline/ingest.py`; historical evaluation
 is `pipeline/evaluate.py` and review exploration is `pipeline/review_experiment.py`. Do not

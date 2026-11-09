@@ -10,7 +10,7 @@ are assigned by GitHub, never inferred from task IDs. Tests are required by FR-0
 - [x] T001 Create linked checkbox issues for source/schema, partition/evaluation, baseline experiments, secondary research and portfolio delivery; record dependency order in specs/003-multi-city-research/verification.md.
 - [x] T002 Finalize the four-source manifest, UTC retrieval times, policy review and hash checks in specs/003-multi-city-research/source-manifest.json and research.md; confirm local source files against it.
 - [x] T003 Audit selected source-field types, all-column missingness, geographic support, price distributions and room/property labels by market; record aggregate evidence and all exclusions in specs/003-multi-city-research/source-audit.json.
-- [ ] T004 Freeze spatial block origin/size, buffer, minimum support, final membership rules and feature availability before fitting in specs/003-multi-city-research/contracts/evaluation.md.
+- [x] T004 Freeze spatial block origin/size, buffer, minimum support, final membership rules and feature availability before fitting in specs/003-multi-city-research/contracts/evaluation.md.
 
 ## Phase 2: User Story 1 - Four-market cohort
 
@@ -28,8 +28,8 @@ reject malformed sources without replacing previous private outputs.
 Independent test: fixture manifests have zero group overlap and deterministic geographic
 membership; compared methods use the same partition and train-only transforms.
 
-- [ ] T010 [US2] Write split fixtures for repeated listing IDs, adjacent coordinates, insufficient blocks and city exclusion in pipeline/tests/test_market_splits.py.
-- [ ] T011 [US2] Implement frozen within-city/pooled/leave-one-city-out/limited-local partition manifests and observed-point buffer in pipeline/market_splits.py.
+- [x] T010 [US2] Write split fixtures for repeated listing IDs, adjacent coordinates, insufficient blocks and city exclusion in pipeline/tests/test_market_splits.py.
+- [x] T011 [US2] Implement frozen within-city/pooled/leave-one-city-out/limited-local partition manifests and observed-point buffer in pipeline/market_splits.py.
 - [ ] T012 [US2] Test median fallbacks, unseen categories, transform fitting boundaries, target back-transform and metric correctness in pipeline/tests/test_market_experiments.py.
 - [ ] T013 [US2] Implement shared global/room-median and Ridge evaluation with configuration/source/split hashes in pipeline/market_experiments.py.
 - [ ] T014 [US2] Add one preregistered scikit-learn tree/boosting candidate on identical partitions in pipeline/market_experiments.py; record configuration before fitting in contracts/evaluation.md.

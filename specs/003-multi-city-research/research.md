@@ -77,3 +77,23 @@ Shared room rows and 73 Hotel room rows; subgroup inference will be limited.
   consistency; document exclusions without fitting encoders on all rows.
 - Obtain later snapshots deliberately if temporal generalization becomes a release claim;
   do not infer bookings from calendar availability or review counts.
+
+## Frozen geographic support (before any multi-city model fitting)
+
+The [evaluation contract](contracts/evaluation.md) fixes a 3 km source-coordinate grid,
+SHA-256 block assignment and 1 km observed-point fitting buffer. The
+[aggregate split support](split-support.json) records the exact source, normalizer, rules
+and private membership hashes plus full per-fold counts. Two local runs yielded identical
+private manifest bytes. No model was fit to choose the grid.
+
+| Market | Outer rows | Outer blocks | Blocks with at least 20 rows | Fitting rows after buffer | Evidence use |
+| --- | ---: | ---: | ---: | ---: | --- |
+| Clark County | 7,273 | 43 | 24 | 6,255 | Historical/development only |
+| New York City | 1,885 | 28 | 18 | 15,214 | Newly frozen final |
+| Los Angeles | 5,351 | 110 | 52 | 26,213 | Newly frozen final |
+| Nashville | 1,332 | 29 | 9 | 6,658 | Newly frozen final |
+
+Every inner validation fold has at least 1,487 observations and every inner fitting
+partition has at least 1,722 observations after its buffer. These counts establish
+partition support, not model accuracy or physical-property independence. Hotel-room and
+shared-room final subgroups still require separate support checks before interpretation.

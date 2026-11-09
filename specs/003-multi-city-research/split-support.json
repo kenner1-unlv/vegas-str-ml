@@ -1,0 +1,220 @@
+{
+  "limitations": [
+    "Source coordinates are anonymized; buffers do not prove distinct physical properties",
+    "Clark County same-snapshot results are historical or developmental, not new independent final evidence",
+    "Leave-one-city-out is a precommitted transfer diagnostic, not a tuning source"
+  ],
+  "markets": {
+    "clark-county-nv": {
+      "eligible_rows": 17456,
+      "final_blocks": 43,
+      "final_blocks_at_least_20": 24,
+      "final_rows": 7273,
+      "fitting_final_block_overlap": 0,
+      "fitting_final_group_overlap": 0,
+      "fitting_rows": 6255,
+      "fresh_final_evidence": false,
+      "geographic_drift_groups": 0,
+      "geographic_drift_observations": 0,
+      "inner": [
+        {
+          "buffer": {
+            "buffer_excluded": 734,
+            "group_excluded": 0,
+            "minimum_kept_distance_m": 1001.7970964385557
+          },
+          "fitting_rows": 3486,
+          "fold": 0,
+          "validation_rows": 2035
+        },
+        {
+          "buffer": {
+            "buffer_excluded": 997,
+            "group_excluded": 0,
+            "minimum_kept_distance_m": 1001.7970964385557
+          },
+          "fitting_rows": 2540,
+          "fold": 1,
+          "validation_rows": 2718
+        },
+        {
+          "buffer": {
+            "buffer_excluded": 1217,
+            "group_excluded": 0,
+            "minimum_kept_distance_m": 1000.1423872350356
+          },
+          "fitting_rows": 3536,
+          "fold": 2,
+          "validation_rows": 1502
+        }
+      ],
+      "manifest_sha256": "e15011a1164166352fea1db2c9b6524b219534e73e78e2701ab0f95501647886",
+      "outer_buffer": {
+        "buffer_excluded": 3928,
+        "group_excluded": 0,
+        "minimum_kept_distance_m": 1000.0942837937891
+      }
+    },
+    "los-angeles": {
+      "eligible_rows": 36687,
+      "final_blocks": 110,
+      "final_blocks_at_least_20": 52,
+      "final_rows": 5351,
+      "fitting_final_block_overlap": 0,
+      "fitting_final_group_overlap": 0,
+      "fitting_rows": 26213,
+      "fresh_final_evidence": true,
+      "geographic_drift_groups": 0,
+      "geographic_drift_observations": 0,
+      "inner": [
+        {
+          "buffer": {
+            "buffer_excluded": 4051,
+            "group_excluded": 0,
+            "minimum_kept_distance_m": 1000.0622886339154
+          },
+          "fitting_rows": 11324,
+          "fold": 0,
+          "validation_rows": 10838
+        },
+        {
+          "buffer": {
+            "buffer_excluded": 4506,
+            "group_excluded": 0,
+            "minimum_kept_distance_m": 1000.2898353998011
+          },
+          "fitting_rows": 16170,
+          "fold": 1,
+          "validation_rows": 5537
+        },
+        {
+          "buffer": {
+            "buffer_excluded": 4925,
+            "group_excluded": 0,
+            "minimum_kept_distance_m": 1000.0054560098298
+          },
+          "fitting_rows": 11450,
+          "fold": 2,
+          "validation_rows": 9838
+        }
+      ],
+      "manifest_sha256": "8cd87bcddeca208d8d7c15141e58b5229ab9e5f646e219aa19df0f3b6b287865",
+      "outer_buffer": {
+        "buffer_excluded": 5123,
+        "group_excluded": 0,
+        "minimum_kept_distance_m": 1000.0995692630397
+      }
+    },
+    "nashville": {
+      "eligible_rows": 9319,
+      "final_blocks": 29,
+      "final_blocks_at_least_20": 9,
+      "final_rows": 1332,
+      "fitting_final_block_overlap": 0,
+      "fitting_final_group_overlap": 0,
+      "fitting_rows": 6658,
+      "fresh_final_evidence": true,
+      "geographic_drift_groups": 0,
+      "geographic_drift_observations": 0,
+      "inner": [
+        {
+          "buffer": {
+            "buffer_excluded": 1938,
+            "group_excluded": 0,
+            "minimum_kept_distance_m": 1000.1228643077419
+          },
+          "fitting_rows": 3233,
+          "fold": 0,
+          "validation_rows": 1487
+        },
+        {
+          "buffer": {
+            "buffer_excluded": 2372,
+            "group_excluded": 0,
+            "minimum_kept_distance_m": 1001.2048114378916
+          },
+          "fitting_rows": 1722,
+          "fold": 1,
+          "validation_rows": 2564
+        },
+        {
+          "buffer": {
+            "buffer_excluded": 1767,
+            "group_excluded": 0,
+            "minimum_kept_distance_m": 1000.5550752791424
+          },
+          "fitting_rows": 2284,
+          "fold": 2,
+          "validation_rows": 2607
+        }
+      ],
+      "manifest_sha256": "650c45bea3b5bd9dc58b578c06dbbe3c718ac24d22d2b59c22491f3e20538c3e",
+      "outer_buffer": {
+        "buffer_excluded": 1329,
+        "group_excluded": 0,
+        "minimum_kept_distance_m": 1000.2604818215301
+      }
+    },
+    "new-york-city": {
+      "eligible_rows": 19406,
+      "final_blocks": 28,
+      "final_blocks_at_least_20": 18,
+      "final_rows": 1885,
+      "fitting_final_block_overlap": 0,
+      "fitting_final_group_overlap": 0,
+      "fitting_rows": 15214,
+      "fresh_final_evidence": true,
+      "geographic_drift_groups": 0,
+      "geographic_drift_observations": 0,
+      "inner": [
+        {
+          "buffer": {
+            "buffer_excluded": 4169,
+            "group_excluded": 0,
+            "minimum_kept_distance_m": 1000.054398482374
+          },
+          "fitting_rows": 7352,
+          "fold": 0,
+          "validation_rows": 3693
+        },
+        {
+          "buffer": {
+            "buffer_excluded": 4970,
+            "group_excluded": 0,
+            "minimum_kept_distance_m": 1000.5231546710804
+          },
+          "fitting_rows": 3542,
+          "fold": 1,
+          "validation_rows": 6702
+        },
+        {
+          "buffer": {
+            "buffer_excluded": 5292,
+            "group_excluded": 0,
+            "minimum_kept_distance_m": 1000.0098383206558
+          },
+          "fitting_rows": 5103,
+          "fold": 2,
+          "validation_rows": 4819
+        }
+      ],
+      "manifest_sha256": "8064d2766327c84f575c9ee81303166fe16b5788f34dac1178806c2b04ceb1a6",
+      "outer_buffer": {
+        "buffer_excluded": 2307,
+        "group_excluded": 0,
+        "minimum_kept_distance_m": 1000.1210470989832
+      }
+    }
+  },
+  "normalized_sha256": {
+    "clark-county-nv": "f1ea9f887d63bf28f70082748768c22a1fcce2c2736b41be548161199fe5b108",
+    "los-angeles": "9d3c4b2c01164dea78ebb91cb7753f657496f06de7feb918ab2438167c9282c1",
+    "nashville": "df366f4e1db1b8cdfd618439ebe548af0fdbbc4479b7cf20fa1892f9f6f21d3b",
+    "new-york-city": "e9bbf703ccd28421af73d55d7dc26d72d4a8ac5a8b98dcd855037b24b61a5eb9"
+  },
+  "private_manifest_sha256": "460285cca3e509d6c8d19679c634d454a8887bac84a8d7acb336a9c15d7dd05a",
+  "repeatable_local_bytes": true,
+  "schema_version": 1,
+  "source_manifest_sha256": "756fced325b32dd12849a8cafde7e158567eeab8dcf74eabd0beb02bb4f05e54",
+  "split_rules_sha256": "541dc189ca1d5d8e562ead0db5f5a6cf31aefa3886815d6240c1bb987426674f"
+}
