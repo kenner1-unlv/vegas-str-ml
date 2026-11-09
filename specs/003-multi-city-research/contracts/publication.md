@@ -19,3 +19,23 @@ An optional authenticated reviewer demo does not change the publication review o
 requirements. Audit every reachable production, preview and static-asset URL before any
 access claim. Do not alter the existing Pages/Worker/DNS setup or activate paid services
 without a separate reviewed issue and authorization.
+
+## Version-1 research page output review
+
+The static `/research/` page imports only `web/src/lib/research-summary.json`, built from
+reviewed aggregate manifests and results by `scripts/build_case_study.py`. Its allowlist
+contains market IDs/area labels/snapshot dates/source links; source and priced row counts;
+new-market final counts; method-level MAE/RMSE; supported subgroup failure metrics;
+development-only classification macro F1; fixed-candidate transfer and limited-local
+MAE summaries; block-bootstrap MAE interval; release status; and evidence hashes. It
+contains no listing ID, coordinate, address, review score, review count, review text,
+host/reviewer value, full source table, private split membership or model binary.
+
+Evidence SHA-256 values in this payload hash canonical sorted JSON content, so line
+ending and pretty-print differences across Windows/Linux do not change their identity.
+CI checks the generated summary against the reviewed source and experiment artifacts
+without downloading datasets. The existing explorer listing/geography files remain at
+their prior schemas. Listing-level aggregate ratings and authenticated reviewer access
+were considered but are **deferred**: the public research narrative is complete without
+them, and either addition requires a new field/access contract and issue. This decision
+does not revoke the broader owner-approved publication rule in AGENTS.md.

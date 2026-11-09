@@ -21,3 +21,15 @@ The optional Census ZCTA layer is processed offline by scripts/build_geography.p
 Private research path: pinned archives and public/geography hashes -> scripts/normalize_research.py -> ignored normalized.json -> pipeline/evaluate.py -> ignored split manifest plus aggregate metrics -> explicitly reviewed aggregate evidence/model card. scikit-learn fits only offline; no Python model endpoint or binary is deployed. Address/property-provider integration and persisted user scenarios require a separate architecture decision.
 
 Review experiments add a separate branch of this private path: verified normalized rows + hash-verified detailed listings -> scripts/review_features.py -> pipeline/review_experiment.py -> ignored enriched rows/development-fold manifests + aggregate catalog/errors. The original normalized artifact and final evaluation stay intact. Selectable scores/counts use shared training-only preprocessing with backward-compatible baseline defaults; the inspected outer holdout is excluded from new scoring. docs/features.md exposes owner choices; public review fields and a web model selector are not part of this increment.
+
+The four-market research path uses a tracked source manifest and ignored local archives
+to feed `pipeline/market_sources.py` and `pipeline/market_normalize.py`. The private
+canonical rows feed `pipeline/market_splits.py`, then regression and development-only
+classification CLIs. Private membership and complete aggregate run diagnostics remain
+ignored. Reviewed source/split/metric summaries under `specs/003-multi-city-research/`
+feed `scripts/build_case_study.py`, which creates the small allowlisted
+`web/src/lib/research-summary.json` payload. The static `/research/` route uses that
+payload at build time; CI checks it matches the reviewed aggregate evidence and still
+downloads no full dataset. The existing public listing JSON, explorer controls, Pages
+project and legacy Worker are unchanged. Public predictions and listing-level review
+fields are not part of this page.

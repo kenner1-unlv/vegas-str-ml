@@ -2,6 +2,13 @@
 
 Production target: **https://str.housev.dev**, backed by the existing Cloudflare Pages project **vegas-str-ml** (https://vegas-str-ml.pages.dev). GitHub repository: https://github.com/kenner1-unlv/vegas-str-ml, production branch main. This is a Direct Upload Pages project, not a native Git-integrated Pages project.
 
+The four-market `/research/` page is a static route generated from a small, reviewed
+aggregate payload. `python scripts/build_case_study.py --check` in the web CI job verifies
+that payload matches versioned source/experiment summaries before building. It adds no
+hosted Python service, new secret, dataset download or paid resource. A local build and
+browser check do not establish that the route is live; confirm main deployment and the
+hosted page after merge before claiming production delivery.
+
 ## Ownership and automatic updates
 
 The repository owner maintains GitHub Actions, the allowlisted public artifacts and the Cloudflare Pages project. AWS Route 53 owns housev.dev DNS. Production deploys only the static web/build directory; there is no Python service, database or Pages Function.
