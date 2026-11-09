@@ -135,3 +135,28 @@ existing non-regression threshold; temporal validation, calibrated individual in
 and physical-duplicate controls are also absent. The live map remains the original
 descriptive explorer. The multi-city case study and any reviewed public research view
 are separate delivery work, not a deployed model.
+
+### Development-only price-segment classification
+
+A separate [frozen secondary protocol](../specs/003-multi-city-research/secondary-protocol.md)
+tests whether the same basic characteristics identify listings at or above **that
+market and fold's training-price median**. This is a relative advertised-price label,
+not property value, quality, profitability or occupancy. Each threshold is learned only
+from fitting rows; buffered geographic development folds are reused. The outer final
+blocks were not scored for this experiment.
+
+| Market | Validation rows | Majority macro F1 | Logistic macro F1 | Random forest macro F1 |
+| --- | ---: | ---: | ---: | ---: |
+| Los Angeles | 26,213 | 0.510 | 0.781 | 0.780 |
+| Nashville | 6,658 | 0.404 | 0.732 | 0.734 |
+| New York City | 15,214 | 0.466 | 0.721 | 0.773 |
+
+The preregistered hypothesis that the nonlinear classifier would improve on logistic
+regression is supported in NYC, nearly tied in Nashville and **not supported in LA**.
+Validation class support and confusion matrices are in the
+[aggregate results](../specs/003-multi-city-research/secondary-results.json). For example,
+Nashville's random forest classified 1,281 above-median listings as below-median versus
+488 errors in the other direction; the task is not equally accurate for both classes.
+Two local runs produced the same aggregate result. These are exploratory development
+metrics with fold-specific thresholds, so do not interpret their pooled values as a
+single market-wide threshold's final accuracy. No public classifier was released.

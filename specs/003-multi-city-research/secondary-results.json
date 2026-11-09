@@ -1,0 +1,900 @@
+{
+  "feature_allowlist": {
+    "categorical": [
+      "room_type",
+      "property_group"
+    ],
+    "numeric": [
+      "bedrooms",
+      "beds",
+      "accommodates"
+    ]
+  },
+  "limitations": [
+    "Development-fold metrics are exploratory and not a fresh final accuracy estimate",
+    "Each threshold is a training-derived market asking-price median, not a property-value judgment",
+    "Only advertised prices are labeled; unavailable nights and review counts are not bookings"
+  ],
+  "markets": {
+    "los-angeles": {
+      "folds": [
+        {
+          "fold": 0,
+          "metrics": {
+            "logistic": {
+              "accuracy": 0.7788337331610998,
+              "balanced_accuracy": 0.7792129190346904,
+              "confusion_matrix": [
+                [
+                  4239,
+                  1312
+                ],
+                [
+                  1085,
+                  4202
+                ]
+              ],
+              "macro_f1": 0.7788311554804951,
+              "n": 10838,
+              "support": {
+                "high": 5287,
+                "low": 5551
+              }
+            },
+            "majority": {
+              "accuracy": 0.4878206311127514,
+              "balanced_accuracy": 0.5,
+              "confusion_matrix": [
+                [
+                  0,
+                  5551
+                ],
+                [
+                  0,
+                  5287
+                ]
+              ],
+              "macro_f1": 0.3278759689922481,
+              "n": 10838,
+              "support": {
+                "high": 5287,
+                "low": 5551
+              }
+            },
+            "random_forest": {
+              "accuracy": 0.7827089868979517,
+              "balanced_accuracy": 0.7827261573707387,
+              "confusion_matrix": [
+                [
+                  4341,
+                  1210
+                ],
+                [
+                  1145,
+                  4142
+                ]
+              ],
+              "macro_f1": 0.7826357051084262,
+              "n": 10838,
+              "support": {
+                "high": 5287,
+                "low": 5551
+              }
+            }
+          },
+          "training_median_threshold_usd": 228.0,
+          "training_n": 11324,
+          "training_support": {
+            "high": 5668,
+            "low": 5656
+          },
+          "validation_n": 10838
+        },
+        {
+          "fold": 1,
+          "metrics": {
+            "logistic": {
+              "accuracy": 0.8044067184395882,
+              "balanced_accuracy": 0.8132609855961255,
+              "confusion_matrix": [
+                [
+                  2639,
+                  767
+                ],
+                [
+                  316,
+                  1815
+                ]
+              ],
+              "macro_f1": 0.7999769041354506,
+              "n": 5537,
+              "support": {
+                "high": 2131,
+                "low": 3406
+              }
+            },
+            "majority": {
+              "accuracy": 0.6151345493949792,
+              "balanced_accuracy": 0.5,
+              "confusion_matrix": [
+                [
+                  3406,
+                  0
+                ],
+                [
+                  2131,
+                  0
+                ]
+              ],
+              "macro_f1": 0.38085653583808565,
+              "n": 5537,
+              "support": {
+                "high": 2131,
+                "low": 3406
+              }
+            },
+            "random_forest": {
+              "accuracy": 0.805851544157486,
+              "balanced_accuracy": 0.8148745430332042,
+              "confusion_matrix": [
+                [
+                  2642,
+                  764
+                ],
+                [
+                  311,
+                  1820
+                ]
+              ],
+              "macro_f1": 0.8014762520434711,
+              "n": 5537,
+              "support": {
+                "high": 2131,
+                "low": 3406
+              }
+            }
+          },
+          "training_median_threshold_usd": 245.245,
+          "training_n": 16170,
+          "training_support": {
+            "high": 8085,
+            "low": 8085
+          },
+          "validation_n": 5537
+        },
+        {
+          "fold": 2,
+          "metrics": {
+            "logistic": {
+              "accuracy": 0.7693636918072779,
+              "balanced_accuracy": 0.7743474295834876,
+              "confusion_matrix": [
+                [
+                  3271,
+                  801
+                ],
+                [
+                  1468,
+                  4298
+                ]
+              ],
+              "macro_f1": 0.7668226393366908,
+              "n": 9838,
+              "support": {
+                "high": 5766,
+                "low": 4072
+              }
+            },
+            "majority": {
+              "accuracy": 0.5860947347021752,
+              "balanced_accuracy": 0.5,
+              "confusion_matrix": [
+                [
+                  0,
+                  4072
+                ],
+                [
+                  0,
+                  5766
+                ]
+              ],
+              "macro_f1": 0.36952063573442706,
+              "n": 9838,
+              "support": {
+                "high": 5766,
+                "low": 4072
+              }
+            },
+            "random_forest": {
+              "accuracy": 0.7620451311242122,
+              "balanced_accuracy": 0.7726493273692338,
+              "confusion_matrix": [
+                [
+                  3397,
+                  675
+                ],
+                [
+                  1666,
+                  4100
+                ]
+              ],
+              "macro_f1": 0.7608238521493496,
+              "n": 9838,
+              "support": {
+                "high": 5766,
+                "low": 4072
+              }
+            }
+          },
+          "training_median_threshold_usd": 207.5,
+          "training_n": 11450,
+          "training_support": {
+            "high": 5727,
+            "low": 5723
+          },
+          "validation_n": 9838
+        }
+      ],
+      "outer_final_scored": false,
+      "pooled_development_metrics": {
+        "logistic": {
+          "accuracy": 0.7806813413191928,
+          "balanced_accuracy": 0.780671191184229,
+          "confusion_matrix": [
+            [
+              10149,
+              2880
+            ],
+            [
+              2869,
+              10315
+            ]
+          ],
+          "macro_f1": 0.7806725455116272,
+          "n": 26213,
+          "support": {
+            "high": 13184,
+            "low": 13029
+          }
+        },
+        "majority": {
+          "accuracy": 0.551596536069889,
+          "balanced_accuracy": 0.5498907619121869,
+          "confusion_matrix": [
+            [
+              3406,
+              9623
+            ],
+            [
+              2131,
+              11053
+            ]
+          ],
+          "macro_f1": 0.5098859934822331,
+          "n": 26213,
+          "support": {
+            "high": 13184,
+            "low": 13029
+          }
+        },
+        "random_forest": {
+          "accuracy": 0.7798420630984626,
+          "balanced_accuracy": 0.7799410675643654,
+          "confusion_matrix": [
+            [
+              10380,
+              2649
+            ],
+            [
+              3122,
+              10062
+            ]
+          ],
+          "macro_f1": 0.7798096575742102,
+          "n": 26213,
+          "support": {
+            "high": 13184,
+            "low": 13029
+          }
+        }
+      }
+    },
+    "nashville": {
+      "folds": [
+        {
+          "fold": 0,
+          "metrics": {
+            "logistic": {
+              "accuracy": 0.7747141896435776,
+              "balanced_accuracy": 0.774071703873445,
+              "confusion_matrix": [
+                [
+                  613,
+                  165
+                ],
+                [
+                  170,
+                  539
+                ]
+              ],
+              "macro_f1": 0.7741548801215763,
+              "n": 1487,
+              "support": {
+                "high": 709,
+                "low": 778
+              }
+            },
+            "majority": {
+              "accuracy": 0.47679892400806995,
+              "balanced_accuracy": 0.5,
+              "confusion_matrix": [
+                [
+                  0,
+                  778
+                ],
+                [
+                  0,
+                  709
+                ]
+              ],
+              "macro_f1": 0.32285974499089254,
+              "n": 1487,
+              "support": {
+                "high": 709,
+                "low": 778
+              }
+            },
+            "random_forest": {
+              "accuracy": 0.7639542703429725,
+              "balanced_accuracy": 0.7629758412768626,
+              "confusion_matrix": [
+                [
+                  610,
+                  168
+                ],
+                [
+                  183,
+                  526
+                ]
+              ],
+              "macro_f1": 0.7631986200344538,
+              "n": 1487,
+              "support": {
+                "high": 709,
+                "low": 778
+              }
+            }
+          },
+          "training_median_threshold_usd": 306.9,
+          "training_n": 3233,
+          "training_support": {
+            "high": 1618,
+            "low": 1615
+          },
+          "validation_n": 1487
+        },
+        {
+          "fold": 1,
+          "metrics": {
+            "logistic": {
+              "accuracy": 0.6310452418096724,
+              "balanced_accuracy": 0.6647567244050134,
+              "confusion_matrix": [
+                [
+                  897,
+                  155
+                ],
+                [
+                  791,
+                  721
+                ]
+              ],
+              "macro_f1": 0.6292985609311765,
+              "n": 2564,
+              "support": {
+                "high": 1512,
+                "low": 1052
+              }
+            },
+            "majority": {
+              "accuracy": 0.41029641185647425,
+              "balanced_accuracy": 0.5,
+              "confusion_matrix": [
+                [
+                  1052,
+                  0
+                ],
+                [
+                  1512,
+                  0
+                ]
+              ],
+              "macro_f1": 0.290929203539823,
+              "n": 2564,
+              "support": {
+                "high": 1512,
+                "low": 1052
+              }
+            },
+            "random_forest": {
+              "accuracy": 0.641965678627145,
+              "balanced_accuracy": 0.6753173597280061,
+              "confusion_matrix": [
+                [
+                  906,
+                  146
+                ],
+                [
+                  772,
+                  740
+                ]
+              ],
+              "macro_f1": 0.6404586239448624,
+              "n": 2564,
+              "support": {
+                "high": 1512,
+                "low": 1052
+              }
+            }
+          },
+          "training_median_threshold_usd": 266.23,
+          "training_n": 1722,
+          "training_support": {
+            "high": 861,
+            "low": 861
+          },
+          "validation_n": 2564
+        },
+        {
+          "fold": 2,
+          "metrics": {
+            "logistic": {
+              "accuracy": 0.8082086689681627,
+              "balanced_accuracy": 0.8042425828006903,
+              "confusion_matrix": [
+                [
+                  871,
+                  252
+                ],
+                [
+                  248,
+                  1236
+                ]
+              ],
+              "macro_f1": 0.8043739787226123,
+              "n": 2607,
+              "support": {
+                "high": 1484,
+                "low": 1123
+              }
+            },
+            "majority": {
+              "accuracy": 0.43076332949750673,
+              "balanced_accuracy": 0.5,
+              "confusion_matrix": [
+                [
+                  1123,
+                  0
+                ],
+                [
+                  1484,
+                  0
+                ]
+              ],
+              "macro_f1": 0.30107238605898123,
+              "n": 2607,
+              "support": {
+                "high": 1484,
+                "low": 1123
+              }
+            },
+            "random_forest": {
+              "accuracy": 0.8082086689681627,
+              "balanced_accuracy": 0.8126906654057648,
+              "confusion_matrix": [
+                [
+                  949,
+                  174
+                ],
+                [
+                  326,
+                  1158
+                ]
+              ],
+              "macro_f1": 0.8069680462885738,
+              "n": 2607,
+              "support": {
+                "high": 1484,
+                "low": 1123
+              }
+            }
+          },
+          "training_median_threshold_usd": 281.04499999999996,
+          "training_n": 2284,
+          "training_support": {
+            "high": 1142,
+            "low": 1142
+          },
+          "validation_n": 2607
+        }
+      ],
+      "outer_final_scored": false,
+      "pooled_development_metrics": {
+        "logistic": {
+          "accuracy": 0.7325022529288074,
+          "balanced_accuracy": 0.7399914449177465,
+          "confusion_matrix": [
+            [
+              2381,
+              572
+            ],
+            [
+              1209,
+              2496
+            ]
+          ],
+          "macro_f1": 0.7324224244573694,
+          "n": 6658,
+          "support": {
+            "high": 3705,
+            "low": 2953
+          }
+        },
+        "majority": {
+          "accuracy": 0.4331631120456594,
+          "balanced_accuracy": 0.4639510678543241,
+          "confusion_matrix": [
+            [
+              2175,
+              778
+            ],
+            [
+              2996,
+              709
+            ]
+          ],
+          "macro_f1": 0.40428149886315273,
+          "n": 6658,
+          "support": {
+            "high": 3705,
+            "low": 2953
+          }
+        },
+        "random_forest": {
+          "accuracy": 0.7343045959747672,
+          "balanced_accuracy": 0.744497669973992,
+          "confusion_matrix": [
+            [
+              2465,
+              488
+            ],
+            [
+              1281,
+              2424
+            ]
+          ],
+          "macro_f1": 0.7342945201491371,
+          "n": 6658,
+          "support": {
+            "high": 3705,
+            "low": 2953
+          }
+        }
+      }
+    },
+    "new-york-city": {
+      "folds": [
+        {
+          "fold": 0,
+          "metrics": {
+            "logistic": {
+              "accuracy": 0.7294882209585702,
+              "balanced_accuracy": 0.699091357763016,
+              "confusion_matrix": [
+                [
+                  1886,
+                  365
+                ],
+                [
+                  634,
+                  808
+                ]
+              ],
+              "macro_f1": 0.7042915831908283,
+              "n": 3693,
+              "support": {
+                "high": 1442,
+                "low": 2251
+              }
+            },
+            "majority": {
+              "accuracy": 0.6095315461684268,
+              "balanced_accuracy": 0.5,
+              "confusion_matrix": [
+                [
+                  2251,
+                  0
+                ],
+                [
+                  1442,
+                  0
+                ]
+              ],
+              "macro_f1": 0.37870121130551815,
+              "n": 3693,
+              "support": {
+                "high": 1442,
+                "low": 2251
+              }
+            },
+            "random_forest": {
+              "accuracy": 0.7395071757378825,
+              "balanced_accuracy": 0.7142884869785104,
+              "confusion_matrix": [
+                [
+                  1867,
+                  384
+                ],
+                [
+                  578,
+                  864
+                ]
+              ],
+              "macro_f1": 0.7187619931223599,
+              "n": 3693,
+              "support": {
+                "high": 1442,
+                "low": 2251
+              }
+            }
+          },
+          "training_median_threshold_usd": 206.05,
+          "training_n": 7352,
+          "training_support": {
+            "high": 3676,
+            "low": 3676
+          },
+          "validation_n": 3693
+        },
+        {
+          "fold": 1,
+          "metrics": {
+            "logistic": {
+              "accuracy": 0.7056102655923605,
+              "balanced_accuracy": 0.7318881754872603,
+              "confusion_matrix": [
+                [
+                  1816,
+                  423
+                ],
+                [
+                  1550,
+                  2913
+                ]
+              ],
+              "macro_f1": 0.6975058560425242,
+              "n": 6702,
+              "support": {
+                "high": 4463,
+                "low": 2239
+              }
+            },
+            "majority": {
+              "accuracy": 0.3340793792897642,
+              "balanced_accuracy": 0.5,
+              "confusion_matrix": [
+                [
+                  2239,
+                  0
+                ],
+                [
+                  4463,
+                  0
+                ]
+              ],
+              "macro_f1": 0.2504194161726876,
+              "n": 6702,
+              "support": {
+                "high": 4463,
+                "low": 2239
+              }
+            },
+            "random_forest": {
+              "accuracy": 0.7876753207997612,
+              "balanced_accuracy": 0.7666870282848696,
+              "confusion_matrix": [
+                [
+                  1575,
+                  664
+                ],
+                [
+                  759,
+                  3704
+                ]
+              ],
+              "macro_f1": 0.7638444060360988,
+              "n": 6702,
+              "support": {
+                "high": 4463,
+                "low": 2239
+              }
+            }
+          },
+          "training_median_threshold_usd": 146.14,
+          "training_n": 3542,
+          "training_support": {
+            "high": 1771,
+            "low": 1771
+          },
+          "validation_n": 6702
+        },
+        {
+          "fold": 2,
+          "metrics": {
+            "logistic": {
+              "accuracy": 0.7352147748495539,
+              "balanced_accuracy": 0.7440604872623933,
+              "confusion_matrix": [
+                [
+                  1711,
+                  392
+                ],
+                [
+                  884,
+                  1832
+                ]
+              ],
+              "macro_f1": 0.7350477332933474,
+              "n": 4819,
+              "support": {
+                "high": 2716,
+                "low": 2103
+              }
+            },
+            "majority": {
+              "accuracy": 0.5636024071384105,
+              "balanced_accuracy": 0.5,
+              "confusion_matrix": [
+                [
+                  0,
+                  2103
+                ],
+                [
+                  0,
+                  2716
+                ]
+              ],
+              "macro_f1": 0.36045122760451226,
+              "n": 4819,
+              "support": {
+                "high": 2716,
+                "low": 2103
+              }
+            },
+            "random_forest": {
+              "accuracy": 0.7899979248806807,
+              "balanced_accuracy": 0.7787630861865755,
+              "confusion_matrix": [
+                [
+                  1452,
+                  651
+                ],
+                [
+                  361,
+                  2355
+                ]
+              ],
+              "macro_f1": 0.7823558981891301,
+              "n": 4819,
+              "support": {
+                "high": 2716,
+                "low": 2103
+              }
+            }
+          },
+          "training_median_threshold_usd": 170.33,
+          "training_n": 5103,
+          "training_support": {
+            "high": 2552,
+            "low": 2551
+          },
+          "validation_n": 4819
+        }
+      ],
+      "outer_final_scored": false,
+      "pooled_development_metrics": {
+        "logistic": {
+          "accuracy": 0.7207834888918102,
+          "balanced_accuracy": 0.7325735539408644,
+          "confusion_matrix": [
+            [
+              5413,
+              1180
+            ],
+            [
+              3068,
+              5553
+            ]
+          ],
+          "macro_f1": 0.7207598434670319,
+          "n": 15214,
+          "support": {
+            "high": 8621,
+            "low": 6593
+          }
+        },
+        "majority": {
+          "accuracy": 0.4736426975154463,
+          "balanced_accuracy": 0.49803499414382074,
+          "confusion_matrix": [
+            [
+              4490,
+              2103
+            ],
+            [
+              5905,
+              2716
+            ]
+          ],
+          "macro_f1": 0.4663875480731497,
+          "n": 15214,
+          "support": {
+            "high": 8621,
+            "low": 6593
+          }
+        },
+        "random_forest": {
+          "accuracy": 0.7767188116208755,
+          "balanced_accuracy": 0.7726707662883305,
+          "confusion_matrix": [
+            [
+              4894,
+              1699
+            ],
+            [
+              1698,
+              6923
+            ]
+          ],
+          "macro_f1": 0.7726756298483975,
+          "n": 15214,
+          "support": {
+            "high": 8621,
+            "low": 6593
+          }
+        }
+      }
+    }
+  },
+  "methods": {
+    "logistic": {
+      "class_weight": "balanced",
+      "max_iter": 1000,
+      "random_state": 20261108
+    },
+    "majority": {
+      "strategy": "most_frequent"
+    },
+    "random_forest": {
+      "max_depth": 12,
+      "min_samples_leaf": 20,
+      "n_estimators": 100,
+      "n_jobs": 1,
+      "random_state": 20261108
+    }
+  },
+  "provenance": {
+    "evaluation_contract_sha256": "37715ee26bcf918cd87de34677563bd7e53b45f12f2fc051b99a87bcd5ec285f",
+    "experiment_code_sha256": "bd7dd4281aa92596a9c0ddceb5a7d58e52526d6bc12687c1724ef94a0a845cec",
+    "lockfile_sha256": "71b4ace89c3823107a349c5d51392fb9c3f7ee8a09fc68f5d803b530781a526a",
+    "secondary_code_sha256": "47ff0d61793862df56ad713c0f4e8b5d2314fecac203995fbc450f584023f681",
+    "secondary_protocol_sha256": "c518e483597c142af00da5f5bbed7b78f7d6c898b1149b945cd4264ce7d0492f",
+    "sklearn_version": "1.9.1",
+    "source_manifest_sha256": "756fced325b32dd12849a8cafde7e158567eeab8dcf74eabd0beb02bb4f05e54",
+    "split_manifest_sha256": "460285cca3e509d6c8d19679c634d454a8887bac84a8d7acb336a9c15d7dd05a"
+  },
+  "public_classification_release": "withheld",
+  "question": "Can listing characteristics identify market-relative high asking-price segments on unseen development geography?",
+  "stage": "development_only_secondary",
+  "target": "Advertised asking price at or above each market/fold training median"
+}

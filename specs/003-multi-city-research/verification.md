@@ -69,6 +69,19 @@ to supported-block error distributions. No model was rescored during this reduct
 The full local gate after this increment passed **188 Python tests**, Ruff lint and
 format, web format/lint/typecheck/build, geography contract and Pages asset checks.
 
+## Secondary classification checks (#28)
+
+The market-relative target, per-fold fitting median, majority baseline, fixed logistic
+and random-forest configurations, metrics and development-only boundary were frozen in
+[secondary-protocol.md](secondary-protocol.md) before fitting. Synthetic tests verify
+training-only thresholds, unseen categories, class support and confusion matrices.
+NYC, LA and Nashville used only buffered geographic development folds; no outer final
+classification score was computed. Two local executions produced identical aggregate
+[secondary-results.json](secondary-results.json) content. The model card reports where
+the nonlinear hypothesis held and failed. No classifier or source row was published.
+The full Python fixture suite now passes **192 tests**; Ruff lint/format and Pages asset
+checks also pass. The web application has not changed in this increment.
+
 ## Spec Kit consistency analysis
 
 The pinned prerequisite check found the new spec, research, data model, contracts and
