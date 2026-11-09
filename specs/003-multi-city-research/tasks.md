@@ -30,12 +30,12 @@ membership; compared methods use the same partition and train-only transforms.
 
 - [x] T010 [US2] Write split fixtures for repeated listing IDs, adjacent coordinates, insufficient blocks and city exclusion in pipeline/tests/test_market_splits.py.
 - [x] T011 [US2] Implement frozen within-city/pooled/leave-one-city-out/limited-local partition manifests and observed-point buffer in pipeline/market_splits.py.
-- [ ] T012 [US2] Test median fallbacks, unseen categories, transform fitting boundaries, target back-transform and metric correctness in pipeline/tests/test_market_experiments.py.
-- [ ] T013 [US2] Implement shared global/room-median and Ridge evaluation with configuration/source/split hashes in pipeline/market_experiments.py.
-- [ ] T014 [US2] Add one preregistered scikit-learn tree/boosting candidate on identical partitions in pipeline/market_experiments.py; record configuration before fitting in contracts/evaluation.md.
-- [ ] T015 [US2] Add room/market/geographic/price-band residual diagnostics and support-aware spatial-block uncertainty in pipeline/market_experiments.py and pipeline/tests/test_market_experiments.py.
-- [ ] T016 [US2] Run development-only comparisons twice, verify split and metric repeatability, then record aggregate results and failures in specs/003-multi-city-research/development-results.json.
-- [ ] T017 [US2] Freeze chosen configuration, score new NYC/LA/Nashville final partitions once, keep same-snapshot Clark County results historical/development, and review release gates in specs/003-multi-city-research/final-evaluation.json and docs/model-card.md.
+- [x] T012 [US2] Test median fallbacks, unseen categories, transform fitting boundaries, target back-transform, serialization and metric correctness in pipeline/tests/test_market_experiments.py.
+- [x] T013 [US2] Implement shared global/room-median and Ridge evaluation with configuration/source/split hashes in pipeline/market_experiments.py.
+- [x] T014 [US2] Add one preregistered scikit-learn boosting candidate on identical partitions in pipeline/market_experiments.py; record configuration before fitting in contracts/evaluation.md.
+- [x] T015 [US2] Add room/market/geographic/price-band diagnostics and support-aware spatial-block uncertainty in pipeline/market_experiments.py and pipeline/tests/test_market_experiments.py.
+- [x] T016 [US2] Run development-only comparisons twice, verify split and metric repeatability, then record aggregate results and failures in specs/003-multi-city-research/development-results.json.
+- [x] T017 [US2] Freeze chosen configuration, score new NYC/LA/Nashville final partitions once, keep same-snapshot Clark County results historical/development, and review release gates in specs/003-multi-city-research/final-evaluation.json and docs/model-card.md.
 
 ## Phase 4: User Story 3 - Justified secondary research
 

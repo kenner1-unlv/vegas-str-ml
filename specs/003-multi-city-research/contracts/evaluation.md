@@ -35,7 +35,9 @@ under different IDs remain physical-independence limitations.
 2. Pooled: combine development rows from four cities, with fitting-only preprocessing;
    compare on the same frozen final blocks in NYC, LA and Nashville as within-city models.
 3. Leave one city out: fit on three cities and score the fourth. The four folds are a
-   precommitted transfer diagnostic, with no candidate selection from their outcomes.
+   precommitted fixed-candidate transfer diagnostic, with no candidate selection from
+   their outcomes. Report both candidates; the pooled-development selection does not
+   make the target city's leave-one-out score a fresh selected-model final estimate.
 4. Limited local adaptation: select a fixed budget of target-city development groups,
    balanced round-robin across development spatial blocks, with block and group order
    determined by SHA-256 and without using target prices for sample selection, and
@@ -57,10 +59,30 @@ identical eligible partitions. Fit imputers, encoders, scaling, target transform
 calibration only on fitting partitions. Unseen city/neighborhood values need explicit
 fallback; never encode IDs or price-derived variables. Record configurations and seeds.
 
+**Predeclared core comparison (frozen before fitting)**: Question: do nonlinear
+property/room interactions reduce advertised-price error across markets? Hypothesis:
+histogram gradient boosting will reduce pooled development USD MAE against the fixed
+Ridge candidate, but may still fail thin room-type or held-out-city groups. Both fit a
+`log1p` target and back-transform with `expm1`, clamping negative outputs to zero and
+counting clamps. Ridge uses `alpha=10`, `solver=svd`. The scikit-learn
+`HistGradientBoostingRegressor` uses `max_iter=120`, `max_leaf_nodes=15`,
+`learning_rate=0.05`, `min_samples_leaf=40`, `l2_regularization=1.0`,
+`random_state=20261108`. Both use training-only numeric median imputation with missing
+indicators and categorical one-hot encoding with unknown-category ignore; Ridge also
+scales numeric values. No search over these hyperparameters is part of the first run.
+Compare global and room-type training medians alongside both candidates. Choose one
+candidate by pooled development geographic-fold USD MAE across NYC, LA and Nashville,
+breaking an exact tie in favor of Ridge. Report both frozen candidates on final blocks
+for transparency, but do not choose a release based on final scores.
+
 **Metrics and interpretation**: USD MAE, RMSE, median absolute error, log1p MAE or a
 predeclared suitable relative measure, subgroup counts and residual diagnostics by
 market/room/price band/geography. Report a block-bootstrap uncertainty interval when
 enough independent blocks exist, with method/replicates/seed; otherwise mark unsupported.
+For the initial report use fixed price bands `<100`, `100–249`, `250–499`, `500+` USD;
+show subgroup errors only for `n>=20`, with thin counts marked. Use 500 paired bootstrap
+resamples of geographic blocks with seed 20261108 for 2.5/97.5 percentile intervals of
+MAE and candidate-minus-room-median MAE when at least 10 nonempty blocks exist.
 No individual prediction interval or public prediction is implied. Development fold
 metrics are selection diagnostics. Final results require a frozen config and one scoring
 pass, then a documented failure/release decision. No secondary experiment begins without

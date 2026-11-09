@@ -47,6 +47,28 @@ At this checkpoint, the full Python fixture suite passed **178 tests**, Ruff lin
 format checks passed, and the existing geography and Pages asset checks passed. The web
 code has not changed since its previous full passing check.
 
+## Advertised-price evaluation (#27)
+
+The core feature allowlist, fixed Ridge and histogram-boosting configurations, metric
+definitions and paired block bootstrap were recorded in
+[contracts/evaluation.md](contracts/evaluation.md) before fitting. The development
+runner used three frozen geographic folds, selected histogram boosting by pooled USD
+MAE and reproduced the complete aggregate result on a second local run. The final CLI
+then scored the NYC/LA/Nashville blocks once and wrote
+[final-evaluation.json](final-evaluation.json). It refuses a repeat final run.
+Training-only preprocessing, unseen categories, median fallback, metrics, serialization,
+thin-cell suppression and a synthetic final-protocol smoke test have fixture coverage.
+An aggregate-output allowlist test rejects listing-row and identifying fields. The
+[model card](../../docs/model-card.md) documents the pooled improvement and hotel-room,
+mid-price and cross-city transfer failures. Public predictions remain withheld. No model
+binary or source row was added to Git; the current Pages site has not changed.
+Complete aggregate diagnostics were copied to ignored local research storage after the
+single final pass. `scripts/summarize_market_results.py` produced compact public summaries
+linked by SHA-256 to those private complete reports; geographic block labels are reduced
+to supported-block error distributions. No model was rescored during this reduction.
+The full local gate after this increment passed **188 Python tests**, Ruff lint and
+format, web format/lint/typecheck/build, geography contract and Pages asset checks.
+
 ## Spec Kit consistency analysis
 
 The pinned prerequisite check found the new spec, research, data model, contracts and

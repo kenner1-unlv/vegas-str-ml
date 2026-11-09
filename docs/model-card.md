@@ -55,3 +55,83 @@ Development coverage: 7,595 of 10,366 have valid overall/accuracy/cleanliness sc
 [Aggregate results](../specs/002-review-features/development-results.json) include every fold/alpha and room/property/ZCTA diagnostics. [Verification](../specs/002-review-features/verification.md) records repeatability and preserved baseline/public artifacts. Ratings describe established comps and may reflect management/service or perceived price; they are not guaranteed subject-property outcomes or causal renovation effects. Counts are not bookings. Large RMSE persists from extreme asking-price errors. No outer-holdout errors were recomputed; fresh final/temporal evidence, calibrated intervals and public prediction release remain [#17](https://github.com/kenner1-unlv/vegas-str-ml/issues/17).
 
 Follow [quickstart](../specs/001-comparable-price-baseline/quickstart.md) with pinned private archives/normalization, then run `uv run --project pipeline python pipeline/evaluate.py --snapshot 2026-09-20 --output data/research/2026-09-20/evaluation.json`. Private output contains split membership; stdout contains aggregates only. CI runs synthetic evaluation fixtures, not private source training or downloads. Research owner explicitly reviews/publishes aggregate results; GitHub Actions deploys only the static frontend artifact after main checks. Lockfile/code/contract/dataset hashes accompany results. Numeric-library/platform differences can affect floating-point last digits; bitwise repeatability was checked on this Windows environment, not promised across platforms.
+
+## Four-market advertised-price research (November 8, 2026)
+
+This separate offline study uses [Inside Airbnb](https://insideairbnb.com/get-the-data/)
+detailed listings for Clark County (2026-09-20), New York City (2026-09-14), Los Angeles
+(2026-09-14) and Nashville (2026-09-19), under the source's [CC BY 4.0 policy](https://insideairbnb.com/data-policies/).
+Source archives remain local. The [source manifest](../specs/003-multi-city-research/source-manifest.json),
+[cohort audit](../specs/003-multi-city-research/source-audit.json),
+[frozen protocol](../specs/003-multi-city-research/contracts/evaluation.md) and
+[split support](../specs/003-multi-city-research/split-support.json) record provenance
+and exclusions. The normalization and source-area expansion are our modifications.
+Clark County represents the broader source area, not just Las Vegas city.
+
+The four archives contain 104,483 source rows; 82,868 have parsed positive advertised
+prices and valid coordinates. All 21,615 exclusions in this initial private cohort have
+missing asking prices, including 10,512 of 29,918 NYC rows. Missing target selection may
+vary substantially by city. Valid extreme asking prices were retained. Aggregate review
+ratings were audited but **not used** as predictors in this core model.
+
+The fixed core inputs are bedrooms, beds, advertised capacity, room type and property
+group. Global and room-type training medians are baselines. Ridge (alpha 10) and histogram
+gradient boosting (120 iterations, 15 maximum leaf nodes) fit a log1p price target with
+training-only numeric imputation and categorical encoding, then back-transform to USD.
+Whole 3 km geographic blocks and a 1 km observed-coordinate buffer separate fitting and
+evaluation. The existing Clark County snapshot has already informed earlier model work;
+its results here are historical/development evidence. New final blocks were frozen in
+NYC, LA and Nashville before fitting. Approximate source points cannot guarantee that
+different IDs represent different physical properties.
+
+### Development selection and frozen final results
+
+Three geographic development folds across the three new markets contain 48,085 pooled
+validation observations. Fixed histogram boosting had $182.86 MAE versus Ridge $193.81,
+room median $223.14 and global median $236.92. The preregistered rule selected histogram
+boosting by development USD MAE. These folds were also used for selection, so their errors
+are not fresh final estimates. A second local development run reproduced the saved
+aggregate result exactly.
+
+The single frozen final pass evaluated 8,568 listings across NYC, LA and Nashville:
+
+| Method, pooled training | USD MAE | USD RMSE |
+| --- | ---: | ---: |
+| Global training median | 197.84 | 480.72 |
+| Room-type training median | 176.46 | 473.21 |
+| Log1p Ridge | 149.83 | 433.03 |
+| Log1p histogram boosting | 144.11 | 413.58 |
+
+For the selected candidate, a 500-resample paired geographic-block bootstrap produced
+an MAE interval of $114.52–$177.84 and candidate-minus-room-median MAE interval of
+-$42.91 to -$21.66. These describe block-resampling uncertainty under the observed
+snapshot, **not** calibrated intervals for an individual listing or future market.
+
+Within-city final boosting MAE was $144.30 on 5,351 LA listings, $125.57 on 1,332
+Nashville listings, and $158.09 on 1,885 NYC listings. Fixed-candidate leave-one-city-out
+diagnostics gave boosting MAE $194.76 for LA, $157.26 for Nashville and $172.74 for NYC;
+Clark County was $206.74 versus its room-median $196.51, a transfer failure. Ridge's
+Nashville leave-one-out diagnostic had $423.25 MAE and $14,570.85 RMSE, exposing severe
+cross-market tail instability. These leave-one-out scores are diagnostics of predeclared
+methods; no method was chosen from them. With geographically balanced local-group budgets
+of 0 to 500, selected boosting MAE changed from $147.67 to $146.16 in LA, $155.88 to
+$151.93 in Nashville and $166.63 to $166.16 in NYC. Limited adaptation gains were small
+in two of three markets; protocols use the same frozen local final blocks per market.
+
+### Failure analysis and release decision
+
+The pooled final **hotel-room** subgroup (n=60) has boosting MAE $229.94 versus
+room-median $201.20, a 14.3% regression. The $250–499 asking-price band (n=2,182) has
+boosting MAE $110.55 versus room-median $97.43, a 13.5% regression. These failures
+matter even though pooled MAE improved. Final subgroup results are descriptive failure
+analysis, not instructions to retune on this exposed final set. The full
+[development summary](../specs/003-multi-city-research/development-results.json) and
+[final aggregate summary](../specs/003-multi-city-research/final-evaluation.json) include
+support, other subgroup errors, block-bootstrap methods and source/configuration hashes.
+Their hashes point to complete aggregate diagnostics retained locally outside Git.
+
+**Public prediction release remains withheld.** The hotel-room subgroup fails the
+existing non-regression threshold; temporal validation, calibrated individual intervals
+and physical-duplicate controls are also absent. The live map remains the original
+descriptive explorer. The multi-city case study and any reviewed public research view
+are separate delivery work, not a deployed model.
